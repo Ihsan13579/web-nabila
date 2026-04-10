@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>beewithnabila.id — Konsultan Studi & Visa Luar Negeri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --honey:#C8821A;
+  --honey2:#E8A030;
+  --honeylt:#F5C842;
+  --dark:#0F0A04;
+  --dark2:#1A1208;
+  --cream:#FDF8F0;
+  --cream2:#F7EFE0;
+  --muted:#7A6045;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--dark2);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;height:68px;display:flex;align-items:center;justify-content:space-between;transition:background .3s,box-shadow .3s;}
+nav.scrolled{background:rgba(253,248,240,.96);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(200,130,26,.15);}
+.logo{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--honey);text-decoration:none;}
+.logo span{color:var(--dark2);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:.85rem;font-weight:500;color:var(--dark2);text-decoration:none;opacity:.7;transition:opacity .2s;}
+.nav-links a:hover{opacity:1;}
+.nav-cta{background:var(--honey);color:#fff;padding:10px 22px;border-radius:100px;font-size:.85rem;font-weight:600;text-decoration:none;transition:background .2s,transform .15s;}
+.nav-cta:hover{background:var(--honey2);transform:translateY(-1px);}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:620px;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=1800&q=80') center/cover no-repeat;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(10,6,2,.85) 0%,rgba(10,6,2,.55) 55%,rgba(10,6,2,.2) 100%);}
+.hero-content{position:relative;z-index:2;padding:0 5%;max-width:660px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,130,26,.2);border:1px solid rgba(200,130,26,.45);color:var(--honeylt);font-size:.75rem;font-weight:600;padding:6px 14px;border-radius:100px;margin-bottom:28px;letter-spacing:.08em;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.12;color:#fff;margin-bottom:20px;}
+.hero h1 em{color:var(--honeylt);font-style:italic;}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:36px;max-width:520px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--honey);color:#fff;padding:14px 28px;border-radius:100px;font-size:.95rem;font-weight:600;text-decoration:none;transition:all .2s;}
+.btn-p:hover{background:var(--honey2);transform:translateY(-2px);}
+.btn-o{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;padding:13px 26px;border-radius:100px;font-size:.95rem;font-weight:500;text-decoration:none;border:1.5px solid rgba(255,255,255,.5);transition:all .2s;}
+.btn-o:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+.hero-stats{position:absolute;bottom:0;left:0;right:0;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);background:rgba(15,10,4,.78);backdrop-filter:blur(16px);border-top:1px solid rgba(200,130,26,.25);}
+.stat{padding:24px 5%;text-align:center;border-right:1px solid rgba(200,130,26,.18);}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--honeylt);line-height:1;}
+.stat-l{font-size:.76rem;color:rgba(255,255,255,.55);margin-top:4px;font-weight:500;letter-spacing:.04em;}
+
+/* TRUST BAR */
+.trust{background:var(--dark2);padding:16px 5%;display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;border-bottom:1px solid rgba(200,130,26,.12);}
+.ti{display:flex;align-items:center;gap:8px;font-size:.8rem;color:rgba(255,255,255,.55);font-weight:500;}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--honey);}
+
+/* SHARED */
+section{padding:88px 5%;}
+.lbl{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--honey);background:rgba(200,130,26,.1);padding:5px 14px;border-radius:100px;margin-bottom:14px;}
+.stitle{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.75rem);line-height:1.15;color:var(--dark2);margin-bottom:12px;}
+.ssub{font-size:1rem;color:var(--muted);line-height:1.7;max-width:560px;}
+.fade{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease;}
+.fade.in{opacity:1;transform:translateY(0);}
+
+/* DESTINATIONS */
+.dest-sec{background:#fff;}
+.dest-head{text-align:center;margin-bottom:48px;}
+.dest-head .ssub{margin:0 auto;}
+.dest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.dcard{position:relative;border-radius:18px;overflow:hidden;height:250px;cursor:pointer;text-decoration:none;display:block;}
+.dcard.wide{grid-column:span 1;}
+.dcard img{width:100%;height:100%;object-fit:cover;transition:transform .55s;}
+.dcard:hover img{transform:scale(1.07);}
+.dcard-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,6,2,.78) 0%,transparent 55%);transition:background .3s;}
+.dcard:hover .dcard-ov{background:linear-gradient(0deg,rgba(10,6,2,.88) 0%,rgba(200,130,26,.1) 100%);}
+.dcard-info{position:absolute;bottom:0;left:0;right:0;padding:20px 18px;}
+.dflag{font-size:1.5rem;display:block;margin-bottom:3px;}
+.dname{font-family:'Playfair Display',serif;font-size:1.15rem;color:#fff;font-weight:700;}
+.dtype{font-size:.74rem;color:rgba(255,255,255,.65);margin-top:2px;}
+.darrow{display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:.78rem;color:var(--honeylt);font-weight:600;opacity:0;transform:translateY(5px);transition:all .3s;}
+.dcard:hover .darrow{opacity:1;transform:translateY(0);}
+.dest-more{text-align:center;margin-top:36px;}
+.btn-g{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:100px;border:1.5px solid var(--honey);color:var(--honey);font-size:.9rem;font-weight:600;text-decoration:none;transition:all .2s;}
+.btn-g:hover{background:var(--honey);color:#fff;}
+
+/* TESTIMONIALS */
+.testi-sec{background:var(--dark);overflow:hidden;}
+.testi-sec .stitle{color:#fff;}
+.thead{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:38px;flex-wrap:wrap;gap:18px;}
+.tcontrols{display:flex;gap:10px;}
+.tbtn{width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .2s;}
+.tbtn:hover{background:var(--honey);border-color:var(--honey);}
+.ttrack-wrap{overflow:hidden;}
+.ttrack{display:flex;gap:20px;transition:transform .5s cubic-bezier(.25,.46,.45,.94);}
+.tcard{flex:0 0 340px;background:#1e1408;border:1px solid rgba(200,130,26,.2);border-radius:20px;padding:28px;position:relative;}
+.tstars{display:flex;gap:3px;margin-bottom:14px;color:var(--honeylt);font-size:1rem;}
+.ttext{font-size:.93rem;color:rgba(255,255,255,.78);line-height:1.7;margin-bottom:20px;font-style:italic;}
+.tauthor{display:flex;align-items:center;gap:12px;}
+.tavatar{width:44px;height:44px;border-radius:50%;background:var(--honey);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;font-weight:700;flex-shrink:0;}
+.tname{font-weight:600;font-size:.88rem;color:#fff;}
+.tdest{font-size:.76rem;color:var(--honey);margin-top:2px;}
+.tquote{position:absolute;top:18px;right:22px;font-size:3rem;color:rgba(200,130,26,.12);font-family:'Playfair Display',serif;line-height:1;}
+
+/* WHY */
+.why-sec{background:var(--cream2);}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+.why-vis{position:relative;}
+.why-img{width:100%;border-radius:24px;aspect-ratio:4/5;object-fit:cover;}
+.why-badge{position:absolute;bottom:-18px;right:-18px;background:var(--honey);color:#fff;border-radius:16px;padding:18px 22px;box-shadow:0 12px 32px rgba(200,130,26,.4);}
+.why-badge .big{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;line-height:1;}
+.why-badge .sm{font-size:.7rem;font-weight:600;opacity:.85;margin-top:3px;}
+.why-items{display:flex;flex-direction:column;gap:20px;margin-top:32px;}
+.witem{display:flex;gap:16px;align-items:flex-start;}
+.wicon{width:44px;height:44px;border-radius:12px;background:rgba(200,130,26,.12);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.wi-title{font-weight:600;font-size:.93rem;color:var(--dark2);margin-bottom:4px;}
+.wi-text{font-size:.83rem;color:var(--muted);line-height:1.6;}
+
+/* HOW */
+.how-sec{background:#fff;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:56px;}
+.steps::before{content:'';position:absolute;top:27px;left:calc(12.5%);right:calc(12.5%);height:2px;background:repeating-linear-gradient(90deg,var(--honey) 0,var(--honey) 8px,transparent 8px,transparent 16px);}
+.step{text-align:center;padding:0 14px;}
+.step-n{width:54px;height:54px;border-radius:50%;background:var(--honey);color:#fff;font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;position:relative;z-index:1;box-shadow:0 6px 20px rgba(200,130,26,.35);}
+.step-t{font-weight:700;font-size:.92rem;color:var(--dark2);margin-bottom:8px;}
+.step-d{font-size:.81rem;color:var(--muted);line-height:1.6;}
+
+/* PROFILE */
+.profile-sec{background:var(--dark);padding:80px 5%;}
+.profile-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1080px;margin:0 auto;}
+.pimg-wrap{position:relative;}
+.pimg{width:100%;border-radius:24px;aspect-ratio:3/4;object-fit:cover;object-position:top;}
+.pborder{position:absolute;inset:-8px;border:2px solid var(--honey);border-radius:28px;z-index:-1;opacity:.35;}
+.profile-sec .stitle{color:#fff;}
+.profile-sec .ssub{color:rgba(255,255,255,.62);}
+.ptags{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+.ptag{background:rgba(200,130,26,.15);border:1px solid rgba(200,130,26,.3);color:var(--honeylt);font-size:.76rem;font-weight:600;padding:5px 13px;border-radius:100px;}
+.pstats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px;}
+.ps{text-align:center;background:rgba(255,255,255,.05);border-radius:14px;padding:16px;}
+.ps-n{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--honeylt);}
+.ps-l{font-size:.73rem;color:rgba(255,255,255,.45);margin-top:3px;}
+
+/* SERVICES */
+.svc-sec{background:var(--cream2);}
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px;}
+.svc{background:#fff;border-radius:20px;padding:32px;border:1px solid rgba(200,130,26,.14);transition:all .25s;cursor:default;}
+.svc:hover{border-color:var(--honey);transform:translateY(-4px);box-shadow:0 16px 40px rgba(200,130,26,.14);}
+.svc-ico{font-size:2rem;margin-bottom:14px;}
+.svc-t{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--dark2);margin-bottom:8px;}
+.svc-d{font-size:.86rem;color:var(--muted);line-height:1.7;margin-bottom:18px;}
+.svc-pr{display:inline-block;background:rgba(200,130,26,.1);color:var(--honey);font-size:.8rem;font-weight:700;padding:5px 13px;border-radius:100px;}
+
+/* FAQ */
+.faq-sec{background:#fff;}
+.faq-list{max-width:760px;margin:48px auto 0;}
+.faq-item{border-bottom:1px solid rgba(200,130,26,.14);}
+.faq-q{width:100%;text-align:left;background:none;border:none;padding:20px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:.93rem;font-weight:600;color:var(--dark2);font-family:'Plus Jakarta Sans',sans-serif;}
+.faq-ico{width:26px;height:26px;border-radius:50%;background:var(--honey);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;transition:transform .3s;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.faq-a p{font-size:.86rem;color:var(--muted);line-height:1.7;padding-bottom:18px;}
+.faq-item.open .faq-ico{transform:rotate(45deg);}
+.faq-item.open .faq-a{max-height:200px;}
+
+/* CTA BOTTOM */
+.cta-sec{position:relative;padding:100px 5%;overflow:hidden;text-align:center;}
+.cta-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80') center/cover;}
+.cta-ov{position:absolute;inset:0;background:rgba(10,6,2,.78);}
+.cta-inner{position:relative;z-index:2;}
+.cta-inner h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:#fff;margin-bottom:14px;}
+.cta-inner p{color:rgba(255,255,255,.7);font-size:1rem;margin-bottom:36px;}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+/* FOOTER */
+footer{background:var(--dark);padding:48px 5% 28px;border-top:1px solid rgba(200,130,26,.12);}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:36px;}
+.fb p{font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:280px;margin-top:10px;}
+.fc h4{font-size:.8rem;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;}
+.fc a{display:block;font-size:.83rem;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:9px;transition:color .2s;}
+.fc a:hover{color:var(--honey);}
+.fb-bot{border-top:1px solid rgba(255,255,255,.07);padding-top:18px;display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:rgba(255,255,255,.3);}
+
+/* WA FLOAT */
+.wa{position:fixed;bottom:28px;right:28px;z-index:200;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:13px 20px;border-radius:100px;font-size:.88rem;font-weight:700;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,.4);animation:wap 2.5s infinite;}
+.wa:hover{transform:translateY(-2px);}
+@keyframes wap{0%,100%{box-shadow:0 8px 28px rgba(37,211,102,.4);}50%{box-shadow:0 8px 40px rgba(37,211,102,.65);}}
+
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .dest-grid{grid-template-columns:repeat(2,1fr);}
+  .why-grid,.profile-inner{grid-template-columns:1fr;}
+  .steps{grid-template-columns:repeat(2,1fr);gap:32px;}
+  .steps::before{display:none;}
+  .svc-grid{grid-template-columns:1fr;}
+  .ft{grid-template-columns:1fr 1fr;}
+  .tcard{flex:0 0 290px;}
+}
+@media(max-width:600px){
+  .hero-stats{grid-template-columns:1fr;}
+  .stat{border-right:none;border-bottom:1px solid rgba(200,130,26,.12);}
+  .trust{gap:14px;}
+  .dest-grid{grid-template-columns:1fr 1fr;}
+  .ft{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="logo">bee<span>withnabila</span></a>
+  <ul class="nav-links">
+    <li><a href="#destinations">Destinasi</a></li>
+    <li><a href="#why">Kenapa Nabila?</a></li>
+    <li><a href="#how">Cara Kerja</a></li>
+    <li><a href="#testi">Testimoni</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="https://wa.me/62XXXXXXXXXX" class="nav-cta" target="_blank">Konsultasi Gratis</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🐝 &nbsp;5+ Tahun di Education Agency</div>
+    <h1>Wujudkan Mimpimu<br>Kuliah di <em>Luar Negeri</em></h1>
+    <p class="hero-sub">Banyak yang harus diurus, tapi kamu nggak harus sendirian. Nabila temani dari awal sampai visa di tangan</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/62XXXXXXXXXX" target="_blank" class="btn-p">💬 Chat Nabila Sekarang</a>
+      <a href="#how" class="btn-o">▶ Lihat Cara Kerja</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-n">200+</div><div class="stat-l">Mahasiswa Berhasil</div></div>
+    <div class="stat"><div class="stat-n">5+</div><div class="stat-l">Tahun Pengalaman</div></div>
+    <div class="stat"><div class="stat-n">15+</div><div class="stat-l">Universitas Partner</div></div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="ti"><div class="dot"></div>Australia</div>
+  <div class="ti"><div class="dot"></div>United Kingdom</div>
+  <div class="ti"><div class="dot"></div>Malaysia</div>
+  <div class="ti"><div class="dot"></div>Singapura</div>
+  <div class="ti"><div class="dot"></div>Amerika Serikat</div>
+  <div class="ti"><div class="dot"></div>Belanda</div>
+  <div class="ti"><div class="dot"></div>Kanada</div>
+</div>
+
+<!-- DESTINATIONS -->
+<section class="dest-sec" id="destinations">
+  <div class="dest-head fade">
+    <div class="lbl">Destinasi Populer</div>
+    <h2 class="stitle">Kuliah di Negara Impianmu</h2>
+    <p class="ssub">Nabila sudah bantu ratusan mahasiswa Indonesia masuk ke universitas terbaik di seluruh dunia.</p>
+  </div>
+  <div class="dest-grid">
+    <a href="#" class="dcard fade">
+      <img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=700&q=80" alt="Australia">
+      <div class="dcard-ov"></div>
+      <div class="dcard-info">
+        <span class="dflag">🇦🇺</span>
+        <div class="dname">Australia</div>
+        <div class="dtype">Student Visa Subclass 500</div>
+        <div class="darrow">Konsultasi →</div>
+      </div>
+    </a>
+    <a href="#" class="dcard fade">
+      <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=700&q=80" alt="UK">
+      <div class="dcard-ov"></div>
+      <div class="dcard-info">
+        <span class="dflag">🇬🇧</span>
+        <div class="dname">United Kingdom</div>
+        <div class="dtype">UK Student Visa</div>
+        <div class="darrow">Konsultasi →</div>
+      </div>
+    </a>
+    <a href="#" class="dcard fade">
+      <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=700&q=80" alt="Singapore">
+      <div class="dcard-ov"></div>
+      <div class="dcard-info">
+        <span class="dflag">🇸🇬</span>
+        <div class="dname">Singapura</div>
+        <div class="dtype">Student's Pass</div>
+        <div class="darrow">Konsultasi →</div>
+      </div>
+    </a>
+    <a href="#" class="dcard fade">
+      <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=700&q=80" alt="Malaysia">
+      <div class="dcard-ov"></div>
+      <div class="dcard-info">
+        <span class="dflag">🇲🇾</span>
+        <div class="dname">Malaysia</div>
+        <div class="dtype">Student Pass</div>
+        <div class="darrow">Konsultasi →</div>
+      </div>
+    </a>
+    <a href="#" class="dcard fade">
+      <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=700&q=80" alt="USA">
+      <div class="dcard-ov"></div>
+      <div class="dcard-info">
+        <span class="dflag">🇺🇸</span>
+        <div class="dname">Amerika Serikat</div>
+        <div class="dtype">F-1 Student Visa</div>
+        <div class="darrow">Konsultasi →</div>
+      </div>
+    </a>
+    <a href="#" class="dcard fade">
+      <img src="https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?w=700&q=80" alt="Netherlands">
+      <div class="dcard-ov"></div>
+      <div class="dcard-info">
+        <span class="dflag">🇳🇱</span>
+        <div class="dname">Belanda</div>
+        <div class="dtype">MVV Pelajar</div>
+        <div class="darrow">Konsultasi →</div>
+      </div>
+    </a>
+  </div>
+  <div class="dest-more fade"><a href="#" class="btn-g">Lihat Semua Destinasi →</a></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-sec" id="testi">
+  <div class="thead">
+    <div>
+      <div class="lbl">Testimoni</div>
+      <h2 class="stitle">Kata Mereka tentang<br>beewithnabila</h2>
+    </div>
+    <div class="tcontrols">
+      <button class="tbtn" id="tp">&#8592;</button>
+      <button class="tbtn" id="tn">&#8594;</button>
+    </div>
+  </div>
+  <div class="ttrack-wrap">
+    <div class="ttrack" id="tt">
+      <div class="tcard"><div class="tquote">"</div><div class="tstars">★★★★★</div><p class="ttext">"Nabila sangat sabar nemenin proses visa saya yang lumayan complicated. Dokumen dibantu satu per satu, dan akhirnya visa Australia approved! Sekarang sudah semester 2 di Melbourne."</p><div class="tauthor"><div class="tavatar">R</div><div><div class="tname">Rizky Aditya</div><div class="tdest">University of Melbourne 🇦🇺</div></div></div></div>
+      <div class="tcard"><div class="tquote">"</div><div class="tstars">★★★★★</div><p class="ttext">"Dari bingung mau apply ke universitas mana, sampai dapat offer letter Edinburgh — semua dibantu Nabila dengan sangat detail. SOPku sampai direvisi 3x sampai beneran bagus banget."</p><div class="tauthor"><div class="tavatar">D</div><div><div class="tname">Dinda Putri</div><div class="tdest">University of Edinburgh 🇬🇧</div></div></div></div>
+      <div class="tcard"><div class="tquote">"</div><div class="tstars">★★★★★</div><p class="ttext">"SOP yang dibantu Nabila beda banget kualitasnya. Nabila tau cara highlight achievement yang benar-benar menarik perhatian admissions. Accepted di pilihan pertama!"</p><div class="tauthor"><div class="tavatar">F</div><div><div class="tname">Farhan Malik</div><div class="tdest">NUS Singapore 🇸🇬</div></div></div></div>
+      <div class="tcard"><div class="tquote">"</div><div class="tstars">★★★★★</div><p class="ttext">"Yang paling saya suka dari Nabila adalah dia responsif banget. Mock interview prep-nya sangat helpful, pertanyaan yang dipersiapkan 80% keluar pas interview visa beneran!"</p><div class="tauthor"><div class="tavatar">S</div><div><div class="tname">Salsabila Rahma</div><div class="tdest">Universiti Malaya 🇲🇾</div></div></div></div>
+      <div class="tcard"><div class="tquote">"</div><div class="tstars">★★★★★</div><p class="ttext">"Sebagai orang tua, saya sangat lega punya Nabila yang mendampingi anak saya. Proses yang awalnya terasa overwhelming jadi sangat terstruktur dan jelas. Terima kasih Nabila!"</p><div class="tauthor"><div class="tavatar">H</div><div><div class="tname">Bapak Hendra</div><div class="tdest">Orang tua — anaknya di Belanda 🇳🇱</div></div></div></div>
+      <div class="tcard"><div class="tquote">"</div><div class="tstars">★★★★★</div><p class="ttext">"Nabila tidak hanya bantu dokumen, tapi juga bantu saya milih program yang sesuai background saya. Rekomendasi universitasnya spot on — accepted di Monash tanpa harus apply ke mana-mana lagi."</p><div class="tauthor"><div class="tavatar">A</div><div><div class="tname">Anisa Wulandari</div><div class="tdest">Monash University 🇦🇺</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why-sec" id="why">
+  <div class="why-grid">
+    <div class="why-vis fade">
+      <img src="http://pocketbase-mamawatts.43.157.247.140.sslip.io/api/files/pbc_3607937828/hvsiynnnbkle4e2/1697351716038_1qve8yl2xu.jpg" alt="Konsultasi" class="why-img">
+      <div class="why-badge"><div class="big">5+</div><div class="sm">Tahun di<br>Education Agency</div></div>
+    </div>
+    <div class="fade">
+      <div class="lbl">Kenapa beewithnabila?</div>
+      <h2 class="stitle">Bukan Agency —<br>Teman yang Peduli</h2>
+      <p class="ssub">Nabila bukan form yang kamu isi lalu ditinggal. Dia menemanimu dari awal sampai kamu benar-benar berangkat.</p>
+      <div class="why-items">
+        <div class="witem"><div class="wicon">🎯</div><div><div class="wi-title">Konsultasi Personal 1-on-1</div><p class="wi-text">Tidak ada sistem tiket atau antrian. Kamu langsung ngobrol sama Nabila via WhatsApp.</p></div></div>
+        <div class="witem"><div class="wicon">🏆</div><div><div class="wi-title">5+ Tahun Pengalaman Nyata</div><p class="wi-text">Nabila bekerja langsung di education agency selama 5+ tahun — bukan baru belajar dari internet.</p></div></div>
+        <div class="witem"><div class="wicon">🗣️</div><div><div class="wi-title">Bahasa Indonesia, Tanpa Ribet</div><p class="wi-text">Konsultasi dalam bahasa yang kamu nyaman. Orang tua pun bisa ikut diskusi.</p></div></div>
+        <div class="witem"><div class="wicon">✈️</div><div><div class="wi-title">Pendampingan Full Journey</div><p class="wi-text">Dari shortlist universitas sampai visa di tangan — Nabila ada di setiap langkah.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-sec" id="how">
+  <div style="text-align:center" class="fade">
+    <div class="lbl">Cara Kerja</div>
+    <h2 class="stitle">Proses Bareng Nabila</h2>
+    <p class="ssub" style="margin:0 auto">Simple, jelas, dan kamu selalu tahu ada di tahap mana.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade"><div class="step-n">1</div><div class="step-t">Chat Gratis</div><p class="step-d">Ceritakan impianmu ke Nabila via WhatsApp. Konsultasi awal 100% gratis, tanpa obligasi apapun.</p></div>
+    <div class="step fade"><div class="step-n">2</div><div class="step-t">Assessment & Roadmap</div><p class="step-d">Nabila analisa profilmu dan buat rencana personal — universitas, program, timeline, dan budget.</p></div>
+    <div class="step fade"><div class="step-n">3</div><div class="step-t">Persiapan Dokumen</div><p class="step-d">Bantu persiapkan semua dokumen: SOP, rekomendasi, transkrip, dan persyaratan visa.</p></div>
+    <div class="step fade"><div class="step-n">4</div><div class="step-t">Visa Approved ✈️</div><p class="step-d">Pendampingan hingga visa diterima dan kamu siap berangkat ke negara impian.</p></div>
+  </div>
+  <div style="text-align:center;margin-top:52px" class="fade">
+    <a href="https://wa.me/62XXXXXXXXXX" target="_blank" class="btn-p" style="display:inline-flex">💬 &nbsp;Mulai Konsultasi Gratis</a>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section class="profile-sec" id="nabila">
+  <div class="profile-inner">
+    <div class="pimg-wrap fade">
+      <img src="http://pocketbase-mamawatts.43.157.247.140.sslip.io/api/files/pbc_3607937828/yxskk6dh2saofkk/1733560656507_gmz34xbm4v.jpg?w=600&q=80" alt="Nabila" class="pimg">
+      <div class="pborder"></div>
+    </div>
+    <div class="fade">
+      <div class="lbl">Tentang Nabila</div>
+      <h2 class="stitle">Hi, Saya Nabila 🐝</h2>
+      <p class="ssub">Saya education consultant dengan 5+ tahun pengalaman di education agency. Sudah membantu 200+ mahasiswa Indonesia kuliah di luar negeri — dari memilih universitas yang tepat hingga visa approved.</p>
+      <p class="ssub" style="margin-top:12px">Yang membedakan saya: kamu tidak diperlakukan sebagai nomor antrian. Setiap klien mendapat perhatian penuh dan panduan yang dipersonalisasi.</p>
+      <div class="ptags">
+        <span class="ptag">Education Consulting</span>
+        <span class="ptag">Visa Student</span>
+        <span class="ptag">SOP Writing</span>
+        <span class="ptag">University Selection</span>
+        <span class="ptag">Scholarship Guidance</span>
+      </div>
+      <div class="pstats">
+        <div class="ps"><div class="ps-n">200+</div><div class="ps-l">Mahasiswa</div></div>
+        <div class="ps"><div class="ps-n">5+</div><div class="ps-l">Tahun</div></div>
+        <div class="ps"><div class="ps-n">15+</div><div class="ps-l">Universitas</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="svc-sec" id="services">
+  <div class="fade">
+    <div class="lbl">Layanan</div>
+    <h2 class="stitle">Semua yang Kamu Butuhkan</h2>
+    <p class="ssub">Dari konsultasi awal sampai visa di tangan — Nabila ada di setiap langkah.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc fade"><div class="svc-ico">🎓</div><div class="svc-t">Konsultasi & University Selection</div><p class="svc-d">Cocokkan profil, minat, dan budget dengan universitas yang realistis dan sesuai impian. Nabila bantu shortlist 3–5 pilihan terbaik.</p><span class="svc-pr">Mulai Rp 300.000</span></div>
+    <div class="svc fade"><div class="svc-ico">📝</div><div class="svc-t">Application & SOP Writing</div><p class="svc-d">Penulisan dan editing Statement of Purpose yang kuat, personal statement, dan pendampingan proses pendaftaran hingga offer letter.</p><span class="svc-pr">Mulai Rp 500.000</span></div>
+    <div class="svc fade"><div class="svc-ico">🛂</div><div class="svc-t">Visa Student Guidance</div><p class="svc-d">Persiapan dokumen visa lengkap, checklist persyaratan, mock visa interview, dan pendampingan hingga visa approved.</p><span class="svc-pr">Mulai Rp 500.000</span></div>
+    <div class="svc fade"><div class="svc-ico">🏆</div><div class="svc-t">Full Application Package</div><p class="svc-d">Paket lengkap end-to-end: university selection, aplikasi, SOP, dokumen, dan visa guidance. Dari awal sampai berangkat.</p><span class="svc-pr">Mulai Rp 2.000.000</span></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec" id="faq">
+  <div style="text-align:center" class="fade">
+    <div class="lbl">FAQ</div>
+    <h2 class="stitle">Pertanyaan yang Sering Ditanyakan</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item"><button class="faq-q">Apakah konsultasi pertama berbayar? <span class="faq-ico">+</span></button><div class="faq-a"><p>Konsultasi awal 30 menit pertama GRATIS. Kamu bisa cerita tentang tujuan dan pertanyaanmu tanpa biaya apapun. Setelah itu Nabila akan menjelaskan paket layanan yang sesuai kebutuhanmu.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Kapan sebaiknya mulai konsultasi? <span class="faq-ico">+</span></button><div class="faq-a"><p>Semakin awal semakin baik! Idealnya 12–18 bulan sebelum rencana keberangkatan. Ini memberi waktu cukup untuk mempersiapkan dokumen, tes bahasa jika diperlukan, dan proses aplikasi universitas.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Apakah Nabila menjamin visa approved? <span class="faq-ico">+</span></button><div class="faq-a"><p>Nabila akan memastikan semua dokumenmu lengkap, akurat, dan dipresentasikan sebaik mungkin. Namun keputusan akhir ada di tangan kedutaan. Track record Nabila sangat baik dengan ratusan mahasiswa yang berhasil.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Negara mana saja yang bisa dibantu? <span class="faq-ico">+</span></button><div class="faq-a"><p>Nabila spesialisasi untuk Australia, UK, Malaysia, Singapura, Amerika Serikat, Belanda, dan Kanada. Untuk negara lain bisa dikonsultasikan terlebih dahulu.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Bagaimana cara pembayaran? <span class="faq-ico">+</span></button><div class="faq-a"><p>Pembayaran dilakukan setelah sesi konsultasi awal dan kamu setuju dengan paket layanan yang dipilih. Transfer bank, QRIS, dan GoPay tersedia.</p></div></div>
+    <div class="faq-item"><button class="faq-q">Apakah data saya aman? <span class="faq-ico">+</span></button><div class="faq-a"><p>100% aman. Semua dokumen dan informasi pribadi kamu dijaga kerahasiaannya dan hanya digunakan untuk keperluan proses pendaftaran dan visa saja.</p></div></div>
+  </div>
+</section>
+
+<!-- CTA BOTTOM -->
+<section class="cta-sec">
+  <div class="cta-bg"></div>
+  <div class="cta-ov"></div>
+  <div class="cta-inner">
+    <h2>Siap Terbang ke<br>Negara Impianmu? 🐝</h2>
+    <p>Konsultasi gratis 30 menit bersama Nabila — cerita dulu, tidak ada obligasi apapun.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/62XXXXXXXXXX" target="_blank" class="btn-p">💬 &nbsp;Chat Nabila via WhatsApp</a>
+      <a href="#services" class="btn-o">Lihat Layanan</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft">
+    <div class="fb">
+      <a href="#" class="logo" style="display:block">bee<span style="color:#fff">withnabila</span></a>
+      <p>Konsultan studi dan visa student personal. Nabila membantu impianmu kuliah di luar negeri menjadi kenyataan.</p>
+    </div>
+    <div class="fc">
+      <h4>Layanan</h4>
+      <a href="#">Konsultasi</a>
+      <a href="#">University Selection</a>
+      <a href="#">SOP Writing</a>
+      <a href="#">Visa Guidance</a>
+    </div>
+    <div class="fc">
+      <h4>Kontak</h4>
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+      <a href="https://wa.me/62XXXXXXXXXX" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+  <div class="fb-bot">
+    <span>© 2025 beewithnabila.id · All rights reserved</span>
+    <span>Medan, Sumatera Utara 🇮🇩</span>
+  </div>
+</footer>
+
+<a href="https://wa.me/62XXXXXXXXXX" target="_blank" class="wa">💬 Chat Nabila</a>
+
+<script>
+// Nav scroll
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+
+// Fade-in on scroll
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.1});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+
+// Testimonials slider
+const tt=document.getElementById('tt');
+const cards=[...tt.querySelectorAll('.tcard')];
+let idx=0;
+const cw=()=>cards[0].offsetWidth+20;
+const maxI=()=>Math.max(0,cards.length-Math.floor(tt.parentElement.offsetWidth/cw()));
+const goTo=i=>{idx=Math.max(0,Math.min(i,maxI()));tt.style.transform=`translateX(-${idx*cw()}px)`;};
+document.getElementById('tp').onclick=()=>goTo(idx-1);
+document.getElementById('tn').onclick=()=>goTo(idx+1);
+setInterval(()=>goTo(idx>=maxI()?0:idx+1),4500);
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(b=>{
+  b.onclick=()=>{
+    const item=b.parentElement,was=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!was)item.classList.add('open');
+  };
+});
+</script>
+</body>
+</html>
