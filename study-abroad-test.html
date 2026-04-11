@@ -1300,173 +1300,232 @@ function prevQuestion() {
   }
 }
 
-// ═══════════════ AI RESULT ═══════════════
-async function generateResult() {
-  show("screen-loading");
-  animateLoadingSteps();
-
-  const prompt = buildPrompt();
-
-  try {
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 1000,
-        system: `Kamu adalah konselor karir dan pendidikan internasional yang ahli. Berdasarkan jawaban tes minat bakat dari seorang mahasiswa Indonesia, hasilkan analisis mendalam dalam format JSON yang valid dan tidak ada teks lain selain JSON.
-
-Format respons (hanya JSON, tanpa markdown, tanpa backtick):
-{
-  "personality_type": "2-3 kata nama tipe kepribadian dalam bahasa Inggris, unik dan memorable",
-  "title": "Judul deskriptif profil dalam bahasa Indonesia, maks 10 kata",
-  "tagline": "Kalimat pembuka yang inspiring tentang potensi mereka, 2 kalimat, bahasa Indonesia",
-  "traits": [
-    {"emoji": "emoji", "name": "nama trait", "desc": "deskripsi singkat trait ini pada orang tersebut, 1-2 kalimat"},
-    {"emoji": "emoji", "name": "nama trait", "desc": "..."},
-    {"emoji": "emoji", "name": "nama trait", "desc": "..."}
-  ],
-  "strengths": [
-    {"label": "bidang kekuatan", "pct": 85},
-    {"label": "bidang kekuatan", "pct": 78},
-    {"label": "bidang kekuatan", "pct": 72},
-    {"label": "bidang kekuatan", "pct": 65}
-  ],
-  "countries": [
-    {"flag": "🇦🇺", "name": "Australia", "why": "alasan singkat 1 kalimat"},
-    {"flag": "🇬🇧", "name": "United Kingdom", "why": "alasan singkat"},
-    {"flag": "🇨🇦", "name": "Kanada", "why": "alasan singkat"}
-  ],
-  "majors": ["Jurusan 1", "Jurusan 2", "Jurusan 3", "Jurusan 4", "Jurusan 5"],
-  "insight": "Paragraf personal insight 3-4 kalimat yang berbicara langsung kepada orang ini, sebutkan namanya, tentang potensi unik mereka dan bagaimana kuliah di luar negeri bisa menjadi katalis pertumbuhan mereka. Sertakan juga satu kalimat tentang betapa pentingnya memilih konsultan visa yang tepat untuk memperlancar perjalanan ini."
-}`,
-        messages: [{ role: "user", content: prompt }]
-      })
-    });
-
-    const data = await response.json();
-    const raw = data.content.map(b => b.text || "").join("").trim();
-    const parsed = JSON.parse(raw.replace(/```json|```/g, "").trim());
-
-    renderResult(parsed);
-
-  } catch (err) {
-    console.error(err);
-    renderFallback();
+// ═══════════════ SCORING ENGINE ═══════════════
+const SCORING_MAP = {
+  passion: {
+    tech:     { ANALYTICAL: 3, STRUCTURED: 1 },
+    creative: { CREATIVE: 3, SOCIAL: 1 },
+    science:  { ANALYTICAL: 3, STRUCTURED: 2 },
+    business: { SOCIAL: 2, STRUCTURED: 2, ANALYTICAL: 1 }
+  },
+  workstyle: {
+    team:       { SOCIAL: 3, CREATIVE: 1 },
+    solo:       { ANALYTICAL: 3, STRUCTURED: 1 },
+    dynamic:    { CREATIVE: 2, SOCIAL: 2 },
+    structured: { STRUCTURED: 3, ANALYTICAL: 1 }
+  },
+  strength: {
+    problem:    { ANALYTICAL: 3, STRUCTURED: 1 },
+    comms:      { SOCIAL: 3, CREATIVE: 1 },
+    analytical: { ANALYTICAL: 3, STRUCTURED: 2 },
+    creative:   { CREATIVE: 3, SOCIAL: 1 }
+  },
+  lifestyle: {
+    city:      { SOCIAL: 2, ANALYTICAL: 1 },
+    calm:      { STRUCTURED: 2, ANALYTICAL: 1 },
+    adventure: { CREATIVE: 3, SOCIAL: 1 },
+    stable:    { STRUCTURED: 3 }
+  },
+  goal: {
+    career:   { SOCIAL: 2, STRUCTURED: 2 },
+    research: { ANALYTICAL: 3, STRUCTURED: 1 },
+    network:  { SOCIAL: 3, CREATIVE: 1 },
+    prestige: { ANALYTICAL: 2, STRUCTURED: 2 }
+  },
+  interest_area: {
+    health:      { ANALYTICAL: 3, STRUCTURED: 2 },
+    engineering: { ANALYTICAL: 2, STRUCTURED: 3 },
+    business:    { SOCIAL: 2, STRUCTURED: 2, ANALYTICAL: 1 },
+    social:      { SOCIAL: 3, CREATIVE: 2 }
   }
+};
+
+const PROFILES = {
+  ANALYTICAL_STRUCTURED: { personality_type: "The Methodical Thinker",     title: "Pemikir Sistematis dengan Logika Tajam",          tagline: "Kamu tidak hanya punya ide — kamu punya rencana untuk mewujudkannya. Kombinasi ketajaman analitis dan keteraturan berpikir membuat kamu unggul di bidang yang menuntut presisi." },
+  ANALYTICAL_CREATIVE:   { personality_type: "The Curious Innovator",      title: "Inovator yang Didorong Rasa Ingin Tahu",          tagline: "Kamu punya kemampuan langka: berpikir logis sekaligus berkreasi tanpa batas. Orang-orang sepertimu yang menciptakan terobosan baru di dunia riset dan teknologi." },
+  ANALYTICAL_SOCIAL:     { personality_type: "The Strategic Communicator", title: "Komunikator Strategis yang Berbasis Data",        tagline: "Kamu tahu cara membaca situasi dan menyampaikan ide dengan tepat. Kemampuan analitis yang dibalut keluwesan sosial adalah kombinasi yang dicari banyak organisasi global." },
+  CREATIVE_SOCIAL:       { personality_type: "The Global Connector",       title: "Kreator yang Menginspirasi Banyak Orang",         tagline: "Dunia butuh orang sepertimu — yang bisa menciptakan sekaligus menggerakkan orang lain. Energimu menular dan ide-idemu punya dampak nyata." },
+  CREATIVE_STRUCTURED:   { personality_type: "The Visionary Builder",      title: "Pembangun Visi dengan Eksekusi Kuat",             tagline: "Kamu bukan sekadar bermimpi — kamu membangun. Kreativitasmu punya fondasi yang kuat karena kamu tahu cara menjalankan rencana dari awal sampai akhir." },
+  CREATIVE_ANALYTICAL:   { personality_type: "The Design Thinker",         title: "Pemikir Desain dengan Kepekaan Tinggi",           tagline: "Kamu melihat dunia secara berbeda — menemukan pola di balik kekacauan dan solusi di balik masalah. Inilah yang membuat kamu istimewa di era penuh kompleksitas ini." },
+  SOCIAL_STRUCTURED:     { personality_type: "The Empathetic Leader",      title: "Pemimpin Empatik yang Berorientasi Dampak",      tagline: "Kamu tidak hanya memimpin — kamu membawa orang bersamamu. Kemampuanmu memahami orang lain sambil tetap terorganisasi adalah kunci kepemimpinan efektif." },
+  SOCIAL_CREATIVE:       { personality_type: "The Cultural Bridge",        title: "Jembatan Budaya yang Penuh Empati",               tagline: "Kamu lahir untuk berinteraksi lintas budaya. Di mana pun kamu berada, kamu membuat orang merasa diterima — kualitas yang sangat berharga di dunia yang semakin global." },
+  STRUCTURED_ANALYTICAL: { personality_type: "The Methodical Thinker",     title: "Pemikir Sistematis dengan Logika Tajam",          tagline: "Kamu tidak hanya punya ide — kamu punya rencana untuk mewujudkannya. Kombinasi ketajaman analitis dan keteraturan berpikir membuat kamu unggul di bidang yang menuntut presisi." },
+  STRUCTURED_CREATIVE:   { personality_type: "The Visionary Builder",      title: "Pembangun Visi dengan Eksekusi Kuat",             tagline: "Kamu bukan sekadar bermimpi — kamu membangun. Kreativitasmu punya fondasi yang kuat karena kamu tahu cara menjalankan rencana dari awal sampai akhir." },
+  STRUCTURED_SOCIAL:     { personality_type: "The Empathetic Leader",      title: "Pemimpin Empatik yang Berorientasi Dampak",      tagline: "Kamu tidak hanya memimpin — kamu membawa orang bersamamu. Kemampuanmu memahami orang lain sambil tetap terorganisasi adalah kunci kepemimpinan efektif." },
+  SOCIAL_ANALYTICAL:     { personality_type: "The Strategic Communicator", title: "Komunikator Strategis yang Berbasis Data",        tagline: "Kamu tahu cara membaca situasi dan menyampaikan ide dengan tepat. Kemampuan analitis yang dibalut keluwesan sosial adalah kombinasi yang dicari banyak organisasi global." }
+};
+
+const COUNTRY_DB = {
+  aus: {
+    primary:   { flag: "🇦🇺", name: "Australia",       why: "Lifestyle seimbang, aman, dan kampus world-class dengan jalur visa student yang terstruktur" },
+    secondary: { flag: "🇳🇿", name: "Selandia Baru",  why: "Biaya lebih terjangkau dari Australia dengan kualitas pendidikan yang setara" },
+    tertiary:  { flag: "🇸🇬", name: "Singapura",      why: "Hub Asia Tenggara dengan universitas top dunia, dekat dengan Indonesia" }
+  },
+  uk: {
+    primary:   { flag: "🇬🇧", name: "United Kingdom", why: "Reputasi akademis tertinggi di dunia dengan program studi 3 tahun yang efisien" },
+    secondary: { flag: "🇮🇪", name: "Irlandia",       why: "Bahasa Inggris, biaya lebih rendah dari UK, dan akses ke pasar Eropa" },
+    tertiary:  { flag: "🇳🇱", name: "Belanda",        why: "Banyak program bahasa Inggris dengan biaya lebih terjangkau di Eropa" }
+  },
+  usa: {
+    primary:   { flag: "🇺🇸", name: "Amerika Serikat",why: "Universitas terbaik dunia dengan ekosistem startup dan riset yang tak tertandingi" },
+    secondary: { flag: "🇨🇦", name: "Kanada",         why: "Ramah imigran, biaya lebih terjangkau dari AS, dan kualitas hidup tinggi" },
+    tertiary:  { flag: "🇦🇺", name: "Australia",      why: "Alternatif English-speaking dengan peluang kerja pasca studi yang besar" }
+  },
+  asia: {
+    primary:   { flag: "🇸🇬", name: "Singapura",      why: "NUS dan NTU masuk top 20 dunia, dekat Indonesia, dan hub bisnis Asia" },
+    secondary: { flag: "🇲🇾", name: "Malaysia",       why: "Biaya paling terjangkau, budaya familiar, dan banyak pilihan universitas" },
+    tertiary:  { flag: "🇯🇵", name: "Jepang",         why: "Teknologi maju, beasiswa pemerintah tersedia, dan pengalaman budaya yang unik" }
+  }
+};
+
+function adjustCountriesByBudget(countrySet, budget) {
+  const list = [countrySet.primary, countrySet.secondary, countrySet.tertiary];
+  if (budget === "low") {
+    return [
+      { flag: "🇲🇾", name: "Malaysia",      why: "Biaya kuliah dan hidup paling terjangkau, cocok untuk budget di bawah $20k/tahun" },
+      countrySet.tertiary,
+      { flag: "🇩🇪", name: "Jerman",        why: "Banyak universitas negeri gratis atau sangat murah dengan kualitas internasional" }
+    ];
+  }
+  return list;
 }
 
-function buildPrompt() {
-  const q_map = {};
-  questions.forEach(q => { q_map[q.id] = q; });
+const MAJOR_DB = {
+  health: {
+    ANALYTICAL:  ["Kedokteran Umum", "Farmasi Klinis", "Bioteknologi", "Public Health", "Neuroscience"],
+    CREATIVE:    ["Desain Produk Medis", "Health Communication", "Psikologi Klinis", "Occupational Therapy", "Bioinformatika"],
+    SOCIAL:      ["Psikologi", "Keperawatan Internasional", "Public Health", "Health Policy", "Social Work"],
+    STRUCTURED:  ["Farmasi", "Kedokteran Gigi", "Fisioterapi", "Manajemen Rumah Sakit", "Biomedical Science"]
+  },
+  engineering: {
+    ANALYTICAL:  ["Computer Science", "Data Science & AI", "Electrical Engineering", "Aerospace Engineering", "Robotika"],
+    CREATIVE:    ["Arsitektur", "Industrial Design", "UX Engineering", "Game Development", "Creative Technology"],
+    SOCIAL:      ["Civil Engineering", "Environmental Engineering", "Urban Planning", "Human-Computer Interaction", "Engineering Management"],
+    STRUCTURED:  ["Mechanical Engineering", "Chemical Engineering", "Civil Engineering", "Software Engineering", "Systems Engineering"]
+  },
+  business: {
+    ANALYTICAL:  ["Finance & Investment", "Data Analytics", "Actuarial Science", "Economics", "Business Intelligence"],
+    CREATIVE:    ["Marketing & Branding", "Digital Marketing", "Entrepreneurship", "Fashion Business", "Media Business"],
+    SOCIAL:      ["International Business", "Human Resources", "Public Relations", "Tourism Management", "Non-profit Management"],
+    STRUCTURED:  ["Akuntansi", "Supply Chain Management", "Operations Management", "Business Administration", "Project Management"]
+  },
+  social: {
+    ANALYTICAL:  ["Hubungan Internasional", "Political Science", "Law", "Journalism", "Policy Studies"],
+    CREATIVE:    ["Komunikasi", "Film & Media Studies", "Creative Writing", "Desain Komunikasi Visual", "Advertising"],
+    SOCIAL:      ["Psikologi Sosial", "Sosiologi", "Pendidikan", "Counseling", "Community Development"],
+    STRUCTURED:  ["Hukum", "Administrasi Publik", "Pendidikan", "Library Science", "Urban Studies"]
+  }
+};
 
-  let lines = [`Nama: ${userName || answers.name || "Responden"}`];
-  Object.entries(answers).forEach(([id, val]) => {
-    if (id === "name") return;
-    const q = q_map[id];
-    if (!q) return;
-    if (q.type === "option") {
-      const opt = q.options.find(o => o.value === val);
-      lines.push(`${q.text}: ${opt ? opt.title : val}`);
-    } else {
-      lines.push(`${q.text}: ${val}`);
-    }
+const TRAIT_DB = {
+  "The Methodical Thinker":     [{ emoji: "🧩", name: "Problem Solver",      desc: "Kamu mendekati masalah secara sistematis — memecah kompleksitas menjadi langkah yang bisa dieksekusi." }, { emoji: "🔬", name: "Detail-Oriented",    desc: "Hal kecil yang terlewat orang lain, kamu tangkap. Ini aset besar di dunia riset dan teknologi." }, { emoji: "📐", name: "Terstruktur",         desc: "Rencana yang matang bukan pilihan bagimu — itu kebutuhan. Dan hasilnya selalu lebih baik." }],
+  "The Curious Innovator":      [{ emoji: "🔭", name: "Rasa Ingin Tahu",    desc: "Kamu tidak puas dengan jawaban di permukaan — selalu ingin tahu lebih dalam dari yang terlihat." }, { emoji: "💡", name: "Inovatif",            desc: "Ide-idemu sering datang dari koneksi tak terduga antar bidang yang berbeda." }, { emoji: "🧠", name: "Pemikir Mandiri",     desc: "Kamu nyaman bekerja sendiri dalam waktu lama untuk menyelesaikan masalah yang rumit." }],
+  "The Strategic Communicator": [{ emoji: "📊", name: "Berbasis Data",       desc: "Argumenmu kuat karena didukung fakta dan analisis, bukan sekadar intuisi." }, { emoji: "🗣️", name: "Komunikator Efektif", desc: "Kamu bisa mengubah data kompleks menjadi cerita yang mudah dipahami siapa pun." }, { emoji: "🎯", name: "Berorientasi Hasil",  desc: "Setiap percakapan dan presentasimu selalu punya tujuan yang jelas." }],
+  "The Global Connector":       [{ emoji: "🌍", name: "Warga Global",        desc: "Kamu merasa nyaman di mana pun — budaya baru adalah petualangan, bukan ancaman." }, { emoji: "✨", name: "Kreatif & Ekspresif",  desc: "Ide-idemu menular. Orang-orang tertarik mengikuti visimu secara alami." }, { emoji: "🤝", name: "Pembangun Komunitas",  desc: "Di mana pun kamu berada, kamu secara alami menciptakan koneksi yang bermakna." }],
+  "The Visionary Builder":      [{ emoji: "🏗️", name: "Eksekutor",          desc: "Kamu tidak hanya bermimpi besar — kamu tahu cara membangun jalan menuju sana." }, { emoji: "🎨", name: "Kreatif Terarah",      desc: "Kreativitasmu punya struktur. Hasilnya bukan sekadar indah, tapi juga fungsional." }, { emoji: "🚀", name: "Ambisius",             desc: "Target besar tidak membuatmu gentar — justru memotivasimu untuk bekerja lebih keras." }],
+  "The Design Thinker":         [{ emoji: "👁️", name: "Peka Estetika",      desc: "Kamu melihat keindahan dan pola di tempat yang orang lain tidak perhatikan." }, { emoji: "🔄", name: "Adaptif",              desc: "Kamu bisa berpindah antara berpikir logis dan kreatif dengan mudah — kemampuan langka." }, { emoji: "💭", name: "Pemikir Konseptual",   desc: "Ide-idemu sering melampaui zamannya. Itulah mengapa kamu cocok di dunia inovasi." }],
+  "The Empathetic Leader":      [{ emoji: "❤️", name: "Empatik",             desc: "Kamu memimpin dengan hati — dan orang-orang benar-benar mau mengikutimu." }, { emoji: "📋", name: "Terorganisasi",        desc: "Tim yang kamu pimpin selalu tahu apa yang harus dilakukan karena kamu menyiapkan segalanya." }, { emoji: "🎖️", name: "Berorientasi Dampak", desc: "Kesuksesan bagimu bukan sekadar angka — tapi perubahan nyata yang kamu buat." }],
+  "The Cultural Bridge":        [{ emoji: "🌈", name: "Inklusif",             desc: "Kamu secara alami membuat semua orang merasa diterima dan dihargai." }, { emoji: "🎭", name: "Adaptif Budaya",       desc: "Berpindah antara konteks budaya yang berbeda terasa mudah bagimu." }, { emoji: "💬", name: "Pendengar Aktif",       desc: "Orang-orang merasa dimengerti saat berbicara denganmu — ini hadiah yang luar biasa." }]
+};
+
+const INSIGHT_DB = {
+  "The Methodical Thinker":     (n,c) => `${n}, kemampuan analitismu yang tajam ditambah cara berpikir yang sistematis adalah kombinasi langka yang sangat dicari di dunia akademis dan industri global. Di ${c}, kamu akan menemukan lingkungan yang menghargai presisi dan rigor intelektual seperti caramu berpikir. Proses persiapan dokumen dan visa bisa terasa kompleks, tapi dengan panduan yang tepat semua bisa berjalan lancar. Nabila siap bantu kamu memetakan setiap langkahnya dari awal.`,
+  "The Curious Innovator":      (n,c) => `${n}, rasa ingin tahumu yang besar adalah bahan bakar terbaik untuk karir riset dan inovasi kelas dunia. Kampus-kampus di ${c} punya ekosistem yang dirancang untuk orang sepertimu — yang tidak puas dengan jawaban biasa. Segera petakan universitas dan program yang paling sesuai, karena proses visa butuh persiapan lebih awal dari yang banyak orang kira. Nabila bisa pastikan tidak ada langkah yang terlewat.`,
+  "The Strategic Communicator": (n,c) => `${n}, kemampuanmu menggabungkan analisis data dengan komunikasi yang kuat adalah keahlian langka yang akan membawamu jauh di ${c}. Baik di dunia akademis maupun profesional, profil sepertimu selalu dicari. Langkah paling strategis yang bisa kamu ambil sekarang adalah memulai persiapan visa dan dokumen sedini mungkin — dan Nabila hadir untuk membuat proses itu semudah dan secepat mungkin.`,
+  "The Global Connector":       (n,c) => `${n}, energi dan kreativitasmu adalah aset terbesar yang akan kamu bawa ke kampus impian. Di ${c}, kamu tidak hanya akan belajar — kamu akan membangun jaringan internasional yang bisa mengubah arah karirmu selamanya. Mulai persiapan sekarang, karena proses visa dan dokumen butuh waktu yang tidak sedikit. Nabila siap memastikan semua prosesnya berjalan tanpa hambatan.`,
+  "The Visionary Builder":      (n,c) => `${n}, visimu besar dan kemampuan eksekusimu nyata — kombinasi inilah yang membedakanmu dari kebanyakan orang. Di ${c}, kamu akan bertemu orang-orang sefrekuensi dan sistem yang mendukung ambisimu berkembang penuh. Proses visa bisa jadi bagian yang paling membingungkan, tapi dengan Nabila di sisimu, kamu bisa fokus pada yang lebih penting: mempersiapkan dirimu untuk sukses.`,
+  "The Design Thinker":         (n,c) => `${n}, cara pandangmu yang unik — gabungan antara logika dan estetika — adalah kekuatan yang akan menonjol di lingkungan internasional. Di ${c}, kamu akan menemukan program yang dirancang untuk orang-orang kreatif sekaligus analitis sepertimu. Jangan biarkan proses administrasi dan visa menjadi penghalang — Nabila siap menangani itu semua agar kamu bisa fokus pada hal yang lebih penting.`,
+  "The Empathetic Leader":      (n,c) => `${n}, kepemimpinanmu yang hangat dan terstruktur adalah kualitas yang akan membuatmu menonjol di kampus manapun. Di ${c}, kamu akan menemukan komunitas yang menghargai kolaborasi dan dampak sosial seperti yang kamu impikan. Pastikan persiapan visamu dimulai lebih awal agar tidak ada yang terburu-buru — dan Nabila bisa memastikan tidak ada dokumen yang terlewat.`,
+  "The Cultural Bridge":        (n,c) => `${n}, kemampuanmu membangun koneksi lintas budaya adalah bakat yang akan terus berkembang saat kamu belajar di luar negeri. Di ${c}, setiap hari adalah kesempatan untuk memperluas perspektifmu dan memperkuat identitasmu sebagai warga global. Langkah pertama yang paling penting adalah memastikan visamu diurus dengan benar sejak awal — dan itulah yang Nabila lakukan bersamamu.`
+};
+
+function buildStrengthBars(scores) {
+  const labels = { ANALYTICAL: "Kemampuan Analitis", CREATIVE: "Kreativitas & Inovasi", SOCIAL: "Kecerdasan Sosial", STRUCTURED: "Terorganisasi & Sistematis" };
+  const maxScore = Math.max(...Object.values(scores), 1);
+  return Object.entries(scores).sort((a,b) => b[1]-a[1]).map(([key,val]) => ({ label: labels[key], pct: Math.round((val/maxScore)*100) }));
+}
+
+function calculateResult() {
+  const a = answers;
+  const scores = { ANALYTICAL: 0, CREATIVE: 0, SOCIAL: 0, STRUCTURED: 0 };
+
+  ["passion","workstyle","strength","lifestyle","goal","interest_area"].forEach(field => {
+    const val = a[field];
+    if (!val || !SCORING_MAP[field]?.[val]) return;
+    Object.entries(SCORING_MAP[field][val]).forEach(([dim, pts]) => { scores[dim] += pts; });
   });
 
-  return "Jawaban tes minat bakat:\n" + lines.join("\n");
+  // Bonus dari pertanyaan strength
+  if (a.strength === "analytical") scores.ANALYTICAL += 2;
+  if (a.strength === "creative")   scores.CREATIVE   += 2;
+  if (a.strength === "comms")      scores.SOCIAL     += 2;
+  if (a.strength === "problem")    scores.STRUCTURED += 1;
+
+  const sorted = Object.entries(scores).sort((a,b) => b[1]-a[1]);
+  const top1 = sorted[0][0], top2 = sorted[1][0];
+  const profile = PROFILES[`${top1}_${top2}`] || PROFILES[`${top2}_${top1}`] || PROFILES["ANALYTICAL_STRUCTURED"];
+
+  const countrySet = COUNTRY_DB[a.dream_country || "aus"] || COUNTRY_DB["aus"];
+  const countries  = adjustCountriesByBudget(countrySet, a.budget || "flex");
+
+  const interestKey = a.interest_area || "business";
+  const majors = MAJOR_DB[interestKey]?.[top1] || MAJOR_DB["business"]["ANALYTICAL"];
+
+  const strengths = buildStrengthBars(scores);
+  const traits    = TRAIT_DB[profile.personality_type] || TRAIT_DB["The Methodical Thinker"];
+
+  const insightFn = INSIGHT_DB[profile.personality_type] || INSIGHT_DB["The Methodical Thinker"];
+  const insight   = insightFn(userName || "Kamu", countries[0]?.name || "negara pilihanmu");
+
+  return { ...profile, traits, strengths, countries, majors, insight };
+}
+
+// ═══════════════ RESULT FLOW ═══════════════
+function generateResult() {
+  show("screen-loading");
+  animateLoadingSteps();
+  setTimeout(() => { renderResult(calculateResult()); }, 4500);
 }
 
 function animateLoadingSteps() {
   const steps = [1,2,3,4,5];
-  steps.forEach((n, i) => {
+  steps.forEach((n,i) => {
     setTimeout(() => {
-      if (i > 0) document.getElementById("ls-" + steps[i-1])?.classList.replace("active","done");
-      document.getElementById("ls-" + n)?.classList.add("active");
+      if (i > 0) document.getElementById("ls-"+steps[i-1])?.classList.replace("active","done");
+      document.getElementById("ls-"+n)?.classList.add("active");
     }, i * 900);
   });
 }
 
 function renderResult(data) {
-  // hero
-  document.getElementById("r-greeting").textContent = `Hasil Analisis untuk ${userName || answers.name || "Kamu"}`;
-  document.getElementById("r-type").textContent = data.personality_type || "Creative Visionary";
-  document.getElementById("r-title").textContent = data.title || "Profil Minat & Bakat Kamu";
-  document.getElementById("r-tagline").textContent = data.tagline || "";
+  document.getElementById("r-greeting").textContent = `Hasil Analisis untuk ${userName || "Kamu"}`;
+  document.getElementById("r-type").textContent     = data.personality_type || "Global Achiever";
+  document.getElementById("r-title").textContent    = data.title || "Profil Minat & Bakat Kamu";
+  document.getElementById("r-tagline").textContent  = data.tagline || "";
 
-  // traits
-  const traitsEl = document.getElementById("r-traits");
-  traitsEl.innerHTML = (data.traits || []).map(t => `
-    <div class="trait-card">
-      <div class="trait-emoji">${t.emoji}</div>
-      <div class="trait-name">${t.name}</div>
-      <div class="trait-desc">${t.desc}</div>
-    </div>
+  document.getElementById("r-traits").innerHTML = (data.traits||[]).map(t => `
+    <div class="trait-card"><div class="trait-emoji">${t.emoji}</div><div class="trait-name">${t.name}</div><div class="trait-desc">${t.desc}</div></div>
   `).join("");
 
-  // bars
-  const barsEl = document.getElementById("r-bars");
-  barsEl.innerHTML = (data.strengths || []).map(s => `
+  document.getElementById("r-bars").innerHTML = (data.strengths||[]).map(s => `
     <div class="bar-item">
       <div class="bar-label"><span>${s.label}</span><span class="bar-pct">${s.pct}%</span></div>
       <div class="bar-track"><div class="bar-fill" style="width:${s.pct}%"></div></div>
     </div>
   `).join("");
 
-  // countries
-  const countriesEl = document.getElementById("r-countries");
-  countriesEl.innerHTML = (data.countries || []).map(c => `
-    <div class="country-card">
-      <div class="country-flag">${c.flag}</div>
-      <div>
-        <div class="country-name">${c.name}</div>
-        <div class="country-why">${c.why}</div>
-      </div>
-    </div>
+  document.getElementById("r-countries").innerHTML = (data.countries||[]).map(c => `
+    <div class="country-card"><div class="country-flag">${c.flag}</div><div><div class="country-name">${c.name}</div><div class="country-why">${c.why}</div></div></div>
   `).join("");
 
-  // majors
-  const majorsEl = document.getElementById("r-majors");
-  majorsEl.innerHTML = (data.majors || []).map(m => `
-    <div class="major-tag">${m}</div>
-  `).join("");
-
-  // insight
+  document.getElementById("r-majors").innerHTML = (data.majors||[]).map(m => `<div class="major-tag">${m}</div>`).join("");
   document.getElementById("r-insight").textContent = data.insight || "";
 
-  // WA button
-  const waMsg = encodeURIComponent(
-    `Halo! Saya baru selesai tes minat bakat PathFinder.\n\nNama: ${userName || answers.name}\nProfil: ${data.personality_type}\nNegara Impian: ${(data.countries||[]).map(c=>c.name).join(", ")}\n\nSaya ingin konsultasi student visa. Bisa dibantu?`
-  );
-  document.getElementById("wa-btn").href = `https://wa.me/6281365324752?text=Halo%2C%20saya%20mau%20tanya-tanya%20soal%20pengurusan%20Student%20Visa%20dari%20awal%20sampai%20akhir.%20Apakah%20bisa%20bantu%20cek%20persyaratan%20untuk%20negara%20tujuan%20saya%3F`;
+  const countryNames = (data.countries||[]).map(c=>c.name).join(", ");
+  const waMsg = encodeURIComponent(`Halo Nabila! Saya baru selesai tes minat bakat di beewithnabila.id 🐝\n\nNama: ${userName||"—"}\nProfil: ${data.personality_type}\nNegara Rekomendasi: ${countryNames}\nJurusan: ${(data.majors||[]).slice(0,2).join(", ")}\n\nSaya ingin konsultasi lebih lanjut tentang student visa dan proses pendaftaran. Bisa dibantu?`);
+  document.getElementById("wa-btn").href = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
 
   show("screen-result");
-}
-
-function renderFallback() {
-  // fallback static result jika API gagal
-  renderResult({
-    personality_type: "Global Achiever",
-    title: "Pemikir Visioner dengan Semangat Global",
-    tagline: "Kamu memiliki kombinasi langka antara rasa ingin tahu yang tinggi dan keberanian untuk bermimpi besar. Dengan arah yang tepat, kuliah di luar negeri bisa menjadi titik balik hidup kamu.",
-    traits: [
-      { emoji: "🧠", name: "Pemikir Analitis", desc: "Kamu suka memahami sesuatu sampai ke akar-akarnya sebelum mengambil keputusan." },
-      { emoji: "🌱", name: "Growth Mindset", desc: "Tantangan bukan penghalang bagimu — justru itu yang membuatmu berkembang." },
-      { emoji: "🌐", name: "Warga Global", desc: "Kamu terbuka terhadap budaya baru dan mudah beradaptasi di lingkungan internasional." }
-    ],
-    strengths: [
-      { label: "Intelektual & Akademis", pct: 82 },
-      { label: "Adaptabilitas Budaya", pct: 75 },
-      { label: "Komunikasi", pct: 68 },
-      { label: "Kepemimpinan", pct: 71 }
-    ],
-    countries: [
-      { flag: "🇦🇺", name: "Australia", why: "Work-life balance terbaik & pendidikan berkualitas" },
-      { flag: "🇬🇧", name: "United Kingdom", why: "Reputasi akademis global & kultur yang kaya" },
-      { flag: "🇨🇦", name: "Kanada", why: "Ramah imigran & biaya hidup lebih terjangkau" }
-    ],
-    majors: ["Business Administration", "Computer Science", "International Relations", "Psychology", "Engineering"],
-    insight: `${userName || "Kamu"}, profil kamu menunjukkan potensi luar biasa untuk berkembang di lingkungan internasional. Kombinasi antara kecerdasan analitis dan keterbukaan budayamu adalah aset besar di era global ini. Kuliah di luar negeri bukan hanya soal gelar — ini tentang siapa kamu setelah melewati perjalanan itu. Penting untuk memilih konsultan visa yang berpengalaman agar proses persiapanmu berjalan lancar dan tanpa hambatan.`
-  });
 }
 
 // init
