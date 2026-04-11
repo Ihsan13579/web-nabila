@@ -1437,7 +1437,7 @@ function renderResult(data) {
   const waMsg = encodeURIComponent(
     `Halo! Saya baru selesai tes minat bakat PathFinder.\n\nNama: ${userName || answers.name}\nProfil: ${data.personality_type}\nNegara Impian: ${(data.countries||[]).map(c=>c.name).join(", ")}\n\nSaya ingin konsultasi student visa. Bisa dibantu?`
   );
-  document.getElementById("wa-btn").href = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
+  document.getElementById("wa-btn").href = `https://wa.me/6281365324752?text=Halo%2C%20saya%20mau%20tanya-tanya%20soal%20pengurusan%20Student%20Visa%20dari%20awal%20sampai%20akhir.%20Apakah%20bisa%20bantu%20cek%20persyaratan%20untuk%20negara%20tujuan%20saya%3F`;
 
   show("screen-result");
 }
