@@ -55,11 +55,13 @@
     opacity: 0.6;
   }
 
+  /* wrapper seluruh landing — pakai flex column agar brand + hero grid tertata */
   .landing-inner {
     position: relative; z-index: 2;
-    max-width: 860px;
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 48px 24px 80px;
+    padding: 40px 24px 60px;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -69,17 +71,28 @@
     display: flex; align-items: center; gap: 10px;
     font-weight: 600; font-size: 15px; letter-spacing: 0.08em;
     text-transform: uppercase; color: var(--gold);
+    margin-bottom: 32px;
   }
 
   .brand-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
 
+  /* ── HERO GRID: teks kiri | cards kanan ── */
   .landing-hero {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 60px 0 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
   }
+
+  @media (min-width: 900px) {
+    .landing-hero {
+      grid-template-columns: 1fr 380px;
+      gap: 60px;
+    }
+  }
+
+  .landing-text { display: flex; flex-direction: column; }
 
   .eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
@@ -94,10 +107,10 @@
 
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(42px, 7vw, 80px);
+    font-size: clamp(36px, 6vw, 72px);
     line-height: 1.05;
     letter-spacing: -0.02em;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
 
   h1 em {
@@ -106,16 +119,16 @@
   }
 
   .landing-desc {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.7;
     color: var(--text-muted);
-    max-width: 520px;
-    margin-bottom: 48px;
+    max-width: 500px;
+    margin-bottom: 36px;
   }
 
   .landing-features {
-    display: flex; flex-wrap: wrap; gap: 12px;
-    margin-bottom: 48px;
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-bottom: 40px;
   }
 
   .feature-chip {
@@ -166,53 +179,87 @@
 
   .btn-start:hover .arrow { transform: translateX(4px); }
 
+  /* ── VISUAL CARDS: kolom kanan di desktop, strip scroll di mobile ── */
   .landing-visual {
-    position: absolute;
-    right: -40px; top: 50%;
-    transform: translateY(-50%);
-    width: 380px;
-    display: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
   }
 
-  @media (min-width: 900px) { .landing-visual { display: block; } }
+  /* mobile: tampil sebagai horizontal scroll strip */
+  @media (max-width: 899px) {
+    .landing-visual {
+      flex-direction: row;
+      overflow-x: auto;
+      gap: 12px;
+      padding-bottom: 8px;
+      /* hide scrollbar tapi tetap scrollable */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .landing-visual::-webkit-scrollbar { display: none; }
+  }
 
   .floating-card {
     background: white;
     border-radius: 20px;
-    padding: 20px 24px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-    margin-bottom: 16px;
+    padding: 18px 22px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
     border: 1px solid var(--warm);
     animation: float 4s ease-in-out infinite;
+    flex-shrink: 0;
   }
 
-  .floating-card:nth-child(2) { margin-left: 40px; animation-delay: 1s; }
-  .floating-card:nth-child(3) { animation-delay: 2s; }
+  /* desktop: card ke-2 sedikit indent ke kanan */
+  @media (min-width: 900px) {
+    .floating-card:nth-child(2) { margin-left: 32px; animation-delay: 1s; }
+    .floating-card:nth-child(3) { animation-delay: 2s; }
+  }
+
+  /* mobile: fixed width tiap card */
+  @media (max-width: 899px) {
+    .floating-card { width: 220px; }
+    .floating-card:nth-child(2) { animation-delay: 1s; }
+    .floating-card:nth-child(3) { animation-delay: 2s; }
+  }
 
   @keyframes float {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-6px); }
   }
 
   .fc-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
-  .fc-value { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; }
-  .fc-sub { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+  .fc-value { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; }
+  .fc-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 
+  /* badge "3 mnt" — di desktop absolute, di mobile inline card */
   .landing-badge {
-    position: absolute;
-    bottom: 48px; right: 0;
     background: var(--gold);
     color: var(--ink);
     border-radius: 16px;
-    padding: 16px 20px;
+    padding: 14px 18px;
     font-size: 13px; font-weight: 600;
     text-align: center;
     box-shadow: 0 8px 24px rgba(201,168,76,0.4);
     animation: float 3s ease-in-out infinite;
     animation-delay: 1.5s;
+    flex-shrink: 0;
   }
 
-  .landing-badge .num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; display: block; }
+  @media (min-width: 900px) {
+    .landing-badge {
+      position: absolute;
+      bottom: -16px; right: 16px;
+      width: 120px;
+    }
+  }
+
+  @media (max-width: 899px) {
+    .landing-badge { width: 120px; }
+  }
+
+  .landing-badge .num { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; display: block; }
 
   .free-badge {
     display: inline-flex; align-items: center; gap: 6px;
@@ -804,53 +851,55 @@
     </div>
 
     <div class="landing-hero">
-      <div class="free-badge">✨ 100% Gratis untuk Mahasiswa</div>
+      <div class="landing-text">
+        <div class="free-badge">✨ 100% Gratis untuk Mahasiswa</div>
 
-      <div class="eyebrow">Tes Minat Bakat &amp; Studi Luar Negeri</div>
+        <div class="eyebrow">Tes Minat Bakat &amp; Studi Luar Negeri</div>
 
-      <h1>Temukan <em>jalurmu</em><br>ke kampus impian</h1>
+        <h1>Temukan <em>jalurmu</em><br>ke kampus impian</h1>
 
-      <p class="landing-desc">
-        Jawab 12 pertanyaan singkat dan dapatkan analisis mendalam tentang minat bakat, jurusan yang cocok, serta negara tujuan studi terbaik untukmu — didukung AI.
-      </p>
+        <p class="landing-desc">
+          Jawab 12 pertanyaan singkat dan dapatkan analisis mendalam tentang minat bakat, jurusan yang cocok, serta negara tujuan studi terbaik untukmu — didukung AI.
+        </p>
 
-      <div class="landing-features">
-        <div class="feature-chip"><span>🎯</span> Analisis Kepribadian</div>
-        <div class="feature-chip"><span>🌏</span> Rekomendasi Negara</div>
-        <div class="feature-chip"><span>📚</span> Pilihan Jurusan</div>
-        <div class="feature-chip"><span>🛂</span> Tips Student Visa</div>
+        <div class="landing-features">
+          <div class="feature-chip"><span>🎯</span> Analisis Kepribadian</div>
+          <div class="feature-chip"><span>🌏</span> Rekomendasi Negara</div>
+          <div class="feature-chip"><span>📚</span> Pilihan Jurusan</div>
+          <div class="feature-chip"><span>🛂</span> Tips Student Visa</div>
+        </div>
+
+        <button class="btn-start" onclick="startQuiz()">
+          Mulai Tes Sekarang
+          <div class="arrow">→</div>
+        </button>
       </div>
 
-      <button class="btn-start" onclick="startQuiz()">
-        Mulai Tes Sekarang
-        <div class="arrow">→</div>
-      </button>
-    </div>
-
-    <!-- floating cards decoration -->
-    <div class="landing-visual">
-      <div class="floating-card">
-        <div class="fc-label">Profil Minat</div>
-        <div class="fc-value">Creative Innovator</div>
-        <div class="fc-sub">Cocok: Desain, Teknologi, Bisnis</div>
+      <!-- floating cards -->
+      <div class="landing-visual">
+        <div class="floating-card">
+          <div class="fc-label">Profil Minat</div>
+          <div class="fc-value">Creative Innovator</div>
+          <div class="fc-sub">Cocok: Desain, Teknologi, Bisnis</div>
+        </div>
+        <div class="floating-card">
+          <div class="fc-label">Negara Rekomendasi</div>
+          <div class="fc-value">🇦🇺 Australia · 🇬🇧 UK</div>
+          <div class="fc-sub">Berdasarkan kepribadian & budget</div>
+        </div>
+        <div class="floating-card">
+          <div class="fc-label">Konsultasi Visa</div>
+          <div class="fc-value">Student Visa 500</div>
+          <div class="fc-sub">Langkah selanjutnya tersedia</div>
+        </div>
+        <div class="landing-badge">
+          <span class="num">3 mnt</span>
+          Waktu pengerjaan
+        </div>
       </div>
-      <div class="floating-card">
-        <div class="fc-label">Negara Rekomendasi</div>
-        <div class="fc-value">🇦🇺 Australia · 🇬🇧 UK</div>
-        <div class="fc-sub">Berdasarkan kepribadian & budget</div>
-      </div>
-      <div class="floating-card">
-        <div class="fc-label">Konsultasi Visa</div>
-        <div class="fc-value">Student Visa 500</div>
-        <div class="fc-sub">Langkah selanjutnya tersedia</div>
-      </div>
-      <div class="landing-badge">
-        <span class="num">3 mnt</span>
-        Waktu pengerjaan
-      </div>
-    </div>
-  </div>
-</div>
+    </div><!-- end landing-hero -->
+  </div><!-- end landing-inner -->
+</div><!-- end screen-landing -->
 
 <!-- ═══════════════ QUIZ ═══════════════ -->
 <div id="screen-quiz">
