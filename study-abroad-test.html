@@ -1523,7 +1523,7 @@ function renderResult(data) {
 
   const countryNames = (data.countries||[]).map(c=>c.name).join(", ");
   const waMsg = encodeURIComponent(`Halo Nabila! Saya baru selesai tes minat bakat di beewithnabila.id 🐝\n\nNama: ${userName||"—"}\nProfil: ${data.personality_type}\nNegara Rekomendasi: ${countryNames}\nJurusan: ${(data.majors||[]).slice(0,2).join(", ")}\n\nSaya ingin konsultasi lebih lanjut tentang student visa dan proses pendaftaran. Bisa dibantu?`);
-  document.getElementById("wa-btn").href = `https://wa.me/6281365324752?text=Halo%2C%20saya%20mau%20tanya-tanya%20soal%20pengurusan%20Student%20Visa%20dari%20awal%20sampai%20akhir.%20Apakah%20bisa%20bantu%20cek%20persyaratan%20untuk%20negara%20tujuan%20saya%3F`;
+  document.getElementById("wa-btn").href = `https://wa.me/$6281282152861?text=${waMsg}`;
 
   show("screen-result");
 }
