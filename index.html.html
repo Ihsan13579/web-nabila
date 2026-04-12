@@ -22,16 +22,23 @@ html{scroll-behavior:smooth;}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--dark2);overflow-x:hidden;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;height:68px;display:flex;align-items:center;justify-content:space-between;transition:background .3s,box-shadow .3s;}
-nav.scrolled{background:rgba(253,248,240,.96);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(200,130,26,.15);}
-.logo{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--honey);text-decoration:none;}
-.logo span{color:var(--dark2);}
+nav{position:fixed;top:0;left:0;right:0;z-index:9998;padding:0 5%;height:68px;display:flex;align-items:center;justify-content:space-between;transition:background .3s,box-shadow .3s;}
+nav.scrolled{background:rgba(253,248,240,.97);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(200,130,26,.18);}
+nav.scrolled .logo{color:var(--honey);}
+nav.scrolled .logo span{color:var(--dark2);}
+.logo{font-family:'Playfair Display',serif;font-size:1.3rem;color:#fff;text-decoration:none;transition:color .3s;}
+.logo span{color:rgba(255,255,255,.75);transition:color .3s;}
 .nav-links{display:flex;gap:2rem;list-style:none;}
-.nav-links a{font-size:.85rem;font-weight:500;color:var(--dark2);text-decoration:none;opacity:.7;transition:opacity .2s;}
+.nav-links a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.8);text-decoration:none;transition:opacity .2s;}
+nav.scrolled .nav-links a{color:var(--dark2);opacity:.7;}
 .nav-links a:hover{opacity:1;}
-/* CTA selalu tampil, tidak pernah disembunyikan */
-.nav-cta{background:var(--honey);color:#fff;padding:10px 22px;border-radius:100px;font-size:.85rem;font-weight:600;text-decoration:none;transition:background .2s,transform .15s;white-space:nowrap;flex-shrink:0;}
+.nav-cta{background:var(--honey);color:#fff;padding:10px 22px;border-radius:100px;font-size:.85rem;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:6px;}
 .nav-cta:hover{background:var(--honey2);transform:translateY(-1px);}
+@media(max-width:480px){
+  nav{padding:0 4%;}
+  .nav-cta{padding:8px 14px;font-size:.78rem;}
+  .logo{font-size:1.05rem;}
+}
 
 /* HERO */
 /* ── HERO ANIMATIONS ── */
@@ -300,6 +307,8 @@ footer{background:var(--dark);padding:56px 5% 28px;border-top:1px solid rgba(200
   <div class="pt-curtain"></div>
   <div class="pt-logo">bee<span style="color:#fff">withnabila</span></div>
 </div>
+
+<nav id="nav">
   <a href="index.html" class="logo">bee<span>withnabila</span></a>
   <ul class="nav-links">
     <li><a href="#destinations">Destinasi</a></li>
@@ -696,9 +705,17 @@ window.addEventListener('pageshow', () => {
   setTimeout(() => overlay.classList.remove('entering'), 600);
 });
 
-// Nav scroll
+// Nav scroll — transparent dark → cream on scroll
 const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+function handleNavScroll(){
+  if(window.scrollY>60){
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+}
+window.addEventListener('scroll', handleNavScroll, {passive:true});
+handleNavScroll();
 
 // Fade-in on scroll
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.1});
