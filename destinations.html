@@ -168,9 +168,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;height:68px;dis
 <body>
 
 <nav>
-  <a href="index.html" class="logo">bee<span>withnabila</span></a>
-  <a href="index.html" class="nav-back">← Kembali</a>
-  <a href="study-abroad-test.html" class="nav-cta">🐝 Tes Minat</a>
+  <a href="/" class="logo">bee<span>withnabila</span></a>
+  <a href="/" class="nav-back">← Kembali</a>
+  <a href="/study-abroad-test" class="nav-cta">🐝 Tes Minat</a>
 </nav>
 
 <!-- ═══════════════ LIST PAGE ═══════════════ -->
@@ -230,7 +230,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;height:68px;dis
       <h2>Masih bingung mau pilih negara mana?</h2>
       <p>Ikut tes minat 5 menit — Nabila bantu temukan negara yang paling cocok buat kamu.</p>
     </div>
-    <a href="study-abroad-test.html" class="btn-wa">🐝 Mulai Tes Gratis</a>
+    <a href="/study-abroad-test" class="btn-wa">🐝 Mulai Tes Gratis</a>
   </div>
 </div>
 
@@ -1369,7 +1369,7 @@ function showDetail(id) {
 function showList() {
   document.getElementById('detail-page').style.display = 'none';
   document.getElementById('list-page').style.display = 'block';
-  history.pushState({}, '', 'destinations.html');
+  history.pushState({}, '', '/destinations');
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
