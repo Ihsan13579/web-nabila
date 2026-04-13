@@ -1619,7 +1619,7 @@ function renderResult(data) {
   document.getElementById("r-insight").textContent = data.insight || "";
 
   const countryNames = (data.countries||[]).map(c=>c.name).join(", ");
-  const waMsg = encodeURIComponent(`Halo Nabila! Saya baru selesai tes minat bakat di beewithnabila.id 🐝\n\nNama: ${userName||"—"}\nProfil: ${data.personality_type}\nNegara Rekomendasi: ${countryNames}\nJurusan: ${(data.majors||[]).slice(0,2).join(", ")}\n\nSaya ingin konsultasi lebih lanjut tentang student visa dan proses pendaftaran. Bisa dibantu?`);
+  const waMsg = encodeURIComponent(`Halo Nabila! Saya baru selesai tes minat bakat di beewithnabila.id 🐝\n\nNama: ${userName||"—"}\nProfil: ${data.personality_type}\nNegara Rekomendasi: ${countryNames}\nJurusan: ${(data.majors||[]).slice(0,2).join(", ")}\n\nSaya ingin konsultasi lebih lanjut terkait pemilihan major/negara/universitas dan proses pendaftaran. Bisa dibantu?`);
   document.getElementById("wa-btn").href = `https://wa.me/6281282152861?text=${waMsg}`;
 
   show("screen-result");
