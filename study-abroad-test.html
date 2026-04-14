@@ -1271,6 +1271,8 @@ function show(id) {
 function startQuiz() {
   currentQ = 0;
   answers = {};
+  // ── GTM: track mulai tes ──
+  gtmEvent('click_tes_minat', { button_location: 'quiz_landing' });
   show("screen-quiz");
   renderQuestion();
 }
@@ -1635,6 +1637,28 @@ function renderResult(data) {
 
   show("screen-result");
 
+  // ── GTM: track selesai tes + hasil ──
+  gtmEvent('quiz_complete', {
+    personality_type: data.personality_type || '',
+    top_country: (data.countries||[])[0]?.name || '',
+    recommended_countries: (data.countries||[]).map(c=>c.name).join(', '),
+    user_name: userName || 'anonymous'
+  });
+
+  // ── GTM: track klik WA dari halaman hasil ──
+  setTimeout(() => {
+    const waBtn = document.getElementById('wa-btn');
+    if (waBtn) {
+      waBtn.addEventListener('click', () => {
+        gtmEvent('click_whatsapp', {
+          button_location: 'quiz_result',
+          personality_type: data.personality_type || '',
+          top_country: (data.countries||[])[0]?.name || ''
+        });
+      }, { once: true });
+    }
+  }, 100);
+
   // scroll ke atas
   window.scrollTo(0, 0);
 
@@ -1662,6 +1686,19 @@ function renderResult(data) {
 
   sections.forEach(el => io.observe(el));
 }
+
+// ── GTM EVENT TRACKING ──
+function gtmEvent(eventName, params) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: eventName, ...params });
+}
+
+// Track: klik tombol Tes Minat di navbar / tombol back ke beranda
+document.querySelectorAll('a[href="/"]').forEach(el => {
+  el.addEventListener('click', () => {
+    gtmEvent('navigate_back_home', { from_page: 'study_abroad_test' });
+  });
+});
 
 // init
 show("screen-landing");
