@@ -1333,6 +1333,14 @@ function buildCards() {
 function showDetail(id) {
   const c = COUNTRIES.find(x => x.id === id);
   if (!c) return;
+
+  // ── GTM: track klik negara ──
+  gtmEvent('click_country_card', {
+    country_name: c.name,
+    country_id: c.id,
+    country_region: c.region,
+    page: 'destinations'
+  });
   // update URL without reload
   history.pushState({countryId: id}, '', `?country=${id}`);
   // bg
@@ -1405,22 +1413,40 @@ observeFades();
 const urlParams = new URLSearchParams(window.location.search);
 const countryParam = urlParams.get('country');
 if (countryParam) {
-  // Map common aliases ke id yang ada di COUNTRIES
   const aliasMap = {
-    'aus': 'australia',
-    'uk': 'uk',
-    'sg': 'singapore',
-    'my': 'malaysia',
-    'us': 'usa',
-    'cn': 'china',
-    'jp': 'japan',
+    'aus': 'australia', 'uk': 'uk', 'sg': 'singapore',
+    'my': 'malaysia', 'us': 'usa', 'cn': 'china', 'jp': 'japan',
   };
   const resolvedId = aliasMap[countryParam] || countryParam;
   const found = COUNTRIES.find(c => c.id === resolvedId);
-  if (found) {
-    showDetail(found.id);
-  }
+  if (found) { showDetail(found.id); }
 }
+
+// ── GTM EVENT TRACKING ──
+function gtmEvent(eventName, params) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: eventName, ...params });
+}
+
+// Track: klik tombol Tes Minat
+document.querySelectorAll('a[href="/study-abroad-test"]').forEach(el => {
+  el.addEventListener('click', () => {
+    gtmEvent('click_tes_minat', {
+      button_location: el.closest('nav') ? 'navbar' : 'cta_strip'
+    });
+  });
+});
+
+// Track: klik WA button di halaman detail negara
+document.addEventListener('click', e => {
+  const waBtn = e.target.closest('#detail-wa-btn, a[href*="wa.me"]');
+  if (!waBtn) return;
+  const countryName = document.getElementById('detail-name')?.textContent || 'unknown';
+  gtmEvent('click_whatsapp', {
+    button_location: waBtn.id === 'detail-wa-btn' ? 'country_detail_cta' : 'navbar_or_strip',
+    country_name: countryName
+  });
+});
 </script>
 </body>
 </html>
