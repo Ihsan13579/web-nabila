@@ -4,13 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>beewithnabila.id — Konsultan Studi & Visa Luar Negeri</title>
-<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-K8G9V35J');</script>
-<!-- End Google Tag Manager -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -25,8 +23,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --cream2:#F7EFE0;
   --muted:#7A6045;
 }
-html{scroll-behavior:smooth;}
-body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--dark2);overflow-x:hidden;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--dark2);overflow-x:hidden;max-width:100vw;}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:9998;padding:0 5%;height:68px;display:flex;align-items:center;justify-content:space-between;transition:background .3s,box-shadow .3s;}
@@ -180,11 +178,16 @@ section{padding:88px 5%;}
 .why-badge .big{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;line-height:1;}
 .why-badge .sm{font-size:.7rem;font-weight:600;opacity:.85;margin-top:3px;}
 .why-items{display:flex;flex-direction:column;gap:0;margin-top:36px;}
-.witem{display:flex;gap:20px;align-items:flex-start;padding:20px 0;border-bottom:1px solid rgba(200,130,26,.12);}
+.witem{display:flex;gap:20px;align-items:flex-start;padding:18px 0;border-bottom:1px solid rgba(200,130,26,.12);}
 .witem:last-child{border-bottom:none;}
 .wnum{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--honey);font-weight:700;min-width:28px;padding-top:2px;opacity:.7;}
 .wi-title{font-weight:700;font-size:.95rem;color:var(--dark2);margin-bottom:5px;}
 .wi-text{font-size:.84rem;color:var(--muted);line-height:1.65;}
+/* mobile: kurangi gap atas why-items agar tidak ada whitespace besar */
+@media(max-width:900px){
+  .why-items{margin-top:24px;}
+  .witem{padding:14px 0;}
+}
 
 /* HOW */
 .how-sec{background:#fff;}
@@ -238,13 +241,17 @@ section{padding:88px 5%;}
   padding:72px 0 80px;
   overflow:hidden;
   position:relative;
+  width:100%;
+  max-width:100%;
 }
 
 /* fade top/bottom edges only via inner wrapper, no absolute overlay */
 .gallery-track-wrap{
   position:relative;
+  overflow:hidden;
   z-index:1;
   margin-bottom:16px;
+  width:100%;
 }
 
 /* left & right fade vignette only — no top/bottom black bars */
@@ -384,14 +391,17 @@ section{padding:88px 5%;}
 
 /* FAQ */
 .faq-sec{background:#fff;position:relative;z-index:1;}
-.faq-list{max-width:760px;margin:48px auto 0;}
+.faq-sec > div:first-child{margin-bottom:0;}
+.faq-list{max-width:760px;margin:40px auto 0;}
 .faq-item{border-bottom:1px solid rgba(200,130,26,.14);}
-.faq-q{width:100%;text-align:left;background:none;border:none;padding:20px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:.93rem;font-weight:600;color:var(--dark2);font-family:'Plus Jakarta Sans',sans-serif;}
-.faq-ico{width:26px;height:26px;border-radius:50%;background:var(--honey);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;transition:transform .3s;}
+.faq-q{width:100%;text-align:left;background:none;border:none;padding:18px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:.95rem;font-weight:600;color:var(--dark2);font-family:'Plus Jakarta Sans',sans-serif; transition:color .2s;}
+.faq-q:hover{color:var(--honey);}
+.faq-ico{width:24px;height:24px;border-radius:50%;background:rgba(200,130,26,.08);color:var(--honey);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;transition:all .3s;}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
-.faq-a p{font-size:.86rem;color:var(--muted);line-height:1.7;padding-bottom:18px;}
-.faq-item.open .faq-ico{transform:rotate(45deg);}
-.faq-item.open .faq-a{max-height:200px;}
+.faq-a p{font-size:.88rem;color:var(--muted);line-height:1.65;padding:0 0 18px 0;margin-top:-4px;}
+.faq-item.open .faq-q{padding-bottom:12px;}
+.faq-item.open .faq-ico{transform:rotate(45deg);background:var(--honey);color:#fff;}
+.faq-item.open .faq-a{max-height:300px;}
 
 /* CTA BOTTOM */
 .cta-sec{position:relative;padding:100px 5%;overflow:hidden;text-align:center;}
@@ -446,11 +456,19 @@ footer{background:var(--dark);padding:56px 5% 28px;border-top:1px solid rgba(200
   .ft{grid-template-columns:1fr;}
   .hero h1{font-size:clamp(1.9rem,8vw,2.6rem);}
   .hero-sub{font-size:.9rem;}
+  .promo-item{padding:28px 22px;}
+  /* kurangi padding section di mobile agar tidak terlalu banyak whitespace */
+  section{padding:56px 5%;}
+  .profile-sec{padding:56px 5%;}
+  .promo-sec{padding:56px 5%;}
+  .gallery-sec{padding:48px 0;}
+  .faq-sec{padding:56px 5%;}
+  
   /* steps 2x2 lalu sisa 1 di mobile */
   .steps{grid-template-columns:repeat(2,1fr);gap:28px;}
   .steps::before{display:none;}
-  .promo-item{padding:28px 22px;}
 }
+
 @media(max-width:380px){
   .hero h1{font-size:1.8rem;}
   .hero-content{padding:80px 4% 28px;}
@@ -484,10 +502,8 @@ footer{background:var(--dark);padding:56px 5% 28px;border-top:1px solid rgba(200
 .pt-overlay.leaving .pt-logo{opacity:1;transform:translateY(0);}
 </style>
 <body>
-<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8G9V35J"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 <div class="pt-overlay" id="pt-overlay">
   <div class="pt-curtain"></div>
   <div class="pt-logo">bee<span style="color:#fff">withnabila</span></div>
@@ -506,7 +522,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="/study-abroad-test" class="nav-cta">🐝 Tes Minat Gratis</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
@@ -527,7 +542,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- TRUST BAR -->
 <div class="trust-wrap">
   <div class="trust-track">
     <div class="ti"><div class="dot"></div>Australia</div>
@@ -552,7 +566,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="ti"><div class="dot"></div>Cina</div>
     <div class="ti"><div class="dot"></div>Taiwan</div>
     <div class="ti"><div class="dot"></div>Hong Kong</div>
-    <!-- duplicate for seamless loop -->
     <div class="ti"><div class="dot"></div>Australia</div>
     <div class="ti"><div class="dot"></div>United Kingdom</div>
     <div class="ti"><div class="dot"></div>Malaysia</div>
@@ -568,7 +581,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<!-- DESTINATIONS -->
 <section class="dest-sec" id="destinations">
   <div class="dest-head fade">
     <div class="lbl">Destinasi Populer</div>
@@ -640,7 +652,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="dest-more fade"><a href="/destinations" class="btn-g">Lihat Semua 21 Destinasi →</a></div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section class="testi-sec" id="testi">
   <div class="testi-head fade">
     <div class="testi-badge">⭐ 1000+ Mahasiswa Berhasil</div>
@@ -650,21 +661,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="tmarquee-wrap">
 
-    <!-- ROW 1: kiri -->
     <div class="tmarquee-row row1">
-      <!-- card 1 -->
       <div class="tmc"><span class="tmc-flag">🇦🇺</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"Proses visa Australia lagi ketat banget, tapi berkat bantuan detail dari Kak Nabila, GTE saya aman dan visa langsung approved ke RMIT!"</p><div class="tmc-author"><div class="tmc-avatar">R</div><div><div class="tmc-name">Jhonny Vel Thian</div><div class="tmc-dest">RMIT University 🇦🇺</div></div></div></div>
-      <!-- card 2 -->
       <div class="tmc"><span class="tmc-flag">🇬🇧</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"Gak nyangka bisa tembus UCL! SOP saya dibedah total sampai bener-bener stand out di mata admissions. Mentor yang sangat expert."</p><div class="tmc-author"><div class="tmc-avatar">D</div><div><div class="tmc-name">Jennifer Lynn Riady</div><div class="tmc-dest">University of College London 🇬🇧</div></div></div></div>
-      <!-- card 3 -->
       <div class="tmc"><span class="tmc-flag">🇸🇬</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"Bantuannya sangat menyeluruh untuk persiapan portofolio ke Lasalle. Nabila tau banget apa yang dicari kampus art di Singapore."</p><div class="tmc-author"><div class="tmc-avatar">F</div><div><div class="tmc-name">Karen Venetia</div><div class="tmc-dest">Lasalle College 🇸🇬</div></div></div></div>
-      <!-- card 4 -->
       <div class="tmc"><span class="tmc-flag">🇲🇾</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"APU itu tech-nya kuat banget, dan Nabila bantu saya pilih jurusan yang paling pas sesuai passion saya di IT. Responnya super cepat!"</p><div class="tmc-author"><div class="tmc-avatar">S</div><div><div class="tmc-name">Jeremy Frederick</div><div class="tmc-dest">Asia Pacific University 🇲🇾</div></div></div></div>
-      <!-- card 5 -->
       <div class="tmc"><span class="tmc-flag">🇨🇳</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"Awalnya ragu kuliah ke China, tapi penjelasan Nabila soal XJTLU bikin saya yakin. Kampusnya internasional dan fasilitasnya juara!"</p><div class="tmc-author"><div class="tmc-avatar">H</div><div><div class="tmc-name">Karen Loise Lee</div><div class="tmc-dest">Xi'an JiaoTong University-Liverpool University (XJTLU) 🇨🇳</div></div></div></div>
-      <!-- card 6 -->
       <div class="tmc"><span class="tmc-flag">🇦🇺</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"USYD adalah kampus impian saya. Nabila dampingi dari awal submit dokumen sampai cari akomodasi di Sydney. Sangat terbantu!"</p><div class="tmc-author"><div class="tmc-avatar">A</div><div><div class="tmc-name">Aurelia Chandra	</div><div class="tmc-dest">University of Sydney 🇦🇺</div></div></div></div>
-      <!-- duplicate for seamless loop -->
       <div class="tmc"><span class="tmc-flag">🇦🇺</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"Melbourne Uni terkenal susah masuknya, tapi berkat review essay yang tajam dari Kak Nabila, akhirnya saya dapat offer letter!"</p><div class="tmc-author"><div class="tmc-avatar">R</div><div><div class="tmc-name">Rizky Aditya</div><div class="tmc-dest">University of Melbourne 🇦🇺</div></div></div></div>
       <div class="tmc"><span class="tmc-flag">🇬🇧</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"Dapet Unconditional Offer di Imperial itu mimpi jadi nyata. Makasih Nabila udah sabar banget arahin proses dokumen yang ribet."</p><div class="tmc-author"><div class="tmc-avatar">D</div><div><div class="tmc-name">Nathan Sebastian Wong</div><div class="tmc-dest">Imperial College London (ICL) 🇬🇧</div></div></div></div>
       <div class="tmc"><span class="tmc-flag">🇸🇬</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"SIM Singapore jadi pilihan karena jalurnya jelas. Nabila kasih insight yang jujur soal prospek kerja di sana nanti. Recommended!"</p><div class="tmc-author"><div class="tmc-avatar">F</div><div><div class="tmc-name">Nicholas Lie	</div><div class="tmc-dest">SIM Singapore 🇸🇬</div></div></div></div>
@@ -673,21 +676,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="tmc"><span class="tmc-flag">🇦🇺</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"Puas banget konsultasi di sini. Deakin University emang pas buat jurusan yang saya mau, dan Nabila bantu make sure semuanya perfect."</p><div class="tmc-author"><div class="tmc-avatar">A</div><div><div class="tmc-name">Tiffany Parashieka</div><div class="tmc-dest">Deakin University 🇦🇺</div></div></div></div>
     </div>
 
-    <!-- ROW 2: kanan (arah berlawanan) -->
     <div class="tmarquee-row row2">
-      <!-- card 7 -->
       <div class="tmc"><span class="tmc-flag">🇳🇱</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"Program Foundation di INTO City ini bener-bener step awal yang bagus buat saya. Nabila bantu jelasin progression-nya ke degree nanti."</p><div class="tmc-author"><div class="tmc-avatar">B</div><div><div class="tmc-name">Nalyka Neysa Zefanya</div><div class="tmc-dest">INTO CITY - Foundation 🇬🇧</div></div></div></div>
-      <!-- card 8 -->
       <div class="tmc"><span class="tmc-flag">🇨🇦</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"Irvine Valley College jalurnya oke banget buat transfer ke UC. Nabila bantu plan study journey saya di US dengan sangat detail."</p><div class="tmc-author"><div class="tmc-avatar">N</div><div><div class="tmc-name">Jennifer Lynn Riady</div><div class="tmc-dest">Irvine Valley College 🇺🇸</div></div></div></div>
-      <!-- card 9 -->
       <div class="tmc"><span class="tmc-flag">🇯🇵</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"Manchester adalah kota impian saya. Makasih Nabila udah bantu urus visa UK yang sempat mepet, tapi akhirnya aman tepat waktu!"</p><div class="tmc-author"><div class="tmc-avatar">Y</div><div><div class="tmc-name">Frederick Tan</div><div class="tmc-dest">University of Manchester 🇬🇧</div></div></div></div>
-      <!-- card 10 -->
       <div class="tmc"><span class="tmc-flag">🇩🇪</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"SCUT di Guangzhou keren banget kampusnya. Nabila bantu apply beasiswanya juga dan puji Tuhan tembus. Highly recommended service!"</p><div class="tmc-author"><div class="tmc-avatar">R</div><div><div class="tmc-name">Kent Eric Ong</div><div class="tmc-dest">South China University of Technology (SCUT) 🇨🇳</div></div></div></div>
-      <!-- card 11 -->
       <div class="tmc"><span class="tmc-flag">🇺🇸</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"Macquarie University punya program business yang solid. Nabila bantu saya mapping karier juga dari awal pilih jurusan."</p><div class="tmc-author"><div class="tmc-avatar">C</div><div><div class="tmc-name">Christopher Leonardo Satyanegara</div><div class="tmc-dest">Macquarie University 🇦🇺</div></div></div></div>
-      <!-- card 12 -->
       <div class="tmc"><span class="tmc-flag">🇮🇪</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"Lancaster itu rankingnya bagus dan suasananya enak buat belajar. Nabila bener-bener dengerin apa yang saya butuhin dari sebuah kampus."</p><div class="tmc-author"><div class="tmc-avatar">M</div><div><div class="tmc-name">Nalyka Neysa Zefanya</div><div class="tmc-dest">Lancaster University 🇬🇧</div></div></div></div>
-      <!-- duplicate -->
       <div class="tmc"><span class="tmc-flag">🇳🇱</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"Kuliah di Santa Monica itu impian banyak orang. Mock interview visa US sama Nabila ngebantu banget saya jadi gak gugup pas di kedutaan."</p><div class="tmc-author"><div class="tmc-avatar">B</div><div><div class="tmc-name">Jeremy Ezekiel Tarigan</div><div class="tmc-dest">Santa Monica College 🇺🇸</div></div></div></div>
       <div class="tmc"><span class="tmc-flag">🇨🇦</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"CUHKSZ itu prestisius banget di Shenzhen. Nabila bener-bener teliti cek setiap dokumen aplikasi saya. Gak ada yang miss satu pun!"</p><div class="tmc-author"><div class="tmc-avatar">N</div><div><div class="tmc-name">Matthew Raharjo</div><div class="tmc-dest">Chinese University of Hong Kong-Shenzhen (CUHKSZ) 🇨🇳</div></div></div></div>
       <div class="tmc"><span class="tmc-flag">🇯🇵</span><div class="tmc-stars">★★★★★</div><p class="tmc-text">"Birmingham is amazing! Dari urusan CAS sampai asrama, Nabila dampingi terus. Berasa punya asisten pribadi buat urusan kuliah."</p><div class="tmc-author"><div class="tmc-avatar">Y</div><div><div class="tmc-name">Calvin Mateo Susanto</div><div class="tmc-dest">University of Birmingham 🇬🇧</div></div></div></div>
@@ -699,7 +694,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- WHY -->
 <section class="why-sec" id="why">
   <div class="why-grid">
     <div class="why-vis fade">
@@ -722,7 +716,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
 <section class="how-sec" id="how">
   <div style="text-align:center" class="fade">
     <div class="lbl">Cara Kerja</div>
@@ -761,7 +754,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- PROFILE -->
 <section class="profile-sec" id="nabila">
   <div class="profile-inner">
     <div class="pimg-wrap fade">
@@ -788,19 +780,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
   </div>
+</section>
 
-<!-- PHOTO GALLERY — Business Trip Nabila -->
 <section class="gallery-sec">
   <div class="gallery-header">
     <div class="gallery-label">Behind The Journey</div>
     <h2 class="gallery-title">Nabila, di <em>Balik Layar</em><br>Setiap Perjalanan</h2>
   </div>
 
-  <!-- Row 1 — kiri ke kanan -->
   <div class="gallery-track-wrap">
     <div class="gallery-track">
 
-      <!-- SET 1 -->
       <div class="gallery-photo">
         <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/pwowcungtu7iijn/3bcabd58_7d6b_4d90_ba32_1636704a15d4_q53v64whso.jpeg?token=" alt="Nabila">
         <div class="gallery-caption"><div class="gallery-caption-loc">Malaysia</div></div>
@@ -819,7 +809,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="gallery-photo">
         <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/g8h058omtedzje0/whats_app_image_2026_04_12_at_02_06_4elbhmjtrk.584.jpeg?token=" alt="Nabila">
-        <div class="gallery-caption"><div class="gallery-caption-loc">Amsterdam, Netherlands</div></div>
+        <div class="gallery-caption"><div class="gallery-caption-loc">Malaysia</div></div>
       </div>
       <div class="gallery-photo">
         <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/pkabrgxvjmy2vto/img_6654_kmzac7pzl9.jpg?token=" alt="Nabila">
@@ -830,7 +820,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="gallery-caption"><div class="gallery-caption-loc">China</div></div>
       </div>
 
-      <!-- SET 2 — duplicate for seamless loop -->
       <div class="gallery-photo">
         <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/qz6rniu0vm10evt/img_2223_1_19v0r8jjej.jpg?token=" alt="Nabila">
         <div class="gallery-caption"><div class="gallery-caption-loc">Malaysia</div></div>
@@ -863,11 +852,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  <!-- Row 2 — arah berlawanan untuk depth effect -->
   <div class="gallery-track-wrap reverse">
     <div class="gallery-track">
 
-      <!-- SET 1 -->
       <div class="gallery-photo">
         <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/g8h058omtedzje0/whats_app_image_2026_04_12_at_02_06_4elbhmjtrk.584.jpeg?token=" alt="Nabila">
         <div class="gallery-caption"><div class="gallery-caption-loc">APU, Malaysia</div></div>
@@ -897,7 +884,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="gallery-caption"><div class="gallery-caption-loc">China</div></div>
       </div>
 
-      <!-- SET 2 — duplicate -->
       <div class="gallery-photo">
         <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/uwq0rqouhb5k9oy/whats_app_image_2026_02_18_at_18_49_ub0nt8c6ep.20.jpeg?token=" alt="Nabila">
         <div class="gallery-caption"><div class="gallery-caption-loc">Jakarta, Indonesia</div></div>
@@ -935,7 +921,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 
-<!-- SERVICES -->
 <section class="svc-sec" id="services">
   <div class="fade">
     <div class="lbl">Layanan</div>
@@ -950,7 +935,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- FAQ -->
 <section class="faq-sec" id="faq">
   <div style="text-align:center" class="fade">
     <div class="lbl">FAQ</div>
@@ -966,7 +950,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- CTA BOTTOM -->
 <section class="cta-sec">
   <div class="cta-bg"></div>
   <div class="cta-ov"></div>
@@ -980,7 +963,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- PROMO SECTION -->
 <section class="promo-sec">
   <div class="promo-inner">
     <div class="promo-head fade">
@@ -1119,8 +1101,6 @@ const counterObs = new IntersectionObserver(entries => {
   });
 }, {threshold: 0.5});
 statEls.forEach(el => counterObs.observe(el));
-
-// Testimonials — removed (now uses CSS marquee)
 
 // FAQ
 document.querySelectorAll('.faq-q').forEach(b=>{
