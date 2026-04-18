@@ -133,7 +133,6 @@ section{padding:88px 5%;}
 .tmarquee-row{display:flex;gap:16px;width:max-content;}
 .tmarquee-row.row1{animation:marquee-left 40s linear infinite;}
 .tmarquee-row.row2{animation:marquee-right 45s linear infinite;}
-.tmarquee-row:hover{animation-play-state:paused;}
 
 @keyframes marquee-left{
   from{transform:translateX(0);}
@@ -180,11 +179,12 @@ section{padding:88px 5%;}
 .why-badge{position:absolute;bottom:-18px;right:-18px;background:var(--honey);color:#fff;border-radius:16px;padding:18px 22px;box-shadow:0 12px 32px rgba(200,130,26,.4);}
 .why-badge .big{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;line-height:1;}
 .why-badge .sm{font-size:.7rem;font-weight:600;opacity:.85;margin-top:3px;}
-.why-items{display:flex;flex-direction:column;gap:20px;margin-top:32px;}
-.witem{display:flex;gap:16px;align-items:flex-start;}
-.wicon{width:44px;height:44px;border-radius:12px;background:rgba(200,130,26,.12);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
-.wi-title{font-weight:600;font-size:.93rem;color:var(--dark2);margin-bottom:4px;}
-.wi-text{font-size:.83rem;color:var(--muted);line-height:1.6;}
+.why-items{display:flex;flex-direction:column;gap:0;margin-top:36px;}
+.witem{display:flex;gap:20px;align-items:flex-start;padding:20px 0;border-bottom:1px solid rgba(200,130,26,.12);}
+.witem:last-child{border-bottom:none;}
+.wnum{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--honey);font-weight:700;min-width:28px;padding-top:2px;opacity:.7;}
+.wi-title{font-weight:700;font-size:.95rem;color:var(--dark2);margin-bottom:5px;}
+.wi-text{font-size:.84rem;color:var(--muted);line-height:1.65;}
 
 /* HOW */
 .how-sec{background:#fff;}
@@ -230,13 +230,225 @@ section{padding:88px 5%;}
 .ps-n{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--honeylt);}
 .ps-l{font-size:.73rem;color:rgba(255,255,255,.45);margin-top:3px;}
 
-/* SERVICES */
+/* ── PHOTO GALLERY — Marquee Scroll ── */
+@keyframes marquee-photo{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+.gallery-sec{
+  background:var(--dark);
+  padding:72px 0;
+  overflow:hidden;
+  position:relative;
+}
+
+/* subtle top & bottom grain overlay for luxury feel */
+.gallery-sec::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,
+      var(--dark) 0%,
+      transparent 12%,
+      transparent 88%,
+      var(--dark) 100%
+    );
+  z-index:2;
+  pointer-events:none;
+}
+
+/* left & right fade vignette */
+.gallery-sec::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,
+      var(--dark) 0%,
+      transparent 8%,
+      transparent 92%,
+      var(--dark) 100%
+    );
+  z-index:2;
+  pointer-events:none;
+}
+
+.gallery-header{
+  text-align:center;
+  padding:0 5%;
+  margin-bottom:40px;
+  position:relative;
+  z-index:3;
+}
+
+.gallery-label{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--honey);
+  margin-bottom:14px;
+}
+
+.gallery-label::before,
+.gallery-label::after{
+  content:'';
+  width:32px;
+  height:1px;
+  background:var(--honey);
+  opacity:.5;
+}
+
+.gallery-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,3vw,2.4rem);
+  color:#fff;
+  line-height:1.2;
+}
+
+.gallery-title em{
+  color:var(--honeylt);
+  font-style:italic;
+}
+
+/* track wrapper */
+.gallery-track-wrap{
+  position:relative;
+  z-index:1;
+  margin-bottom:16px;
+}
+
+/* second row offset direction */
+.gallery-track-wrap.reverse .gallery-track{
+  animation-direction:reverse;
+}
+
+.gallery-track{
+  display:flex;
+  gap:16px;
+  width:max-content;
+  animation:marquee-photo 40s linear infinite;
+  will-change:transform;
+}
+
+/* pause on hover for elegance */
+.gallery-track-wrap:hover .gallery-track{
+  animation-play-state:paused;
+}
+
+/* second row slightly slower for depth feel */
+.gallery-track-wrap.reverse .gallery-track{
+  animation-duration:52s;
+}
+
+.gallery-photo{
+  width:280px;
+  height:360px;
+  border-radius:16px;
+  overflow:hidden;
+  position:relative;
+  flex-shrink:0;
+  border:1px solid rgba(200,130,26,.15);
+  transition:border-color .3s;
+}
+
+.gallery-photo:hover{
+  border-color:rgba(200,130,26,.5);
+}
+
+.gallery-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:top;
+  display:block;
+  transition:transform .6s ease;
+}
+
+.gallery-photo:hover img{
+  transform:scale(1.04);
+}
+
+/* elegant gold overlay on hover */
+.gallery-photo::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    0deg,
+    rgba(200,130,26,.25) 0%,
+    transparent 50%
+  );
+  opacity:0;
+  transition:opacity .35s;
+}
+
+.gallery-photo:hover::after{
+  opacity:1;
+}
+
+/* location caption on hover */
+.gallery-caption{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:20px 16px 16px;
+  background:linear-gradient(0deg,rgba(10,6,2,.85) 0%,transparent 100%);
+  transform:translateY(100%);
+  transition:transform .35s ease;
+  z-index:2;
+}
+
+.gallery-photo:hover .gallery-caption{
+  transform:translateY(0);
+}
+
+.gallery-caption-loc{
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--honeylt);
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+.gallery-caption-loc::before{
+  content:'📍';
+  font-size:.8rem;
+}
+
+/* bottom CTA text */
+.gallery-footer{
+  text-align:center;
+  padding-top:36px;
+  position:relative;
+  z-index:3;
+}
+
+.gallery-footer p{
+  font-size:.82rem;
+  color:rgba(255,255,255,.4);
+  letter-spacing:.06em;
+}
+
+@media(max-width:600px){
+  .gallery-photo{width:220px;height:290px;}
+  .gallery-track{gap:12px;}
+  .gallery-sec{padding:56px 0;}
+}
+
+/* SERVICES — elegan, tanpa emoji */
 .svc-sec{background:var(--cream2);}
 .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px;}
-.svc{background:#fff;border-radius:20px;padding:32px;border:1px solid rgba(200,130,26,.14);transition:all .25s;cursor:default;}
-.svc:hover{border-color:var(--honey);transform:translateY(-4px);box-shadow:0 16px 40px rgba(200,130,26,.14);}
-.svc-ico{font-size:2rem;margin-bottom:14px;}
-.svc-t{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--dark2);margin-bottom:8px;}
+.svc{background:#fff;border-radius:20px;padding:32px;border:1px solid rgba(200,130,26,.14);transition:all .25s;cursor:default;position:relative;overflow:hidden;}
+.svc::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:linear-gradient(180deg,var(--honey),var(--honey2));transition:height .35s ease;}
+.svc:hover::before{height:100%;}
+.svc:hover{border-color:var(--honey);transform:translateY(-4px);box-shadow:0 16px 40px rgba(200,130,26,.12);}
+.svc-num{font-family:'Playfair Display',serif;font-size:2.2rem;color:rgba(200,130,26,.15);font-weight:700;line-height:1;margin-bottom:14px;}
+.svc-t{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--dark2);margin-bottom:10px;line-height:1.3;}
 .svc-d{font-size:.86rem;color:var(--muted);line-height:1.7;margin-bottom:18px;}
 .svc-pr{display:inline-block;background:rgba(200,130,26,.1);color:var(--honey);font-size:.8rem;font-weight:700;padding:5px 13px;border-radius:100px;}
 
@@ -569,10 +781,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 class="stitle">Lebih Dari Konsultan —<br>Partner Perjalananmu</h2>
       <p class="ssub">Nabila bukan form yang kamu isi lalu ditinggal. Dia menemanimu dari awal sampai kamu benar-benar berangkat.</p>
       <div class="why-items">
-        <div class="witem"><div class="wicon">🎯</div><div><div class="wi-title">Konsultasi Personal 1-on-1</div><p class="wi-text">Tidak ada sistem tiket atau antrian. Kamu langsung ngobrol sama Nabila via WhatsApp.</p></div></div>
-        <div class="witem"><div class="wicon">🏆</div><div><div class="wi-title">5+ Tahun Pengalaman Nyata</div><p class="wi-text">Nabila bekerja langsung di global education consulting selama 5+ tahun — bukan baru belajar dari internet.</p></div></div>
-        <div class="witem"><div class="wicon">🗣️</div><div><div class="wi-title">Bahasa Indonesia, Tanpa Ribet</div><p class="wi-text">Indonesia or English — Konsultasi dalam bahasa yang kamu nyaman. Orang tua pun bisa ikut diskusi.</p></div></div>
-        <div class="witem"><div class="wicon">✈️</div><div><div class="wi-title">Pendampingan Full Journey</div><p class="wi-text">Dari explorasi jurusan hingga kamu siap menjalani studi dan karir global.</p></div></div>
+      <div class="why-items">
+        <div class="witem"><div class="wnum">01</div><div><div class="wi-title">Konsultasi Personal 1-on-1</div><p class="wi-text">Tidak ada sistem tiket atau antrian. Kamu langsung ngobrol sama Nabila via WhatsApp.</p></div></div>
+        <div class="witem"><div class="wnum">02</div><div><div class="wi-title">5+ Tahun Pengalaman Nyata</div><p class="wi-text">Nabila bekerja langsung di global education consulting selama 5+ tahun — bukan baru belajar dari internet.</p></div></div>
+        <div class="witem"><div class="wnum">03</div><div><div class="wi-title">Bahasa Indonesia, Tanpa Ribet</div><p class="wi-text">Indonesia or English — Konsultasi dalam bahasa yang kamu nyaman. Orang tua pun bisa ikut diskusi.</p></div></div>
+        <div class="witem"><div class="wnum">04</div><div><div class="wi-title">Pendampingan Full Journey</div><p class="wi-text">Dari explorasi jurusan hingga kamu siap menjalani studi dan karir global.</p></div></div>
+      </div>
       </div>
     </div>
   </div>
@@ -644,7 +858,152 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
   </div>
+
+<!-- PHOTO GALLERY — Business Trip Nabila -->
+<section class="gallery-sec">
+  <div class="gallery-header">
+    <div class="gallery-label">Behind The Journey</div>
+    <h2 class="gallery-title">Nabila, di <em>Balik Layar</em><br>Setiap Perjalanan</h2>
+  </div>
+
+  <!-- Row 1 — kiri ke kanan -->
+  <div class="gallery-track-wrap">
+    <div class="gallery-track">
+
+      <!-- SET 1 -->
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/pwowcungtu7iijn/3bcabd58_7d6b_4d90_ba32_1636704a15d4_q53v64whso.jpeg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">Malaysia</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/722c3cb1u4ebwx5/img_0773_g3w0qwy4lw.jpg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">Jakarta, Indonesia</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/rw8ijv7cvjlz4xa/img_2481_wz355lx8dk.jpg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">Malaysia</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/q1l98pr6c2ud6qu/img_5713_vf7rceisqw.jpg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">Jakarta, Indonesia</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/g8h058omtedzje0/whats_app_image_2026_04_12_at_02_06_4elbhmjtrk.584.jpeg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">Amsterdam, Netherlands</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/pkabrgxvjmy2vto/img_6654_kmzac7pzl9.jpg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">China</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/x3nnr78t1s2px2s/img_7266_slt3ya286s.jpg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">China</div></div>
+      </div>
+
+      <!-- SET 2 — duplicate for seamless loop -->
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/qz6rniu0vm10evt/img_2223_1_19v0r8jjej.jpg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">Malaysia</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/qz6rniu0vm10evt/img_2223_1_19v0r8jjej.jpg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">Malaysia</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/yxskk6dh2saofkk/1733560656507_gmz34xbm4v.jpg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">Singapore</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/b9myqm66q6kussr/whats_app_image_2026_04_12_at_02_02_6sybg1i0vk.46.jpeg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">China</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/b9myqm66q6kussr/whats_app_image_2026_04_12_at_02_02_6sybg1i0vk.46.jpeg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">China</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/sbeu26d4ro9c5vf/whats_app_image_2026_04_12_at_02_02_7t3vugzlnj.454.jpeg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">Kuala Lumpur, Malaysia</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/g8h058omtedzje0/whats_app_image_2026_04_12_at_02_06_4elbhmjtrk.584.jpeg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">Kuala Lumpur, Malaysia</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Row 2 — arah berlawanan untuk depth effect -->
+  <div class="gallery-track-wrap reverse">
+    <div class="gallery-track">
+
+      <!-- SET 1 -->
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/g8h058omtedzje0/whats_app_image_2026_04_12_at_02_06_4elbhmjtrk.584.jpeg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">APU, Malaysia</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/rde534mfuv8rqjw/whats_app_image_2026_04_12_at_02_06_vbg3xnlbrs.583.jpeg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">APU, Malaysia</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/b9myqm66q6kussr/whats_app_image_2026_04_12_at_02_02_6sybg1i0vk.46.jpeg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">University of Nottingham, China</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/yxllxv8g4rf9775/whats_app_image_2026_04_12_at_02_02_aq49etj4yh.455.jpeg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">UNNC, China</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/sbeu26d4ro9c5vf/whats_app_image_2026_04_12_at_02_02_7t3vugzlnj.454.jpeg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">China</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/ctjtgo5blmsysha/whats_app_image_2026_04_12_at_02_02_39mju35fn6.452.jpeg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">China</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/ueqcsru9ww2p2zz/img_2208_1_eztbginrz3.jpg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">China</div></div>
+      </div>
+
+      <!-- SET 2 — duplicate -->
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/uwq0rqouhb5k9oy/whats_app_image_2026_02_18_at_18_49_ub0nt8c6ep.20.jpeg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">Jakarta, Indonesia</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/x3nnr78t1s2px2s/img_7266_slt3ya286s.jpg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">China</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/pkabrgxvjmy2vto/img_6654_kmzac7pzl9.jpg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">China</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/q1l98pr6c2ud6qu/img_5713_vf7rceisqw.jpg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">Jakarta, Indonesia</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/rw8ijv7cvjlz4xa/img_2481_wz355lx8dk.jpg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">Malaysia</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/722c3cb1u4ebwx5/img_0773_g3w0qwy4lw.jpg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">Jakarta, Indonesia</div></div>
+      </div>
+      <div class="gallery-photo">
+        <img src="https://pocketbase.mamawatts.web.id/api/files/pbc_3607937828/pwowcungtu7iijn/3bcabd58_7d6b_4d90_ba32_1636704a15d4_q53v64whso.jpeg?token=" alt="Nabila">
+        <div class="gallery-caption"><div class="gallery-caption-loc">Malaysia</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="gallery-footer">
+  </div>
 </section>
+
 
 <!-- SERVICES -->
 <section class="svc-sec" id="services">
@@ -654,10 +1013,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="ssub">Perjalanan Lengkap Menuju Studi & Karir Global.</p>
   </div>
   <div class="svc-grid">
-    <div class="svc fade"><div class="svc-ico">🎓</div><div class="svc-t">Consultation & Major University Selection</div><p class="svc-d">Cocokkan profil, minat, dan budget dengan universitas yang realistis dan sesuai impian. Nabila bantu shortlist 3–5 pilihan terbaik.</p><span class="svc-pr">FREE</span></div>
-    <div class="svc fade"><div class="svc-ico">📝</div><div class="svc-t">Application & Preparation Support</div><p class="svc-d">Penulisan dan editing Statement of Purpose yang kuat, personal statement, dan pendampingan proses pendaftaran hingga offer letter.</p><span class="svc-pr">Mulai Rp 0</span></div>
-    <div class="svc fade"><div class="svc-ico">🛂</div><div class="svc-t">Visa Student Guidance</div><p class="svc-d">Pendampingan lengkap dalam proses pengajuan visa, mulai dari persiapan dokumen, pengecekan persyaratan, hingga simulasi interview (jika diperlukan).</p><span class="svc-pr">Mulai Rp 500.000</span></div>
-    <div class="svc fade"><div class="svc-ico">🏆</div><div class="svc-t">Comprehensive Application Package</div><p class="svc-d">Solusi end-to-end untuk kamu yang ingin pendampingan lengkap dari awal hingga siap menjalani studi di luar negeri (khusus ke university non-partner) mencakup konsultasi jurusan & karir, pemilihan universitas, proses aplikasi, visa hingga persiapan keberangkatan dan akses ke komunitas global.</p><span class="svc-pr">Mulai Rp 5.000.000</span></div>
+    <div class="svc fade"><div class="svc-num">01</div><div class="svc-t">Consultation & Major University Selection</div><p class="svc-d">Cocokkan profil, minat, dan budget dengan universitas yang realistis dan sesuai impian. Nabila bantu shortlist 3–5 pilihan terbaik.</p><span class="svc-pr">FREE</span></div>
+    <div class="svc fade"><div class="svc-num">02</div><div class="svc-t">Application & Preparation Support</div><p class="svc-d">Penulisan dan editing Statement of Purpose yang kuat, personal statement, dan pendampingan proses pendaftaran hingga offer letter.</p><span class="svc-pr">Mulai Rp 0</span></div>
+    <div class="svc fade"><div class="svc-num">03</div><div class="svc-t">Visa Student Guidance</div><p class="svc-d">Pendampingan lengkap dalam proses pengajuan visa, mulai dari persiapan dokumen, pengecekan persyaratan, hingga simulasi interview (jika diperlukan).</p><span class="svc-pr">Mulai Rp 500.000</span></div>
+    <div class="svc fade"><div class="svc-num">04</div><div class="svc-t">Comprehensive Application Package</div><p class="svc-d">Solusi end-to-end untuk kamu yang ingin pendampingan lengkap dari awal hingga siap menjalani studi di luar negeri — konsultasi jurusan & karir, pemilihan universitas, proses aplikasi, visa hingga persiapan keberangkatan dan akses ke komunitas global.</p><span class="svc-pr">Mulai Rp 5.000.000</span></div>
   </div>
 </section>
 
