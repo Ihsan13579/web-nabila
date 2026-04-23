@@ -3,7 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PathFinder — Temukan Karir & Studi Luar Negeri Idealmu</title>
+<title>Quiz Study Abroad — beewithnabila.id</title>
+<meta name="description" content="8 pertanyaan, 3 menit. Dapatkan rekomendasi negara & universitas yang realistis buat situasi kamu — langsung dari Nabila.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Quiz Study Abroad — beewithnabila.id">
+<meta property="og:description" content="Negara mana yang paling cocok buat kamu? 8 pertanyaan, 3 menit, 100% gratis.">
+<meta property="og:type" content="website">
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -11,8 +18,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-K8G9V35J');</script>
 <!-- End Google Tag Manager -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #0f0e0c;
@@ -62,7 +71,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     opacity: 0.6;
   }
 
-  /* wrapper seluruh landing — pakai flex column agar brand + hero grid tertata */
   .landing-inner {
     position: relative; z-index: 2;
     width: 100%;
@@ -78,12 +86,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     display: flex; align-items: center; gap: 10px;
     font-weight: 600; font-size: 15px; letter-spacing: 0.08em;
     text-transform: uppercase; color: var(--gold);
-    margin-bottom: 32px;
   }
 
   .brand-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
 
-  /* ── HERO GRID: teks kiri | cards kanan ── */
   .landing-hero {
     flex: 1;
     display: grid;
@@ -114,7 +120,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 6vw, 72px);
+    font-size: clamp(36px, 6vw, 68px);
     line-height: 1.05;
     letter-spacing: -0.02em;
     margin-bottom: 24px;
@@ -130,12 +136,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     line-height: 1.7;
     color: var(--text-muted);
     max-width: 500px;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
   }
 
   .landing-features {
     display: flex; flex-wrap: wrap; gap: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 36px;
   }
 
   .feature-chip {
@@ -184,9 +190,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     transition: transform 0.25s;
   }
 
-  .btn-start:hover .arrow { transform: translateX(4px); }
+  .btn-start:hover .arrow { transform: translateX(4px); background: rgba(15,14,12,0.15); }
 
-  /* ── VISUAL CARDS: kolom kanan di desktop, strip scroll di mobile ── */
+  .btn-hint {
+    font-size: 12px; color: var(--text-muted);
+    margin-top: 14px;
+    font-family: 'DM Sans', monospace;
+  }
+
+  /* floating cards */
   .landing-visual {
     display: flex;
     flex-direction: column;
@@ -194,14 +206,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     position: relative;
   }
 
-  /* mobile: tampil sebagai horizontal scroll strip */
   @media (max-width: 899px) {
     .landing-visual {
       flex-direction: row;
       overflow-x: auto;
       gap: 12px;
       padding-bottom: 8px;
-      /* hide scrollbar tapi tetap scrollable */
       scrollbar-width: none;
       -ms-overflow-style: none;
     }
@@ -218,13 +228,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     flex-shrink: 0;
   }
 
-  /* desktop: card ke-2 sedikit indent ke kanan */
   @media (min-width: 900px) {
     .floating-card:nth-child(2) { margin-left: 32px; animation-delay: 1s; }
     .floating-card:nth-child(3) { animation-delay: 2s; }
   }
 
-  /* mobile: fixed width tiap card */
   @media (max-width: 899px) {
     .floating-card { width: 220px; }
     .floating-card:nth-child(2) { animation-delay: 1s; }
@@ -240,7 +248,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .fc-value { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; }
   .fc-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 
-  /* badge "3 mnt" — di desktop absolute, di mobile inline card */
   .landing-badge {
     background: var(--gold);
     color: var(--ink);
@@ -278,6 +285,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-size: 12px; font-weight: 600;
     letter-spacing: 0.05em;
     margin-bottom: 20px;
+    align-self: flex-start;
   }
 
   /* ── QUIZ ── */
@@ -325,7 +333,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   .quiz-body {
     max-width: 720px; margin: 0 auto;
-    padding: 48px 24px 120px;
+    padding: 48px 24px 140px;
   }
 
   .question-wrap {
@@ -337,9 +345,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     opacity: 1; transform: translateX(0);
   }
 
+  .q-category {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .q-category::before {
+    content: ''; width: 20px; height: 1.5px; background: var(--gold); flex-shrink: 0;
+  }
+
   .q-number {
     font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--gold);
+    text-transform: uppercase; color: var(--text-muted);
     margin-bottom: 12px;
   }
 
@@ -348,32 +367,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-size: clamp(24px, 4vw, 36px);
     line-height: 1.25;
     margin-bottom: 12px;
+    word-break: break-word;
   }
 
   .q-sub {
     font-size: 14px; color: var(--text-muted);
     margin-bottom: 36px;
     line-height: 1.6;
+    font-style: italic;
   }
 
   .options-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 12px;
   }
-
-  @media (max-width: 540px) { .options-grid { grid-template-columns: 1fr; } }
 
   .option-card {
     background: white;
     border: 2px solid var(--warm);
     border-radius: var(--radius);
-    padding: 20px;
+    padding: 18px 20px;
     cursor: pointer;
     transition: all 0.2s;
     text-align: left;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 14px;
     position: relative;
     overflow: hidden;
@@ -393,7 +412,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     box-shadow: 0 8px 24px rgba(201,168,76,0.2);
   }
 
-  .option-card:hover::before { opacity: 0.3; }
+  .option-card:hover::before { opacity: 0.25; }
 
   .option-card.selected {
     border-color: var(--gold);
@@ -403,59 +422,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   .option-card.selected::before { opacity: 0.4; }
 
-  .option-emoji {
-    font-size: 28px;
+  .option-letter {
+    min-width: 32px; height: 32px;
+    border-radius: 10px;
+    background: var(--warm);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 13px;
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0;
     flex-shrink: 0;
     position: relative; z-index: 1;
-    line-height: 1;
-    margin-top: 2px;
+    transition: all 0.2s;
   }
 
-  .option-content { position: relative; z-index: 1; }
-
-  .option-title {
-    font-weight: 600; font-size: 15px;
-    margin-bottom: 4px;
+  .option-card.selected .option-letter {
+    background: var(--gold); color: var(--ink);
   }
 
-  .option-desc {
-    font-size: 13px; color: var(--text-muted);
-    line-height: 1.5;
+  .option-text {
+    font-size: 15px; line-height: 1.45; font-weight: 500;
+    color: var(--ink);
+    position: relative; z-index: 1;
+    flex: 1;
   }
 
   .option-check {
-    position: absolute; top: 14px; right: 14px;
     width: 22px; height: 22px;
     border-radius: 50%;
     background: var(--gold);
     display: none;
     align-items: center; justify-content: center;
-    color: white; font-size: 12px;
+    color: white; font-size: 12px; font-weight: 700;
     z-index: 2;
+    flex-shrink: 0;
   }
 
   .option-card.selected .option-check { display: flex; }
-
-  /* name input */
-  .name-input-wrap {
-    display: flex; flex-direction: column; gap: 8px;
-  }
-
-  .name-input {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 18px;
-    padding: 18px 24px;
-    border: 2px solid var(--warm);
-    border-radius: var(--radius);
-    background: white;
-    color: var(--ink);
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
-  }
-
-  .name-input:focus { border-color: var(--gold); }
-  .name-input::placeholder { color: var(--warm); }
 
   /* bottom nav */
   .quiz-nav {
@@ -463,7 +466,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: rgba(247,243,236,0.95);
     backdrop-filter: blur(12px);
     border-top: 1px solid var(--warm);
-    padding: 20px 24px;
+    padding: 16px 24px;
     z-index: 10;
   }
 
@@ -477,37 +480,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border-radius: 100px;
     padding: 12px 24px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 15px; font-weight: 500;
+    font-size: 14px; font-weight: 500;
     cursor: pointer; color: var(--text-muted);
     transition: all 0.2s;
   }
 
   .btn-back:hover { border-color: var(--ink); color: var(--ink); }
+  .btn-back:disabled { opacity: 0.3; cursor: not-allowed; }
 
-  .btn-next {
-    background: var(--ink);
-    color: var(--cream);
-    border: none;
-    border-radius: 100px;
-    padding: 14px 32px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px; font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: flex; align-items: center; gap: 8px;
-    opacity: 0.4;
-    pointer-events: none;
-  }
-
-  .btn-next.ready {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  .btn-next.ready:hover {
-    background: var(--gold); color: var(--ink);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(201,168,76,0.35);
+  .nav-hint {
+    font-size: 12px; color: var(--text-muted);
+    font-style: italic;
   }
 
   /* ── LOADING ── */
@@ -571,10 +554,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .loading-step.active { opacity: 0.8; }
 
   /* ══════════════════════════════════════════════
-     RESULT — mobile-first, 1 kolom, tanpa sidebar
+     RESULT — mobile-first, 1 kolom
   ══════════════════════════════════════════════ */
 
-  /* KUNCI: paksa semua elemen tidak overflow horizontal */
   #screen-result,
   #screen-result * {
     box-sizing: border-box;
@@ -588,11 +570,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     overflow-x: hidden;
   }
 
-  /* ──────────────────────────────────────────
-     RESULT HEADER CARD
-     Bukan full-bleed, melainkan card elegan
-     di atas cream background
-  ────────────────────────────────────────── */
+  /* Header card: ink background, elegant */
   .result-header-wrap {
     background: var(--cream);
     padding: 0 16px 0;
@@ -602,15 +580,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: var(--ink);
     color: var(--cream);
     border-radius: 24px;
-    padding: 36px 28px 40px;
+    padding: 40px 28px 44px;
     margin: 24px auto 0;
     max-width: 680px;
     width: 100%;
     position: relative;
     overflow: hidden;
+    text-align: center;
   }
 
-  /* dekorasi subtil di dalam card */
   .result-header-card::before {
     content: '';
     position: absolute;
@@ -633,54 +611,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   .rhc-inner { position: relative; z-index: 1; }
 
-  /* "Hasil Analisis untuk [Nama]" */
   .result-greeting {
     font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
     text-transform: uppercase; color: rgba(201,168,76,0.9);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     display: flex; align-items: center; gap: 10px;
+    justify-content: center;
   }
 
-  .result-greeting::before {
+  .result-greeting::before,
+  .result-greeting::after {
     content: ''; width: 20px; height: 1.5px; background: var(--gold); flex-shrink: 0;
   }
 
-  /* badge tipe kepribadian */
+  .result-emoji {
+    font-size: 56px;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
   .result-type {
     display: inline-flex; align-items: center;
     background: var(--gold); color: var(--ink);
-    font-size: 10px; font-weight: 800; letter-spacing: 0.08em;
+    font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 4px 12px; border-radius: 100px;
-    margin-bottom: 14px;
+    padding: 5px 14px; border-radius: 100px;
+    margin-bottom: 16px;
     word-break: keep-all;
     white-space: normal;
-    max-width: 100%;
     line-height: 1.4;
   }
 
-  /* judul — paling penting, harus wrap dengan benar */
-  .result-title {
+  .result-tagline {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(22px, 5.5vw, 44px);
-    line-height: 1.15;
+    font-style: italic;
+    font-size: clamp(22px, 5vw, 34px);
+    line-height: 1.25;
     color: var(--cream);
-    margin-bottom: 14px;
+    margin-bottom: 18px;
     word-break: break-word;
     overflow-wrap: anywhere;
-    hyphens: auto;
   }
 
-  /* tagline */
-  .result-tagline {
-    font-size: 14px; line-height: 1.7;
-    color: rgba(247,243,236,0.65);
+  .result-description {
+    font-size: 14.5px; line-height: 1.75;
+    color: rgba(247,243,236,0.75);
     word-break: break-word;
+    max-width: 540px;
+    margin: 0 auto;
   }
 
-  /* ──────────────────────────────────────────
-     RESULT BODY
-  ────────────────────────────────────────── */
+  /* BODY */
   .result-body {
     max-width: 680px; margin: 0 auto;
     padding: 32px 16px 80px;
@@ -688,7 +669,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   .result-section {
-    margin-bottom: 40px;
+    margin-bottom: 32px;
     opacity: 0;
     transform: translateY(18px);
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -698,11 +679,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     opacity: 1; transform: translateY(0);
   }
 
-  /* section label dengan garis */
   .section-label {
     font-size: 10px; font-weight: 800; letter-spacing: 0.18em;
     text-transform: uppercase; color: var(--gold);
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     display: flex; align-items: center; gap: 10px;
   }
 
@@ -711,123 +691,126 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: linear-gradient(90deg, var(--warm), transparent);
   }
 
-  /* ──────────────────────────────────────────
-     TRAIT CARDS — 1 kolom mobile, 3 desktop
-  ────────────────────────────────────────── */
-  .trait-grid {
+  /* Urgency box */
+  .urgency-box {
+    background: white; border-radius: 14px;
+    padding: 16px 18px; border: 1px solid var(--warm);
+    border-left: 3px solid var(--rust);
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+
+  .urgency-icon { font-size: 22px; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+  .urgency-text { font-size: 14px; color: var(--ink); line-height: 1.65; flex: 1; }
+
+  /* Country cards */
+  .country-list {
     display: flex; flex-direction: column; gap: 10px;
-  }
-
-  @media (min-width: 560px) {
-    .trait-grid { flex-direction: row; }
-    .trait-card { flex: 1; }
-  }
-
-  .trait-card {
-    background: white;
-    border-radius: 16px;
-    padding: 20px 18px;
-    border: 1px solid var(--warm);
-    position: relative; overflow: hidden;
-    transition: transform 0.25s, box-shadow 0.25s;
-  }
-
-  .trait-card::after {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--gold), var(--rust));
-    opacity: 0; transition: opacity 0.25s;
-  }
-
-  .trait-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.08); }
-  .trait-card:hover::after { opacity: 1; }
-
-  .trait-emoji { font-size: 26px; margin-bottom: 10px; display: block; }
-  .trait-name  { font-weight: 700; font-size: 14px; margin-bottom: 5px; color: var(--ink); }
-  .trait-desc  { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
-
-  /* ──────────────────────────────────────────
-     STRENGTH BARS
-  ────────────────────────────────────────── */
-  .bar-list { display: flex; flex-direction: column; gap: 16px; }
-
-  .bar-label {
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 14px; font-weight: 500; margin-bottom: 8px;
-  }
-
-  .bar-pct {
-    font-size: 12px; font-weight: 800; color: var(--ink);
-    background: var(--warm); padding: 2px 10px; border-radius: 100px;
-  }
-
-  .bar-track {
-    height: 10px; background: var(--warm); border-radius: 100px; overflow: hidden;
-  }
-
-  .bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--gold), var(--rust));
-    border-radius: 100px;
-    width: 0;
-    transition: width 1.1s cubic-bezier(0.34, 1.1, 0.64, 1);
-  }
-
-  /* ──────────────────────────────────────────
-     COUNTRY CARDS — 1 kolom mobile, 2 desktop
-  ────────────────────────────────────────── */
-  .country-grid {
-    display: flex; flex-direction: column; gap: 10px;
-  }
-
-  @media (min-width: 480px) {
-    .country-grid { flex-direction: row; flex-wrap: wrap; }
-    .country-card { flex: 1 1 calc(50% - 5px); }
   }
 
   .country-card {
     background: white; border-radius: 16px;
     padding: 16px 18px; border: 1px solid var(--warm);
-    display: flex; align-items: center; gap: 14px;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
   }
 
-  .country-card:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(201,168,76,0.12); }
-  .country-flag { font-size: 28px; flex-shrink: 0; }
-  .country-name { font-weight: 700; font-size: 14px; color: var(--ink); }
-  .country-why  { font-size: 12px; color: var(--text-muted); margin-top: 2px; line-height: 1.4; word-break: break-word; }
-
-  /* ──────────────────────────────────────────
-     MAJOR TAGS
-  ────────────────────────────────────────── */
-  .major-list { display: flex; flex-wrap: wrap; gap: 8px; }
-
-  .major-tag {
-    background: white; border: 1.5px solid var(--warm);
-    border-radius: 100px; padding: 7px 16px;
-    font-size: 13px; font-weight: 500; color: var(--ink);
-    transition: all 0.2s;
+  .country-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 6px 20px rgba(201,168,76,0.15);
+    transform: translateY(-2px);
   }
 
-  .major-tag:hover { border-color: var(--gold); background: rgba(201,168,76,0.06); }
-
-  /* ──────────────────────────────────────────
-     AI INSIGHT
-  ────────────────────────────────────────── */
-  .result-raw {
-    background: white; border-radius: 16px;
-    padding: 22px 20px; border: 1px solid var(--warm);
-    border-left: 3px solid var(--gold);
-    font-size: 14px; line-height: 1.85; color: var(--ink);
-    white-space: pre-wrap; word-break: break-word;
+  .country-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 8px;
   }
 
-  /* ──────────────────────────────────────────
-     CTA BOX
-  ────────────────────────────────────────── */
+  .country-flag { font-size: 28px; flex-shrink: 0; line-height: 1; }
+  .country-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 19px;
+    color: var(--ink);
+    flex: 1;
+    word-break: break-word;
+  }
+
+  .diff-badge {
+    font-size: 10px; font-weight: 800;
+    padding: 4px 10px; border-radius: 100px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    white-space: nowrap; flex-shrink: 0;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .diff-badge[data-level="low"] { background: #e6f4ea; color: #1e7b3a; }
+  .diff-badge[data-level="medium"] { background: #fdf3d8; color: #8a6410; }
+  .diff-badge[data-level="high"] { background: #fce8e6; color: #a6331c; }
+
+  .country-reason {
+    font-size: 13.5px; color: var(--text-muted);
+    line-height: 1.6;
+    word-break: break-word;
+  }
+
+  /* Fear response box */
+  .fear-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(196,92,46,0.04));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 16px;
+    padding: 20px 22px;
+  }
+
+  .fear-box-label {
+    font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--rust);
+    margin-bottom: 10px;
+  }
+
+  .fear-box-text {
+    font-size: 14.5px; line-height: 1.75; color: var(--ink);
+    word-break: break-word;
+  }
+
+  /* Preview box: what will be sent to WhatsApp */
+  .preview-box {
+    background: white; border: 1px dashed var(--warm);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+
+  .preview-box-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--text-muted);
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .preview-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+
+  .preview-list li {
+    font-size: 13px; line-height: 1.5;
+    color: var(--ink);
+    padding-left: 18px; position: relative;
+    word-break: break-word;
+  }
+
+  .preview-list li::before {
+    content: '•';
+    position: absolute; left: 6px; top: 0;
+    color: var(--gold); font-weight: 700;
+  }
+
+  .preview-list li strong {
+    font-weight: 600; color: var(--text-muted);
+    font-size: 12.5px;
+  }
+
+  /* CTA box */
   .cta-box {
     background: var(--ink); color: var(--cream);
-    border-radius: 20px; padding: 36px 24px;
+    border-radius: 20px; padding: 32px 24px;
     text-align: center; position: relative; overflow: hidden;
   }
 
@@ -835,7 +818,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     content: '';
     position: absolute; top: -50%; right: -15%;
     width: 300px; height: 300px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(201,168,76,0.2) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(201,168,76,0.22) 0%, transparent 65%);
     pointer-events: none;
   }
 
@@ -844,20 +827,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .cta-badge {
     display: inline-block; background: var(--gold); color: var(--ink);
     font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
-    text-transform: uppercase; padding: 4px 12px; border-radius: 100px;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 100px;
     margin-bottom: 16px;
   }
 
   .cta-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(22px, 5vw, 34px);
+    font-size: clamp(22px, 5vw, 32px);
     line-height: 1.2; margin-bottom: 12px;
   }
 
   .cta-desc {
     font-size: 14px; line-height: 1.75;
-    color: rgba(247,243,236,0.65);
-    max-width: 420px; margin: 0 auto 28px;
+    color: rgba(247,243,236,0.7);
+    max-width: 440px; margin: 0 auto 24px;
   }
 
   .cta-buttons {
@@ -869,32 +852,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .cta-buttons { flex-direction: row; justify-content: center; }
   }
 
-  .btn-cta-primary {
-    background: var(--gold); color: var(--ink);
+  .btn-wa {
+    background: #25D366; color: white;
     border: none; border-radius: 100px;
-    padding: 15px 28px; width: 100%; max-width: 280px;
+    padding: 16px 32px; width: 100%; max-width: 320px;
     font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
     cursor: pointer; transition: all 0.22s;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
     text-decoration: none;
+    box-shadow: 0 6px 20px rgba(37,211,102,0.35);
   }
 
   @media (min-width: 480px) {
-    .btn-cta-primary { width: auto; max-width: none; }
+    .btn-wa { width: auto; max-width: none; }
   }
 
-  .btn-cta-primary:hover {
-    background: var(--gold-light);
+  .btn-wa:hover {
+    background: #1ebe5a;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(201,168,76,0.45);
+    box-shadow: 0 10px 28px rgba(37,211,102,0.5);
   }
+
+  .btn-wa svg { flex-shrink: 0; }
 
   .btn-cta-secondary {
     background: rgba(255,255,255,0.08); color: var(--cream);
     border: 1.5px solid rgba(255,255,255,0.22); border-radius: 100px;
-    padding: 15px 28px; width: 100%; max-width: 280px;
-    font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500;
+    padding: 15px 28px; width: 100%; max-width: 320px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
     cursor: pointer; transition: all 0.22s; text-decoration: none;
+    text-align: center;
   }
 
   @media (min-width: 480px) {
@@ -906,15 +893,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border-color: rgba(255,255,255,0.4);
   }
 
-  /* ──────────────────────────────────────────
-     UTILITIES
-  ────────────────────────────────────────── */
-  .error-box {
-    background: #fff5f5; border: 1px solid #fca5a5;
-    border-radius: var(--radius); padding: 20px;
-    font-size: 14px; color: #b91c1c;
+  .cta-reassurance {
+    font-size: 12px; color: rgba(247,243,236,0.55);
+    margin-top: 18px;
+    font-family: 'DM Sans', sans-serif;
   }
 
+  /* Utilities */
   .hidden { display: none !important; }
 
   .fade-in {
@@ -948,45 +933,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="landing-hero">
       <div class="landing-text">
-        <div class="free-badge">✨ 100% Gratis untuk Mahasiswa</div>
+        <div class="free-badge">✨ 100% Gratis · Gak Perlu Isi Form</div>
 
-        <div class="eyebrow">Tes Minat Bakat &amp; Studi Luar Negeri</div>
+        <div class="eyebrow">Quiz Study Abroad Profiler</div>
 
-        <h1>Temukan <em>jalurmu</em><br>ke kampus impian</h1>
+        <h1>Negara mana yang<br><em>paling cocok</em> buat kamu?</h1>
 
         <p class="landing-desc">
-          Jawab 12 pertanyaan singkat dan dapatkan analisis mendalam tentang minat bakat, jurusan yang cocok, serta negara tujuan studi terbaik untukmu — didukung AI.
+          Bukan quiz asal-asalan. 8 pertanyaan ini dirancang untuk ngertiin situasi kamu yang sebenarnya — bukan cuma "negara favorit kamu apa." Hasilnya langsung bisa kamu bawa ke Nabila via WhatsApp.
         </p>
 
         <div class="landing-features">
-          <div class="feature-chip"><span>🎯</span> Analisis Kepribadian</div>
-          <div class="feature-chip"><span>🌏</span> Rekomendasi Negara</div>
-          <div class="feature-chip"><span>📚</span> Pilihan Jurusan</div>
-          <div class="feature-chip"><span>🛂</span> Tips Student Visa</div>
+          <div class="feature-chip"><span>🎯</span> Profil Personal</div>
+          <div class="feature-chip"><span>🌏</span> 3 Negara Rekomendasi</div>
+          <div class="feature-chip"><span>💬</span> Langsung ke WA Nabila</div>
+          <div class="feature-chip"><span>⚡</span> Gak Ada Form</div>
         </div>
 
         <button class="btn-start" onclick="startQuiz()">
-          Mulai Tes Sekarang
+          Mulai Quiz Sekarang
           <div class="arrow">→</div>
         </button>
+        <div class="btn-hint">💬 Jawab sejujurnya. Nabila gak bakal judge kamu.</div>
       </div>
 
       <!-- floating cards -->
       <div class="landing-visual">
         <div class="floating-card">
-          <div class="fc-label">Profil Minat</div>
-          <div class="fc-value">Creative Innovator</div>
-          <div class="fc-sub">Cocok: Desain, Teknologi, Bisnis</div>
+          <div class="fc-label">Profil Kamu</div>
+          <div class="fc-value">🎯 Scholarship Hunter</div>
+          <div class="fc-sub">Jalan smart, bukan yang mahal</div>
         </div>
         <div class="floating-card">
-          <div class="fc-label">Negara Rekomendasi</div>
-          <div class="fc-value">🇦🇺 Australia · 🇬🇧 UK</div>
-          <div class="fc-sub">Berdasarkan kepribadian & budget</div>
+          <div class="fc-label">Rekomendasi Negara</div>
+          <div class="fc-value">🇩🇪 Jerman · 🇹🇼 Taiwan</div>
+          <div class="fc-sub">Disesuaikan sama situasi kamu</div>
         </div>
         <div class="floating-card">
-          <div class="fc-label">Konsultasi Visa</div>
-          <div class="fc-value">Student Visa 500</div>
-          <div class="fc-sub">Langkah selanjutnya tersedia</div>
+          <div class="fc-label">Konsultasi Gratis</div>
+          <div class="fc-value">Langsung via WA</div>
+          <div class="fc-sub">Nabila balas dalam 24 jam</div>
         </div>
         <div class="landing-badge">
           <span class="num">3 mnt</span>
@@ -1004,7 +990,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="progress-wrap">
         <div class="progress-bar" id="progress-bar" style="width:0%"></div>
       </div>
-      <div class="progress-label" id="progress-label">0 / 12</div>
+      <div class="progress-label" id="progress-label">0 / 8</div>
     </div>
   </div>
 
@@ -1016,10 +1002,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="quiz-nav">
     <div class="quiz-nav-inner">
-      <button class="btn-back" onclick="prevQuestion()">← Kembali</button>
-      <button class="btn-next" id="btn-next" onclick="nextQuestion()">
-        Lanjut <span>→</span>
-      </button>
+      <button class="btn-back" id="btn-back" onclick="prevQuestion()">← Kembali</button>
+      <div class="nav-hint">Pilih jawaban untuk lanjut →</div>
     </div>
   </div>
 </div>
@@ -1027,74 +1011,81 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ═══════════════ LOADING ═══════════════ -->
 <div id="screen-loading">
   <div class="loading-orb"></div>
-  <div class="loading-text">AI sedang menganalisis profilmu…</div>
+  <div class="loading-text">Menganalisis profil kamu…</div>
   <ul class="loading-steps" id="loading-steps">
-    <li class="loading-step" id="ls-1">🧠 Membaca pola kepribadianmu</li>
-    <li class="loading-step" id="ls-2">🎯 Mencocokkan minat &amp; bakat</li>
-    <li class="loading-step" id="ls-3">🌍 Mencari negara tujuan terbaik</li>
-    <li class="loading-step" id="ls-4">📋 Menyusun rekomendasi jurusan</li>
-    <li class="loading-step" id="ls-5">✨ Memfinalisasi hasil untukmu</li>
+    <li class="loading-step" id="ls-1">🧠 Membaca situasi akademik & kesiapan</li>
+    <li class="loading-step" id="ls-2">💰 Matching budget & kemampuan bahasa</li>
+    <li class="loading-step" id="ls-3">🌍 Mencari negara yang paling worth it</li>
+    <li class="loading-step" id="ls-4">🎯 Menyusun rekomendasi personal</li>
+    <li class="loading-step" id="ls-5">✨ Menyiapkan pesan buat Nabila</li>
   </ul>
 </div>
 
 <!-- ═══════════════ RESULT ═══════════════ -->
 <div id="screen-result">
 
-  <!-- HEADER: card hitam elegan di atas cream, tidak full-bleed -->
   <div class="result-header-wrap">
     <div class="result-header-card">
       <div class="rhc-inner">
-        <div class="result-greeting" id="r-greeting">Hasil Analisismu</div>
-        <div id="r-type" class="result-type">Loading…</div>
-        <h2 class="result-title" id="r-title">…</h2>
-        <p class="result-tagline" id="r-tagline">…</p>
+        <div class="result-greeting">Hasil Quiz Kamu</div>
+        <div class="result-emoji" id="r-emoji">🎯</div>
+        <div class="result-type" id="r-type">Loading…</div>
+        <h2 class="result-tagline" id="r-tagline">…</h2>
+        <p class="result-description" id="r-description">…</p>
       </div>
     </div>
   </div>
 
-  <!-- BODY: satu kolom bersih -->
   <div class="result-body">
 
-    <div class="result-section" id="r-traits-section">
-      <div class="section-label">Karakter Dominan</div>
-      <div class="trait-grid" id="r-traits"></div>
-    </div>
-
-    <div class="result-section" id="r-bars-section">
-      <div class="section-label">Kekuatan Minat</div>
-      <div class="bar-list" id="r-bars"></div>
+    <div class="result-section">
+      <div class="section-label">Langkah Selanjutnya Buat Kamu</div>
+      <div class="urgency-box">
+        <div class="urgency-icon">⚡</div>
+        <div class="urgency-text" id="r-urgency">…</div>
+      </div>
     </div>
 
     <div class="result-section">
-      <div class="section-label">Negara Studi yang Direkomendasikan</div>
-      <div class="country-grid" id="r-countries"></div>
+      <div class="section-label">Negara yang Paling Worth It Buat Kamu</div>
+      <div class="country-list" id="r-countries"></div>
     </div>
 
     <div class="result-section">
-      <div class="section-label">Pilihan Jurusan yang Cocok</div>
-      <div class="major-list" id="r-majors"></div>
+      <div class="section-label">Soal Kekhawatiran Kamu</div>
+      <div class="fear-box">
+        <div class="fear-box-label" id="r-fear-label">Yang perlu kamu tau</div>
+        <p class="fear-box-text" id="r-fear"></p>
+      </div>
     </div>
 
     <div class="result-section">
-      <div class="section-label">Insight Personal dari AI</div>
-      <div class="result-raw" id="r-insight">…</div>
+      <div class="section-label">Yang Akan Dikirim ke Nabila</div>
+      <div class="preview-box">
+        <div class="preview-box-label">📋 Isi pesan WhatsApp kamu</div>
+        <ul class="preview-list" id="r-preview"></ul>
+      </div>
     </div>
 
     <div class="cta-box result-section">
       <div class="cta-box-content">
         <div class="cta-badge">Langkah Selanjutnya</div>
-        <h3 class="cta-title">Siap wujudkan impian<br>studimu di luar negeri?</h3>
+        <h3 class="cta-title">Mau Nabila bantu<br>kamu langsung?</h3>
         <p class="cta-desc">
-          Tim konsultan kami siap membantu proses student visa, pemilihan universitas, dan persiapan dokumenmu — <strong>konsultasi pertama gratis!</strong>
+          Konsultasi awal <strong>gratis</strong>. Tinggal tekan tombol di bawah — semua hasil quiz kamu udah otomatis masuk ke pesan. Kamu tinggal tekan Send.
         </p>
         <div class="cta-buttons">
-          <a class="btn-cta-primary" id="wa-btn" href="#" target="_blank">
-            💬 Chat via WhatsApp
+          <a class="btn-wa" id="wa-btn" href="#" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+            </svg>
+            Chat Nabila di WhatsApp
           </a>
           <button class="btn-cta-secondary" onclick="restartQuiz()">
-            Ulangi Tes
+            Ulangi Quiz
           </button>
         </div>
+        <div class="cta-reassurance">Nabila balas dalam 24 jam · Gak ada spam · Gratis</div>
       </div>
     </div>
 
@@ -1103,155 +1094,171 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 // ═══════════════ CONFIG ═══════════════
-const WA_NUMBER = "628xxxxxxxxxx"; // ganti dengan nomor WA bisnis kamu
+// GANTI DENGAN NOMOR WA BUSINESS NABILA (format internasional tanpa +, tanpa 0)
+// Contoh: "6281282152861" untuk nomor +62 812-8215-2861
+const WA_NUMBER = "6281282152861";
 
-// ═══════════════ QUESTIONS ═══════════════
-const questions = [
+// ═══════════════ QUESTIONS (8 pertanyaan dari beewithnabila-quiz.jsx) ═══════════════
+const QUESTIONS = [
   {
-    id: "name",
-    text: "Halo! Siapa nama kamu?",
-    sub: "Biar analisisnya terasa lebih personal 🙂",
-    type: "text",
-    placeholder: "Ketik nama kamu…"
-  },
-  {
-    id: "passion",
-    text: "Kegiatan mana yang paling membuat kamu bersemangat?",
-    sub: "Pilih yang paling sesuai dengan dirimu",
-    type: "option",
+    id: 1,
+    category: "Mindset Check",
+    question: "Jujur dulu — seberapa serius kamu soal kuliah di luar negeri?",
+    subtitle: "Gak ada jawaban salah. Ini bukan ujian.",
     options: [
-      { emoji: "💻", title: "Teknologi & Coding", desc: "Membuat aplikasi, analisis data, atau eksplorasi AI", value: "tech" },
-      { emoji: "🎨", title: "Seni & Kreativitas", desc: "Desain, musik, film, fotografi, konten kreatif", value: "creative" },
-      { emoji: "🔬", title: "Sains & Riset", desc: "Eksperimen, laboratorium, penemuan baru", value: "science" },
-      { emoji: "💼", title: "Bisnis & Kepemimpinan", desc: "Strategi, marketing, entrepreneurship", value: "business" }
+      { id: "a", text: "Masih mimpi-mimpi aja sih, belum tau bisa atau gak", value: { readiness: 1, urgency: 1 } },
+      { id: "b", text: "Serius tapi belum tau harus mulai dari mana", value: { readiness: 2, urgency: 2 } },
+      { id: "c", text: "Udah riset sendiri, tinggal butuh guidance yang bener", value: { readiness: 3, urgency: 3 } },
+      { id: "d", text: "Deadline udah deket, butuh bantuan SEKARANG", value: { readiness: 3, urgency: 4 } }
     ]
   },
   {
-    id: "workstyle",
-    text: "Kamu lebih suka bekerja seperti apa?",
-    sub: "Gaya kerja mencerminkan kepribadianmu",
-    type: "option",
+    id: 2,
+    category: "Situasi Akademik",
+    question: "Gimana kondisi akademik kamu sekarang?",
+    subtitle: "Ini bukan untuk menilai kamu — tapi untuk nyari universitas yang realistis.",
     options: [
-      { emoji: "🤝", title: "Tim yang solid", desc: "Kolaborasi, diskusi, brainstorming bersama", value: "team" },
-      { emoji: "🎯", title: "Fokus mandiri", desc: "Deep work, analisis sendiri, hasil personal", value: "solo" },
-      { emoji: "🌀", title: "Dinamis & fleksibel", desc: "Berpindah project, multi-tasking, adaptif", value: "dynamic" },
-      { emoji: "📐", title: "Terstruktur & sistematis", desc: "Prosedur jelas, perencanaan matang", value: "structured" }
+      { id: "a", text: "SMA kelas 10–11, masih ada waktu banget", value: { stage: "early", academic: 2 } },
+      { id: "b", text: "SMA kelas 12 atau baru lulus, nilai rata-rata", value: { stage: "applying", academic: 2 } },
+      { id: "c", text: "SMA kelas 12 atau baru lulus, nilai cukup bagus", value: { stage: "applying", academic: 3 } },
+      { id: "d", text: "Udah kuliah di Indonesia, mau pindah atau lanjut S2", value: { stage: "transfer", academic: 3 } }
     ]
   },
   {
-    id: "strength",
-    text: "Apa kelebihanmu yang paling menonjol?",
-    sub: "Jujurlah — ini untuk analisis yang lebih akurat",
-    type: "option",
+    id: 3,
+    category: "Bahasa",
+    question: "Kemampuan bahasa Inggris kamu sekarang gimana?",
+    subtitle: "Be honest — ini nentuin banyak pilihan.",
     options: [
-      { emoji: "🧩", title: "Problem Solving", desc: "Memecahkan masalah kompleks dengan cepat", value: "problem" },
-      { emoji: "🗣️", title: "Komunikasi", desc: "Berbicara, presentasi, mempengaruhi orang lain", value: "comms" },
-      { emoji: "🔍", title: "Analitis", desc: "Detail-oriented, riset mendalam, logis", value: "analytical" },
-      { emoji: "💡", title: "Kreatif & Inovatif", desc: "Ide-ide segar yang belum terpikir orang lain", value: "creative" }
+      { id: "a", text: "Masih belajar, belum pede ngomong", value: { english: 1 } },
+      { id: "b", text: "Bisa baca & nulis, tapi ngomong masih kagok", value: { english: 2 } },
+      { id: "c", text: "Lumayan lancar, belum punya sertifikat IELTS/TOEFL", value: { english: 3 } },
+      { id: "d", text: "Udah punya IELTS/TOEFL atau yakin bisa dapet", value: { english: 4 } }
     ]
   },
   {
-    id: "lifestyle",
-    text: "Gaya hidup seperti apa yang kamu impikan?",
-    sub: "Ini akan mempengaruhi rekomendasi negara tujuanmu",
-    type: "option",
+    id: 4,
+    category: "Budget & Finansial",
+    question: "Kalau soal biaya, situasi keluarga kamu lebih ke mana?",
+    subtitle: "Ini nentuin apakah kita cari beasiswa, negara yang affordable, atau keduanya.",
     options: [
-      { emoji: "🏙️", title: "Kota metropolitan besar", desc: "Fast-paced, networking luas, banyak peluang", value: "city" },
-      { emoji: "🌿", title: "Tenang & seimbang", desc: "Work-life balance, alam, komunitas kecil", value: "calm" },
-      { emoji: "🌊", title: "Petualang & eksploratif", desc: "Sering travel, pengalaman baru, bebas", value: "adventure" },
-      { emoji: "🏠", title: "Nyaman & stabil", desc: "Keamanan, rutinitas sehat, komunitas hangat", value: "stable" }
+      { id: "a", text: "Butuh beasiswa penuh — tanpa itu gak bisa jalan", value: { budget: 1, scholarship: true } },
+      { id: "b", text: "Bisa partial — perlu beasiswa tapi ada sedikit tabungan", value: { budget: 2, scholarship: true } },
+      { id: "c", text: "Ada budget tapi mau yang cost-efficient, bukan yang paling mahal", value: { budget: 3, scholarship: false } },
+      { id: "d", text: "Budget bukan masalah utama, fokus ke kualitas universitas", value: { budget: 4, scholarship: false } }
     ]
   },
   {
-    id: "budget",
-    text: "Perkiraan budget kuliah per tahun (termasuk biaya hidup)?",
-    sub: "Ini membantu kami merekomendasikan negara yang realistis untukmu",
-    type: "option",
+    id: 5,
+    category: "Orang Tua",
+    question: "Orang tua kamu tau kamu pengen kuliah di luar negeri?",
+    subtitle: "Ini lebih penting dari yang kamu kira.",
     options: [
-      { emoji: "💰", title: "Di bawah $20k/tahun", desc: "Malaysia, Eropa Timur, beberapa kampus di Asia", value: "low" },
-      { emoji: "💰💰", title: "$20k – $35k/tahun", desc: "Australia regional, Selandia Baru, sebagian Eropa", value: "mid" },
-      { emoji: "💰💰💰", title: "$35k – $55k/tahun", desc: "Australia metro, UK, Kanada", value: "high" },
-      { emoji: "✨", title: "Terbuka / fleksibel", desc: "Prioritaskan kualitas, budget menyesuaikan", value: "flex" }
+      { id: "a", text: "Belum tau sama sekali, aku belum berani bilang", value: { parentSupport: 1 } },
+      { id: "b", text: "Tau, tapi belum yakin — masih 'kita lihat nanti'", value: { parentSupport: 2 } },
+      { id: "c", text: "Tau dan mulai terbuka, tapi masih ada kekhawatiran finansial", value: { parentSupport: 3 } },
+      { id: "d", text: "Tau dan support — tinggal eksekusi", value: { parentSupport: 4 } }
     ]
   },
   {
-    id: "language",
-    text: "Seberapa nyaman kamu dengan Bahasa Inggris?",
-    sub: "Tidak ada jawaban yang salah, ini murni untuk rekomendasi",
-    type: "option",
+    id: 6,
+    category: "Tujuan Karir",
+    question: "Setelah lulus, kamu maunya gimana?",
+    subtitle: "Ini nentuin jurusan dan negara yang paling makes sense.",
     options: [
-      { emoji: "🌟", title: "Sangat lancar", desc: "IELTS 7+ / TOEFL 100+, percaya diri berbicara", value: "fluent" },
-      { emoji: "👍", title: "Cukup baik", desc: "Bisa berkomunikasi, butuh sedikit latihan", value: "good" },
-      { emoji: "📖", title: "Masih belajar", desc: "Memahami tapi butuh improvement signifikan", value: "learning" },
-      { emoji: "🌱", title: "Masih dasar", desc: "Baru mulai, butuh persiapan lebih lama", value: "basic" }
+      { id: "a", text: "Balik ke Indonesia dan kerja atau buka usaha di sini", value: { career: "indonesia", region: ["europe","sea"] } },
+      { id: "b", text: "Kerja dulu di luar negeri beberapa tahun, baru balik", value: { career: "work-abroad", region: ["uk","australia","europe"] } },
+      { id: "c", text: "Explore dulu, belum pasti mau balik atau gak", value: { career: "explore", region: ["europe","sea","uk"] } },
+      { id: "d", text: "Pengen tinggal dan settle di luar negeri", value: { career: "migrate", region: ["australia","canada","europe"] } }
     ]
   },
   {
-    id: "goal",
-    text: "Apa tujuan utama kuliah di luar negeri bagimu?",
-    sub: "Pilih yang paling mencerminkan motivasimu",
-    type: "option",
+    id: 7,
+    category: "Gaya Hidup",
+    question: "Lingkungan kuliah seperti apa yang bakal bikin kamu berkembang?",
+    subtitle: "Jangan jawab yang 'kelihatan bagus' — jawab yang jujur.",
     options: [
-      { emoji: "🚀", title: "Karir internasional", desc: "Kerja di perusahaan global atau luar negeri", value: "career" },
-      { emoji: "🧠", title: "Ilmu & penelitian", desc: "Mendalami bidang tertentu setinggi mungkin", value: "research" },
-      { emoji: "🌐", title: "Jaringan global", desc: "Koneksi internasional, pengalaman multikultural", value: "network" },
-      { emoji: "🏆", title: "Prestige & pengakuan", desc: "Gelar dari universitas terkemuka dunia", value: "prestige" }
+      { id: "a", text: "Kota besar, ramai, banyak komunitas Indonesia", value: { lifestyle: "urban", indonesian_community: true } },
+      { id: "b", text: "Kota sedang, balance antara studi dan explore", value: { lifestyle: "balanced", indonesian_community: false } },
+      { id: "c", text: "Gak masalah kotanya — yang penting kampusnya bagus", value: { lifestyle: "flexible", indonesian_community: false } },
+      { id: "d", text: "Suasana yang tenang, fokus studi, gak terlalu ramai", value: { lifestyle: "quiet", indonesian_community: false } }
     ]
   },
   {
-    id: "challenge",
-    text: "Tantangan apa yang paling kamu khawatirkan?",
-    sub: "Kami bisa bantu persiapkan kamu menghadapinya",
-    type: "option",
+    id: 8,
+    category: "Kekhawatiran Terbesar",
+    question: "Apa yang paling bikin kamu khawatir soal kuliah di luar negeri?",
+    subtitle: "Satu yang paling dominan di kepala kamu.",
     options: [
-      { emoji: "🌏", title: "Culture shock", desc: "Adaptasi budaya dan lingkungan baru", value: "culture" },
-      { emoji: "📄", title: "Proses visa & dokumen", desc: "Ribet dan tidak tahu harus mulai dari mana", value: "visa" },
-      { emoji: "💸", title: "Keuangan", desc: "Biaya kuliah, beasiswa, biaya hidup", value: "finance" },
-      { emoji: "👨‍👩‍👧", title: "Jauh dari keluarga", desc: "Rindu rumah, komunikasi, dukungan keluarga", value: "family" }
-    ]
-  },
-  {
-    id: "interest_area",
-    text: "Bidang studi mana yang paling menarik hatimu?",
-    sub: "Ini akan langsung memengaruhi rekomendasi jurusan",
-    type: "option",
-    options: [
-      { emoji: "💊", title: "Kesehatan & Kedokteran", desc: "Medis, farmasi, kesehatan masyarakat, psikologi", value: "health" },
-      { emoji: "⚙️", title: "Teknik & Teknologi", desc: "Engineering, IT, robotika, arsitektur", value: "engineering" },
-      { emoji: "📊", title: "Bisnis & Ekonomi", desc: "Manajemen, akuntansi, finance, marketing", value: "business" },
-      { emoji: "🎓", title: "Sosial & Humaniora", desc: "Hukum, komunikasi, pendidikan, hubungan internasional", value: "social" }
-    ]
-  },
-  {
-    id: "timeline",
-    text: "Kapan rencanamu ingin mulai kuliah?",
-    sub: "Ini membantu kami menyusun timeline persiapan visamu",
-    type: "option",
-    options: [
-      { emoji: "⚡", title: "Sesegera mungkin", desc: "< 6 bulan ke depan", value: "asap" },
-      { emoji: "📅", title: "6–12 bulan lagi", desc: "Masih ada waktu persiapan", value: "soon" },
-      { emoji: "🗓️", title: "1–2 tahun lagi", desc: "Masih lama, mau persiapan matang", value: "later" },
-      { emoji: "🤔", title: "Belum pasti", desc: "Masih mengeksplorasi opsi", value: "unsure" }
-    ]
-  },
-  {
-    id: "dream_country",
-    text: "Ada negara impian yang sudah ada di pikiranmu?",
-    sub: "Ini membantu kami memvalidasi atau memperluas pilihanmu",
-    type: "option",
-    options: [
-      { emoji: "🇦🇺", title: "Australia / NZ", desc: "Lifestyle bagus, english speaking, aman", value: "aus" },
-      { emoji: "🇬🇧", title: "UK / Eropa", desc: "Prestige tinggi, sejarah & budaya kaya", value: "uk" },
-      { emoji: "🇺🇸", title: "Amerika / Kanada", desc: "Universitas world-class, peluang karir luas", value: "usa" },
-      { emoji: "🌏", title: "Asia / Lainnya", desc: "Lebih terjangkau, dekat dengan Indonesia", value: "asia" }
+      { id: "a", text: "Biaya — takut gak mampu dan jadi beban keluarga", value: { fear: "cost" } },
+      { id: "b", text: "Visa — takut ditolak dan semua usaha sia-sia", value: { fear: "visa" } },
+      { id: "c", text: "Sendirian — jauh dari keluarga dan lingkungan yang dikenal", value: { fear: "loneliness" } },
+      { id: "d", text: "Kemampuan — takut gak cukup pintar atau qualified", value: { fear: "capability" } }
     ]
   }
 ];
 
+// ═══════════════ LABEL MAPS (untuk WA message & preview) ═══════════════
+const LABEL_MAPS = {
+  stage: {
+    early:    "SMA kelas 10–11 (early bird)",
+    applying: "SMA kelas 12 / baru lulus",
+    transfer: "Sudah kuliah di Indonesia (transfer/S2)"
+  },
+  english: {
+    1: "Masih belajar",
+    2: "Bisa baca & nulis, speaking kagok",
+    3: "Lumayan lancar, belum IELTS/TOEFL",
+    4: "Punya IELTS/TOEFL atau yakin bisa dapet"
+  },
+  budget: {
+    1: "Butuh beasiswa penuh",
+    2: "Perlu beasiswa partial",
+    3: "Ada budget, cari cost-efficient",
+    4: "Budget bukan masalah utama"
+  },
+  parentSupport: {
+    1: "Belum tau / belum berani bilang",
+    2: "Tau tapi belum yakin",
+    3: "Mulai terbuka, masih khawatir finansial",
+    4: "Tau dan support penuh"
+  },
+  career: {
+    "indonesia":   "Balik ke Indonesia setelah lulus",
+    "work-abroad": "Kerja dulu di LN, lalu balik",
+    "explore":     "Explore dulu, belum pasti",
+    "migrate":     "Pengen settle di luar negeri"
+  },
+  lifestyle: {
+    urban:    "Kota besar + komunitas Indonesia",
+    balanced: "Kota sedang, balance studi & explore",
+    flexible: "Fleksibel, yang penting kampus bagus",
+    quiet:    "Suasana tenang, fokus studi"
+  },
+  fear: {
+    cost:        "Biaya / finansial",
+    visa:        "Visa rejection",
+    loneliness:  "Sendirian / jauh dari keluarga",
+    capability:  "Kemampuan diri / kualifikasi"
+  },
+  readiness: {
+    1: "Masih di tahap dreaming",
+    2: "Serius tapi bingung mulai",
+    3: "Udah riset, butuh guidance"
+  },
+  urgency: {
+    1: "Belum urgent",
+    2: "Mulai serius",
+    3: "Mau segera action",
+    4: "Deadline dekat, butuh bantuan SEKARANG"
+  }
+};
+
 // ═══════════════ STATE ═══════════════
 let currentQ = 0;
-let answers = {};
-let userName = "";
+let answers = {};        // { 0: {...value}, 1: {...value}, ... }
+let currentResult = null;
+let quizStartTime = null;
 
 // ═══════════════ NAVIGATION ═══════════════
 function show(id) {
@@ -1260,7 +1267,7 @@ function show(id) {
     el.style.display = "none";
   });
   const target = document.getElementById(id);
-  if (id === "screen-loading" || id === "screen-result") {
+  if (id === "screen-loading") {
     target.style.display = "flex";
   } else {
     target.style.display = "block";
@@ -1271,123 +1278,107 @@ function show(id) {
 function startQuiz() {
   currentQ = 0;
   answers = {};
-  // ── GTM: track mulai tes ──
-  gtmEvent('click_tes_minat', { button_location: 'quiz_landing' });
+  quizStartTime = Date.now();
+  // ── GTM: track quiz started ──
+  gtmEvent('quiz_started', {
+    quiz_name: 'study_abroad_profiler',
+    button_location: 'quiz_landing',
+    utm_source: getUTM('utm_source'),
+    utm_medium: getUTM('utm_medium'),
+    utm_campaign: getUTM('utm_campaign')
+  });
   show("screen-quiz");
   renderQuestion();
 }
 
 function restartQuiz() {
+  gtmEvent('quiz_restarted', { from_profile: currentResult?.profile?.type || '' });
   startQuiz();
 }
 
 function updateProgress() {
-  const pct = Math.round((currentQ / questions.length) * 100);
+  const pct = Math.round((currentQ / QUESTIONS.length) * 100);
   document.getElementById("progress-bar").style.width = pct + "%";
-  document.getElementById("progress-label").textContent = currentQ + " / " + questions.length;
+  document.getElementById("progress-label").textContent = currentQ + " / " + QUESTIONS.length;
 }
 
 function renderQuestion() {
-  const q = questions[currentQ];
+  const q = QUESTIONS[currentQ];
   updateProgress();
+
+  // toggle back button
+  const backBtn = document.getElementById("btn-back");
+  backBtn.disabled = currentQ === 0;
+  backBtn.style.opacity = currentQ === 0 ? "0.3" : "1";
 
   const wrap = document.getElementById("question-wrap");
   wrap.classList.remove("active");
 
   setTimeout(() => {
     let html = `
-      <div class="q-number">Pertanyaan ${currentQ + 1} dari ${questions.length}</div>
-      <div class="q-text">${q.text}</div>
-      <div class="q-sub">${q.sub}</div>
+      <div class="q-category">${q.category}</div>
+      <div class="q-number">Pertanyaan ${currentQ + 1} dari ${QUESTIONS.length}</div>
+      <div class="q-text">${q.question}</div>
+      <div class="q-sub">${q.subtitle}</div>
+      <div class="options-grid">
     `;
 
-    if (q.type === "text") {
-      const saved = answers[q.id] || "";
+    q.options.forEach((opt) => {
+      // Check if this option was previously selected
+      const storedVal = answers[currentQ];
+      const isSelected = storedVal && JSON.stringify(storedVal) === JSON.stringify(opt.value);
+      const selectedClass = isSelected ? "selected" : "";
       html += `
-        <div class="name-input-wrap">
-          <input class="name-input" id="text-input" type="text" placeholder="${q.placeholder}" value="${saved}"
-            oninput="handleTextInput(this.value)"
-            onkeydown="if(event.key==='Enter') nextQuestion()"
-          />
+        <div class="option-card ${selectedClass}" data-qidx="${currentQ}" data-optid="${opt.id}" onclick="selectOption(${currentQ}, '${opt.id}', this)">
+          <div class="option-letter">${opt.id.toUpperCase()}</div>
+          <div class="option-text">${opt.text}</div>
+          <div class="option-check">✓</div>
         </div>
       `;
-    } else {
-      html += `<div class="options-grid">`;
-      q.options.forEach((opt, i) => {
-        const selected = answers[q.id] === opt.value ? "selected" : "";
-        html += `
-          <div class="option-card ${selected}" onclick="selectOption('${q.id}', '${opt.value}', this)">
-            <div class="option-check">✓</div>
-            <div class="option-emoji">${opt.emoji}</div>
-            <div class="option-content">
-              <div class="option-title">${opt.title}</div>
-              <div class="option-desc">${opt.desc}</div>
-            </div>
-          </div>
-        `;
-      });
-      html += `</div>`;
-    }
+    });
 
+    html += `</div>`;
     wrap.innerHTML = html;
     wrap.classList.add("active");
-
-    // focus text input
-    if (q.type === "text") {
-      setTimeout(() => document.getElementById("text-input")?.focus(), 100);
-    }
-
-    updateNextBtn();
   }, 50);
 }
 
-function selectOption(qid, value, el) {
-  // deselect all
+function selectOption(qIdx, optId, el) {
+  // Prevent double-select during transition
+  if (el.classList.contains("selected-done")) return;
+
+  // Find option value
+  const q = QUESTIONS[qIdx];
+  const opt = q.options.find(o => o.id === optId);
+  if (!opt) return;
+
+  // Deselect all siblings
   el.closest(".options-grid").querySelectorAll(".option-card").forEach(c => c.classList.remove("selected"));
   el.classList.add("selected");
-  answers[qid] = value;
-  updateNextBtn();
-  // auto-advance after short delay
-  setTimeout(() => { if (currentQ < questions.length - 1) nextQuestion(); }, 350);
-}
 
-function handleTextInput(val) {
-  answers[questions[currentQ].id] = val.trim();
-  if (val.trim() === "Saya" || val.trim() === "saya") {
-    // gentle hint
-  }
-  updateNextBtn();
-}
+  // Store answer
+  answers[qIdx] = opt.value;
 
-function updateNextBtn() {
-  const q = questions[currentQ];
-  const btn = document.getElementById("btn-next");
-  let hasAnswer = false;
+  // ── GTM: track each answer ──
+  gtmEvent('quiz_question_answered', {
+    question_number: qIdx + 1,
+    question_category: q.category,
+    answer_id: optId,
+    answer_text: opt.text
+  });
 
-  if (q.type === "text") {
-    hasAnswer = (answers[q.id] || "").length >= 2;
-  } else {
-    hasAnswer = !!answers[q.id];
-  }
+  // Mark as done so double-click does nothing
+  el.classList.add("selected-done");
 
-  btn.classList.toggle("ready", hasAnswer);
-  btn.textContent = currentQ === questions.length - 1 ? "Lihat Hasil →" : "Lanjut →";
-}
-
-function nextQuestion() {
-  const q = questions[currentQ];
-  // validate
-  if (q.type === "text" && (answers[q.id] || "").length < 2) return;
-  if (q.type === "option" && !answers[q.id]) return;
-
-  if (q.id === "name") userName = answers[q.id];
-
-  if (currentQ < questions.length - 1) {
-    currentQ++;
-    renderQuestion();
-  } else {
-    generateResult();
-  }
+  // Auto-advance after a short delay
+  setTimeout(() => {
+    if (currentQ < QUESTIONS.length - 1) {
+      currentQ++;
+      renderQuestion();
+    } else {
+      generateResult();
+    }
+  }, 420);
 }
 
 function prevQuestion() {
@@ -1399,191 +1390,159 @@ function prevQuestion() {
   }
 }
 
-// ═══════════════ SCORING ENGINE ═══════════════
-const SCORING_MAP = {
-  passion: {
-    tech:     { ANALYTICAL: 3, STRUCTURED: 1 },
-    creative: { CREATIVE: 3, SOCIAL: 1 },
-    science:  { ANALYTICAL: 3, STRUCTURED: 2 },
-    business: { SOCIAL: 2, STRUCTURED: 2, ANALYTICAL: 1 }
-  },
-  workstyle: {
-    team:       { SOCIAL: 3, CREATIVE: 1 },
-    solo:       { ANALYTICAL: 3, STRUCTURED: 1 },
-    dynamic:    { CREATIVE: 2, SOCIAL: 2 },
-    structured: { STRUCTURED: 3, ANALYTICAL: 1 }
-  },
-  strength: {
-    problem:    { ANALYTICAL: 3, STRUCTURED: 1 },
-    comms:      { SOCIAL: 3, CREATIVE: 1 },
-    analytical: { ANALYTICAL: 3, STRUCTURED: 2 },
-    creative:   { CREATIVE: 3, SOCIAL: 1 }
-  },
-  lifestyle: {
-    city:      { SOCIAL: 2, ANALYTICAL: 1 },
-    calm:      { STRUCTURED: 2, ANALYTICAL: 1 },
-    adventure: { CREATIVE: 3, SOCIAL: 1 },
-    stable:    { STRUCTURED: 3 }
-  },
-  goal: {
-    career:   { SOCIAL: 2, STRUCTURED: 2 },
-    research: { ANALYTICAL: 3, STRUCTURED: 1 },
-    network:  { SOCIAL: 3, CREATIVE: 1 },
-    prestige: { ANALYTICAL: 2, STRUCTURED: 2 }
-  },
-  interest_area: {
-    health:      { ANALYTICAL: 3, STRUCTURED: 2 },
-    engineering: { ANALYTICAL: 2, STRUCTURED: 3 },
-    business:    { SOCIAL: 2, STRUCTURED: 2, ANALYTICAL: 1 },
-    social:      { SOCIAL: 3, CREATIVE: 2 }
+// Keyboard support for desktop: 1-4 selects options
+document.addEventListener('keydown', (e) => {
+  if (document.getElementById('screen-quiz').style.display === 'block') {
+    const idx = ['1','2','3','4'].indexOf(e.key);
+    if (idx >= 0) {
+      const cards = document.querySelectorAll('#question-wrap .option-card');
+      if (cards[idx]) cards[idx].click();
+    } else if (e.key === 'ArrowLeft' || e.key === 'Backspace') {
+      prevQuestion();
+    }
   }
-};
+});
 
-const PROFILES = {
-  ANALYTICAL_STRUCTURED: { personality_type: "The Methodical Thinker",     title: "Pemikir Sistematis dengan Logika Tajam",          tagline: "Kamu tidak hanya punya ide — kamu punya rencana untuk mewujudkannya. Kombinasi ketajaman analitis dan keteraturan berpikir membuat kamu unggul di bidang yang menuntut presisi." },
-  ANALYTICAL_CREATIVE:   { personality_type: "The Curious Innovator",      title: "Inovator yang Didorong Rasa Ingin Tahu",          tagline: "Kamu punya kemampuan langka: berpikir logis sekaligus berkreasi tanpa batas. Orang-orang sepertimu yang menciptakan terobosan baru di dunia riset dan teknologi." },
-  ANALYTICAL_SOCIAL:     { personality_type: "The Strategic Communicator", title: "Komunikator Strategis yang Berbasis Data",        tagline: "Kamu tahu cara membaca situasi dan menyampaikan ide dengan tepat. Kemampuan analitis yang dibalut keluwesan sosial adalah kombinasi yang dicari banyak organisasi global." },
-  CREATIVE_SOCIAL:       { personality_type: "The Global Connector",       title: "Kreator yang Menginspirasi Banyak Orang",         tagline: "Dunia butuh orang sepertimu — yang bisa menciptakan sekaligus menggerakkan orang lain. Energimu menular dan ide-idemu punya dampak nyata." },
-  CREATIVE_STRUCTURED:   { personality_type: "The Visionary Builder",      title: "Pembangun Visi dengan Eksekusi Kuat",             tagline: "Kamu bukan sekadar bermimpi — kamu membangun. Kreativitasmu punya fondasi yang kuat karena kamu tahu cara menjalankan rencana dari awal sampai akhir." },
-  CREATIVE_ANALYTICAL:   { personality_type: "The Design Thinker",         title: "Pemikir Desain dengan Kepekaan Tinggi",           tagline: "Kamu melihat dunia secara berbeda — menemukan pola di balik kekacauan dan solusi di balik masalah. Inilah yang membuat kamu istimewa di era penuh kompleksitas ini." },
-  SOCIAL_STRUCTURED:     { personality_type: "The Empathetic Leader",      title: "Pemimpin Empatik yang Berorientasi Dampak",      tagline: "Kamu tidak hanya memimpin — kamu membawa orang bersamamu. Kemampuanmu memahami orang lain sambil tetap terorganisasi adalah kunci kepemimpinan efektif." },
-  SOCIAL_CREATIVE:       { personality_type: "The Cultural Bridge",        title: "Jembatan Budaya yang Penuh Empati",               tagline: "Kamu lahir untuk berinteraksi lintas budaya. Di mana pun kamu berada, kamu membuat orang merasa diterima — kualitas yang sangat berharga di dunia yang semakin global." },
-  STRUCTURED_ANALYTICAL: { personality_type: "The Methodical Thinker",     title: "Pemikir Sistematis dengan Logika Tajam",          tagline: "Kamu tidak hanya punya ide — kamu punya rencana untuk mewujudkannya. Kombinasi ketajaman analitis dan keteraturan berpikir membuat kamu unggul di bidang yang menuntut presisi." },
-  STRUCTURED_CREATIVE:   { personality_type: "The Visionary Builder",      title: "Pembangun Visi dengan Eksekusi Kuat",             tagline: "Kamu bukan sekadar bermimpi — kamu membangun. Kreativitasmu punya fondasi yang kuat karena kamu tahu cara menjalankan rencana dari awal sampai akhir." },
-  STRUCTURED_SOCIAL:     { personality_type: "The Empathetic Leader",      title: "Pemimpin Empatik yang Berorientasi Dampak",      tagline: "Kamu tidak hanya memimpin — kamu membawa orang bersamamu. Kemampuanmu memahami orang lain sambil tetap terorganisasi adalah kunci kepemimpinan efektif." },
-  SOCIAL_ANALYTICAL:     { personality_type: "The Strategic Communicator", title: "Komunikator Strategis yang Berbasis Data",        tagline: "Kamu tahu cara membaca situasi dan menyampaikan ide dengan tepat. Kemampuan analitis yang dibalut keluwesan sosial adalah kombinasi yang dicari banyak organisasi global." }
-};
+// ═══════════════ SCORING ENGINE (from beewithnabila-quiz.jsx) ═══════════════
+function calculateResult() {
+  // Flatten all answer values into single object
+  const vals = Object.values(answers).reduce((acc, v) => ({ ...acc, ...v }), {});
 
-const COUNTRY_DB = {
-  aus: {
-    primary:   { flag: "🇦🇺", name: "Australia",       why: "Lifestyle seimbang, aman, dan kampus world-class dengan jalur visa student yang terstruktur" },
-    secondary: { flag: "🇳🇿", name: "Selandia Baru",  why: "Biaya lebih terjangkau dari Australia dengan kualitas pendidikan yang setara" },
-    tertiary:  { flag: "🇸🇬", name: "Singapura",      why: "Hub Asia Tenggara dengan universitas top dunia, dekat dengan Indonesia" }
-  },
-  uk: {
-    primary:   { flag: "🇬🇧", name: "United Kingdom", why: "Reputasi akademis tertinggi di dunia dengan program studi 3 tahun yang efisien" },
-    secondary: { flag: "🇮🇪", name: "Irlandia",       why: "Bahasa Inggris, biaya lebih rendah dari UK, dan akses ke pasar Eropa" },
-    tertiary:  { flag: "🇳🇱", name: "Belanda",        why: "Banyak program bahasa Inggris dengan biaya lebih terjangkau di Eropa" }
-  },
-  usa: {
-    primary:   { flag: "🇺🇸", name: "Amerika Serikat",why: "Universitas terbaik dunia dengan ekosistem startup dan riset yang tak tertandingi" },
-    secondary: { flag: "🇨🇦", name: "Kanada",         why: "Ramah imigran, biaya lebih terjangkau dari AS, dan kualitas hidup tinggi" },
-    tertiary:  { flag: "🇦🇺", name: "Australia",      why: "Alternatif English-speaking dengan peluang kerja pasca studi yang besar" }
-  },
-  asia: {
-    primary:   { flag: "🇸🇬", name: "Singapura",      why: "NUS dan NTU masuk top 20 dunia, dekat Indonesia, dan hub bisnis Asia" },
-    secondary: { flag: "🇲🇾", name: "Malaysia",       why: "Biaya paling terjangkau, budaya familiar, dan banyak pilihan universitas" },
-    tertiary:  { flag: "🇯🇵", name: "Jepang",         why: "Teknologi maju, beasiswa pemerintah tersedia, dan pengalaman budaya yang unik" }
+  const readiness = vals.readiness || 1;
+  const budget = vals.budget || 2;
+  const english = vals.english || 2;
+  const parentSupport = vals.parentSupport || 2;
+  const stage = vals.stage || "applying";
+  const scholarship = vals.scholarship || false;
+  const career = vals.career || "explore";
+  const fear = vals.fear || "cost";
+  const lifestyle = vals.lifestyle || "balanced";
+
+  let profile, countries;
+
+  // Fear response
+  const fearResponses = {
+    cost: {
+      label: "Soal biaya",
+      text: "Soal biaya — ini yang paling sering bikin orang mundur sebelum coba. Tapi ada lebih banyak opsi affordable yang gak banyak dibahas orang, termasuk universitas yang tuition-nya hampir 0 atau beasiswa yang timeline-nya lebih pendek dari yang kamu kira."
+    },
+    visa: {
+      label: "Soal visa",
+      text: "Visa rejection itu nyata, tapi bisa di-minimize dengan persiapan yang bener. Mayoritas penolakan terjadi karena kesalahan dokumen yang sebenarnya bisa dihindari — bukan karena profil kamu kurang."
+    },
+    loneliness: {
+      label: "Soal sendirian",
+      text: "Rasa ini valid banget. Tapi komunitas Indonesia di luar negeri jauh lebih besar dari yang kamu bayangkan — dan ini justru yang bikin banyak orang grow paling cepat karena dipaksa keluar dari zona nyaman sambil tetap punya support system."
+    },
+    capability: {
+      label: "Soal kemampuan",
+      text: "Ini imposter syndrome berbicara. Universitas luar negeri menerima ribuan mahasiswa internasional tiap tahun — termasuk dari Indonesia dengan background biasa. Yang membedakan yang diterima dan yang enggak bukan kepintaran, tapi strategi aplikasi."
+    }
+  };
+
+  const fearResponse = fearResponses[fear];
+
+  // ── PROFILE DETERMINATION (logic from JSX) ──
+  // Priority 1: Scholarship Hunter (budget ≤ 1 OR needs scholarship)
+  if (budget <= 1 || scholarship) {
+    profile = {
+      type: "The Scholarship Hunter",
+      emoji: "🎯",
+      tagline: "Kamu butuh jalan yang smart, bukan yang mahal.",
+      description: "Finansial adalah constraint utama kamu — dan itu bukan penghalang, itu filter. Kita harus cari universitas yang punya scholarship program kuat untuk mahasiswa internasional, atau negara dengan biaya hidup + tuition yang realistis tanpa harus fully funded.",
+      urgencyNote: readiness >= 3
+        ? "Kamu udah di titik yang serius — ini saatnya mulai konkret. Deadline banyak scholarship punya timeline 6–12 bulan sebelum intake."
+        : "Kamu masih punya waktu untuk persiapan yang solid. Jangan buru-buru — fokus dulu ke riset scholarship yang realistis."
+    };
+    countries = budget <= 1
+      ? [
+          { name: "Jerman",   flag: "🇩🇪", reason: "Tuition hampir 0 di universitas negeri, bahkan untuk mahasiswa internasional. Butuh persiapan bahasa tapi worth it.", difficulty: "Medium" },
+          { name: "Taiwan",   flag: "🇹🇼", reason: "Beasiswa MOE Taiwan salah satu yang paling accessible untuk WNI. Biaya hidup rendah, kualitas pendidikan solid.", difficulty: "Medium" },
+          { name: "Belanda",  flag: "🇳🇱", reason: "Banyak program English-taught dengan scholarship khusus dari kampus (Holland Scholarship, Orange Tulip, dll).", difficulty: "Medium-High" }
+        ]
+      : [
+          { name: "Malaysia", flag: "🇲🇾", reason: "Biaya paling terjangkau dengan universitas yang diakui internasional. Transisi paling smooth dari Indonesia.", difficulty: "Low" },
+          { name: "Jerman",   flag: "🇩🇪", reason: "Tuition rendah, kualitas pendidikan top. Cocok kalau kamu ada sedikit tabungan buat biaya hidup.", difficulty: "Medium" },
+          { name: "Hungaria", flag: "🇭🇺", reason: "Biaya hidup rendah, gateway ke Eropa. Program Stipendium Hungaricum untuk WNI.", difficulty: "Low-Medium" }
+        ];
   }
-};
-
-function adjustCountriesByBudget(countrySet, budget) {
-  const list = [countrySet.primary, countrySet.secondary, countrySet.tertiary];
-  if (budget === "low") {
-    return [
-      { flag: "🇲🇾", name: "Malaysia",      why: "Biaya kuliah dan hidup paling terjangkau, cocok untuk budget di bawah $20k/tahun" },
-      countrySet.tertiary,
-      { flag: "🇩🇪", name: "Jerman",        why: "Banyak universitas negeri gratis atau sangat murah dengan kualitas internasional" }
+  // Priority 2: Qualified Explorer (budget ≥ 3 AND english ≥ 3)
+  else if (budget >= 3 && english >= 3) {
+    profile = {
+      type: "The Qualified Explorer",
+      emoji: "🌍",
+      tagline: "Kamu punya modal — sekarang tinggal arahkan ke yang tepat.",
+      description: "Kamu berada di posisi yang kuat. Budget ada, bahasa oke, tinggal nentuin mau yang paling prestige, paling career-focused, atau yang paling fit sama kepribadian kamu.",
+      urgencyNote: stage === "applying"
+        ? "Timing kamu pas — kalau mulai sekarang, bisa kejar intake tahun ini. Deadline aplikasi biasanya 6–9 bulan sebelum intake."
+        : "Ada waktu untuk persiapan yang lebih matang. Manfaatkan itu untuk riset universitas yang benar-benar fit — bukan cuma yang terkenal."
+    };
+    countries = career === "migrate"
+      ? [
+          { name: "Australia", flag: "🇦🇺", reason: "Post-study work visa paling accessible, komunitas Indonesia besar. Pathway ke PR jelas.", difficulty: "Medium" },
+          { name: "Kanada",    flag: "🇨🇦", reason: "Pathway ke PR salah satu yang paling jelas untuk international graduate. Quality of life tinggi.", difficulty: "Medium-High" },
+          { name: "UK",        flag: "🇬🇧", reason: "Graduate Route visa 2 tahun setelah lulus. Brand recognition universitas kuat global.", difficulty: "High" }
+        ]
+      : [
+          { name: "UK",        flag: "🇬🇧", reason: "Durasi studi lebih pendek (3 tahun S1), brand recognition kuat. Cocok kalau target universitas top-tier.", difficulty: "High" },
+          { name: "Belanda",   flag: "🇳🇱", reason: "English-taught programs terbanyak di Eropa, biaya lebih masuk akal dari UK. Quality of teaching tinggi.", difficulty: "Medium-High" },
+          { name: "Australia", flag: "🇦🇺", reason: "Kualitas pendidikan tinggi, komunitas Indonesia terbesar di LN. Timezone dekat Indonesia.", difficulty: "Medium" }
+        ];
+  }
+  // Priority 3: Early Bird (SMA kelas 10-11)
+  else if (stage === "early") {
+    profile = {
+      type: "The Early Bird",
+      emoji: "⏰",
+      tagline: "Kamu mulai lebih awal dari 90% orang — itu keuntungan besar.",
+      description: "Masih kelas 10–11 artinya kamu punya waktu yang kebanyakan orang gak punya. Ini bukan saatnya buru-buru milih universitas — ini saatnya bangun fondasi yang kuat supaya pilihan kamu nanti jauh lebih banyak.",
+      urgencyNote: "Fokus sekarang: tingkatkan bahasa Inggris (target IELTS 6.5+ atau TOEFL 80+), mulai riset negara, dan mulai bicara ke orang tua. Universitas bisa dipilih nanti — tapi foundation gak bisa di-build terburu-buru."
+    };
+    countries = [
+      { name: "Belanda",       flag: "🇳🇱", reason: "Banyak program S1 dalam bahasa Inggris, proses aplikasi relatif straightforward untuk WNI.", difficulty: "Medium" },
+      { name: "Australia",     flag: "🇦🇺", reason: "Sistem pendidikan mirip Indonesia, komunitas besar, dan pathway post-study jelas.", difficulty: "Medium" },
+      { name: "Korea Selatan", flag: "🇰🇷", reason: "Biaya relatif terjangkau, banyak beasiswa pemerintah untuk WNI (KGSP, GKS).", difficulty: "Medium" }
     ];
   }
-  return list;
-}
-
-const MAJOR_DB = {
-  health: {
-    ANALYTICAL:  ["Kedokteran Umum", "Farmasi Klinis", "Bioteknologi", "Public Health", "Neuroscience"],
-    CREATIVE:    ["Desain Produk Medis", "Health Communication", "Psikologi Klinis", "Occupational Therapy", "Bioinformatika"],
-    SOCIAL:      ["Psikologi", "Keperawatan Internasional", "Public Health", "Health Policy", "Social Work"],
-    STRUCTURED:  ["Farmasi", "Kedokteran Gigi", "Fisioterapi", "Manajemen Rumah Sakit", "Biomedical Science"]
-  },
-  engineering: {
-    ANALYTICAL:  ["Computer Science", "Data Science & AI", "Electrical Engineering", "Aerospace Engineering", "Robotika"],
-    CREATIVE:    ["Arsitektur", "Industrial Design", "UX Engineering", "Game Development", "Creative Technology"],
-    SOCIAL:      ["Civil Engineering", "Environmental Engineering", "Urban Planning", "Human-Computer Interaction", "Engineering Management"],
-    STRUCTURED:  ["Mechanical Engineering", "Chemical Engineering", "Civil Engineering", "Software Engineering", "Systems Engineering"]
-  },
-  business: {
-    ANALYTICAL:  ["Finance & Investment", "Data Analytics", "Actuarial Science", "Economics", "Business Intelligence"],
-    CREATIVE:    ["Marketing & Branding", "Digital Marketing", "Entrepreneurship", "Fashion Business", "Media Business"],
-    SOCIAL:      ["International Business", "Human Resources", "Public Relations", "Tourism Management", "Non-profit Management"],
-    STRUCTURED:  ["Akuntansi", "Supply Chain Management", "Operations Management", "Business Administration", "Project Management"]
-  },
-  social: {
-    ANALYTICAL:  ["Hubungan Internasional", "Political Science", "Law", "Journalism", "Policy Studies"],
-    CREATIVE:    ["Komunikasi", "Film & Media Studies", "Creative Writing", "Desain Komunikasi Visual", "Advertising"],
-    SOCIAL:      ["Psikologi Sosial", "Sosiologi", "Pendidikan", "Counseling", "Community Development"],
-    STRUCTURED:  ["Hukum", "Administrasi Publik", "Pendidikan", "Library Science", "Urban Studies"]
+  // Priority 4: Realistic Dreamer (default)
+  else {
+    profile = {
+      type: "The Realistic Dreamer",
+      emoji: "💭",
+      tagline: "Mimpinya nyata — sekarang kita buat plannya nyata juga.",
+      description: "Kamu serius tapi masih ada beberapa hal yang perlu dikuatkan — dan itu normal. Yang penting bukan mulai dari sempurna, tapi mulai dari yang realistis dan build dari sana.",
+      urgencyNote: parentSupport <= 2
+        ? "Satu hal yang perlu diselesaikan dulu: bicara ke orang tua. Tanpa itu, semua persiapan lain akan lebih sulit. Nabila bisa bantu kamu menyusun pendekatan yang masuk akal buat mereka."
+        : "Kamu udah punya support yang cukup — sekarang tinggal eksekusi step by step. Mulai dari yang paling realistis dulu, jangan langsung ke universitas top-10."
+    };
+    countries = [
+      { name: "Malaysia", flag: "🇲🇾", reason: "Transisi paling smooth dari Indonesia, biaya paling terjangkau. Cocok untuk memulai tanpa pressure tinggi.", difficulty: "Low" },
+      { name: "Taiwan",   flag: "🇹🇼", reason: "Beasiswa available, biaya hidup rendah, kualitas pendidikan solid. Program bahasa Inggris cukup banyak.", difficulty: "Medium" },
+      { name: "Jerman",   flag: "🇩🇪", reason: "Tuition gratis di universitas negeri — butuh persiapan bahasa tapi worth it long-term.", difficulty: "Medium" }
+    ];
   }
-};
 
-const TRAIT_DB = {
-  "The Methodical Thinker":     [{ emoji: "🧩", name: "Problem Solver",      desc: "Kamu mendekati masalah secara sistematis — memecah kompleksitas menjadi langkah yang bisa dieksekusi." }, { emoji: "🔬", name: "Detail-Oriented",    desc: "Hal kecil yang terlewat orang lain, kamu tangkap. Ini aset besar di dunia riset dan teknologi." }, { emoji: "📐", name: "Terstruktur",         desc: "Rencana yang matang bukan pilihan bagimu — itu kebutuhan. Dan hasilnya selalu lebih baik." }],
-  "The Curious Innovator":      [{ emoji: "🔭", name: "Rasa Ingin Tahu",    desc: "Kamu tidak puas dengan jawaban di permukaan — selalu ingin tahu lebih dalam dari yang terlihat." }, { emoji: "💡", name: "Inovatif",            desc: "Ide-idemu sering datang dari koneksi tak terduga antar bidang yang berbeda." }, { emoji: "🧠", name: "Pemikir Mandiri",     desc: "Kamu nyaman bekerja sendiri dalam waktu lama untuk menyelesaikan masalah yang rumit." }],
-  "The Strategic Communicator": [{ emoji: "📊", name: "Berbasis Data",       desc: "Argumenmu kuat karena didukung fakta dan analisis, bukan sekadar intuisi." }, { emoji: "🗣️", name: "Komunikator Efektif", desc: "Kamu bisa mengubah data kompleks menjadi cerita yang mudah dipahami siapa pun." }, { emoji: "🎯", name: "Berorientasi Hasil",  desc: "Setiap percakapan dan presentasimu selalu punya tujuan yang jelas." }],
-  "The Global Connector":       [{ emoji: "🌍", name: "Warga Global",        desc: "Kamu merasa nyaman di mana pun — budaya baru adalah petualangan, bukan ancaman." }, { emoji: "✨", name: "Kreatif & Ekspresif",  desc: "Ide-idemu menular. Orang-orang tertarik mengikuti visimu secara alami." }, { emoji: "🤝", name: "Pembangun Komunitas",  desc: "Di mana pun kamu berada, kamu secara alami menciptakan koneksi yang bermakna." }],
-  "The Visionary Builder":      [{ emoji: "🏗️", name: "Eksekutor",          desc: "Kamu tidak hanya bermimpi besar — kamu tahu cara membangun jalan menuju sana." }, { emoji: "🎨", name: "Kreatif Terarah",      desc: "Kreativitasmu punya struktur. Hasilnya bukan sekadar indah, tapi juga fungsional." }, { emoji: "🚀", name: "Ambisius",             desc: "Target besar tidak membuatmu gentar — justru memotivasimu untuk bekerja lebih keras." }],
-  "The Design Thinker":         [{ emoji: "👁️", name: "Peka Estetika",      desc: "Kamu melihat keindahan dan pola di tempat yang orang lain tidak perhatikan." }, { emoji: "🔄", name: "Adaptif",              desc: "Kamu bisa berpindah antara berpikir logis dan kreatif dengan mudah — kemampuan langka." }, { emoji: "💭", name: "Pemikir Konseptual",   desc: "Ide-idemu sering melampaui zamannya. Itulah mengapa kamu cocok di dunia inovasi." }],
-  "The Empathetic Leader":      [{ emoji: "❤️", name: "Empatik",             desc: "Kamu memimpin dengan hati — dan orang-orang benar-benar mau mengikutimu." }, { emoji: "📋", name: "Terorganisasi",        desc: "Tim yang kamu pimpin selalu tahu apa yang harus dilakukan karena kamu menyiapkan segalanya." }, { emoji: "🎖️", name: "Berorientasi Dampak", desc: "Kesuksesan bagimu bukan sekadar angka — tapi perubahan nyata yang kamu buat." }],
-  "The Cultural Bridge":        [{ emoji: "🌈", name: "Inklusif",             desc: "Kamu secara alami membuat semua orang merasa diterima dan dihargai." }, { emoji: "🎭", name: "Adaptif Budaya",       desc: "Berpindah antara konteks budaya yang berbeda terasa mudah bagimu." }, { emoji: "💬", name: "Pendengar Aktif",       desc: "Orang-orang merasa dimengerti saat berbicara denganmu — ini hadiah yang luar biasa." }]
-};
-
-const INSIGHT_DB = {
-  "The Methodical Thinker":     (n,c) => `${n}, kemampuan analitismu yang tajam ditambah cara berpikir yang sistematis adalah kombinasi langka yang sangat dicari di dunia akademis dan industri global. Di ${c}, kamu akan menemukan lingkungan yang menghargai presisi dan rigor intelektual seperti caramu berpikir. Proses persiapan dokumen dan visa bisa terasa kompleks, tapi dengan panduan yang tepat semua bisa berjalan lancar. Nabila siap bantu kamu memetakan setiap langkahnya dari awal.`,
-  "The Curious Innovator":      (n,c) => `${n}, rasa ingin tahumu yang besar adalah bahan bakar terbaik untuk karir riset dan inovasi kelas dunia. Kampus-kampus di ${c} punya ekosistem yang dirancang untuk orang sepertimu — yang tidak puas dengan jawaban biasa. Segera petakan universitas dan program yang paling sesuai, karena proses visa butuh persiapan lebih awal dari yang banyak orang kira. Nabila bisa pastikan tidak ada langkah yang terlewat.`,
-  "The Strategic Communicator": (n,c) => `${n}, kemampuanmu menggabungkan analisis data dengan komunikasi yang kuat adalah keahlian langka yang akan membawamu jauh di ${c}. Baik di dunia akademis maupun profesional, profil sepertimu selalu dicari. Langkah paling strategis yang bisa kamu ambil sekarang adalah memulai persiapan visa dan dokumen sedini mungkin — dan Nabila hadir untuk membuat proses itu semudah dan secepat mungkin.`,
-  "The Global Connector":       (n,c) => `${n}, energi dan kreativitasmu adalah aset terbesar yang akan kamu bawa ke kampus impian. Di ${c}, kamu tidak hanya akan belajar — kamu akan membangun jaringan internasional yang bisa mengubah arah karirmu selamanya. Mulai persiapan sekarang, karena proses visa dan dokumen butuh waktu yang tidak sedikit. Nabila siap memastikan semua prosesnya berjalan tanpa hambatan.`,
-  "The Visionary Builder":      (n,c) => `${n}, visimu besar dan kemampuan eksekusimu nyata — kombinasi inilah yang membedakanmu dari kebanyakan orang. Di ${c}, kamu akan bertemu orang-orang sefrekuensi dan sistem yang mendukung ambisimu berkembang penuh. Proses visa bisa jadi bagian yang paling membingungkan, tapi dengan Nabila di sisimu, kamu bisa fokus pada yang lebih penting: mempersiapkan dirimu untuk sukses.`,
-  "The Design Thinker":         (n,c) => `${n}, cara pandangmu yang unik — gabungan antara logika dan estetika — adalah kekuatan yang akan menonjol di lingkungan internasional. Di ${c}, kamu akan menemukan program yang dirancang untuk orang-orang kreatif sekaligus analitis sepertimu. Jangan biarkan proses administrasi dan visa menjadi penghalang — Nabila siap menangani itu semua agar kamu bisa fokus pada hal yang lebih penting.`,
-  "The Empathetic Leader":      (n,c) => `${n}, kepemimpinanmu yang hangat dan terstruktur adalah kualitas yang akan membuatmu menonjol di kampus manapun. Di ${c}, kamu akan menemukan komunitas yang menghargai kolaborasi dan dampak sosial seperti yang kamu impikan. Pastikan persiapan visamu dimulai lebih awal agar tidak ada yang terburu-buru — dan Nabila bisa memastikan tidak ada dokumen yang terlewat.`,
-  "The Cultural Bridge":        (n,c) => `${n}, kemampuanmu membangun koneksi lintas budaya adalah bakat yang akan terus berkembang saat kamu belajar di luar negeri. Di ${c}, setiap hari adalah kesempatan untuk memperluas perspektifmu dan memperkuat identitasmu sebagai warga global. Langkah pertama yang paling penting adalah memastikan visamu diurus dengan benar sejak awal — dan itulah yang Nabila lakukan bersamamu.`
-};
-
-function buildStrengthBars(scores) {
-  const labels = { ANALYTICAL: "Kemampuan Analitis", CREATIVE: "Kreativitas & Inovasi", SOCIAL: "Kecerdasan Sosial", STRUCTURED: "Terorganisasi & Sistematis" };
-  const maxScore = Math.max(...Object.values(scores), 1);
-  return Object.entries(scores).sort((a,b) => b[1]-a[1]).map(([key,val]) => ({ label: labels[key], pct: Math.round((val/maxScore)*100) }));
-}
-
-function calculateResult() {
-  const a = answers;
-  const scores = { ANALYTICAL: 0, CREATIVE: 0, SOCIAL: 0, STRUCTURED: 0 };
-
-  ["passion","workstyle","strength","lifestyle","goal","interest_area"].forEach(field => {
-    const val = a[field];
-    if (!val || !SCORING_MAP[field]?.[val]) return;
-    Object.entries(SCORING_MAP[field][val]).forEach(([dim, pts]) => { scores[dim] += pts; });
-  });
-
-  // Bonus dari pertanyaan strength
-  if (a.strength === "analytical") scores.ANALYTICAL += 2;
-  if (a.strength === "creative")   scores.CREATIVE   += 2;
-  if (a.strength === "comms")      scores.SOCIAL     += 2;
-  if (a.strength === "problem")    scores.STRUCTURED += 1;
-
-  const sorted = Object.entries(scores).sort((a,b) => b[1]-a[1]);
-  const top1 = sorted[0][0], top2 = sorted[1][0];
-  const profile = PROFILES[`${top1}_${top2}`] || PROFILES[`${top2}_${top1}`] || PROFILES["ANALYTICAL_STRUCTURED"];
-
-  const countrySet = COUNTRY_DB[a.dream_country || "aus"] || COUNTRY_DB["aus"];
-  const countries  = adjustCountriesByBudget(countrySet, a.budget || "flex");
-
-  const interestKey = a.interest_area || "business";
-  const majors = MAJOR_DB[interestKey]?.[top1] || MAJOR_DB["business"]["ANALYTICAL"];
-
-  const strengths = buildStrengthBars(scores);
-  const traits    = TRAIT_DB[profile.personality_type] || TRAIT_DB["The Methodical Thinker"];
-
-  const insightFn = INSIGHT_DB[profile.personality_type] || INSIGHT_DB["The Methodical Thinker"];
-  const insight   = insightFn(userName || "Kamu", countries[0]?.name || "negara pilihanmu");
-
-  return { ...profile, traits, strengths, countries, majors, insight };
+  return {
+    profile,
+    countries,
+    fearResponse,
+    rawData: {
+      readiness, budget, english, parentSupport, stage,
+      scholarship, career, fear, lifestyle,
+      urgency: vals.urgency || 1,
+      indonesian_community: vals.indonesian_community || false
+    }
+  };
 }
 
 // ═══════════════ RESULT FLOW ═══════════════
 function generateResult() {
   show("screen-loading");
   animateLoadingSteps();
-  setTimeout(() => { renderResult(calculateResult()); }, 4500);
+  setTimeout(() => {
+    currentResult = calculateResult();
+    renderResult(currentResult);
+  }, 4500);
 }
 
 function animateLoadingSteps() {
@@ -1592,87 +1551,120 @@ function animateLoadingSteps() {
     setTimeout(() => {
       if (i > 0) document.getElementById("ls-"+steps[i-1])?.classList.replace("active","done");
       document.getElementById("ls-"+n)?.classList.add("active");
-    }, i * 900);
+    }, i * 850);
   });
 }
 
 function renderResult(data) {
-  document.getElementById("r-greeting").textContent = `Hasil Analisis untuk ${userName || "Kamu"}`;
-  document.getElementById("r-type").textContent     = data.personality_type || "Global Achiever";
-  document.getElementById("r-title").textContent    = data.title || "Profil Minat & Bakat Kamu";
-  document.getElementById("r-tagline").textContent  = data.tagline || "";
+  const { profile, countries, fearResponse, rawData } = data;
 
-  document.getElementById("r-traits").innerHTML = (data.traits||[]).map(t => `
-    <div class="trait-card">
-      <span class="trait-emoji">${t.emoji}</span>
-      <div class="trait-name">${t.name}</div>
-      <div class="trait-desc">${t.desc}</div>
-    </div>
-  `).join("");
+  // Header card
+  document.getElementById("r-emoji").textContent = profile.emoji;
+  document.getElementById("r-type").textContent = profile.type;
+  document.getElementById("r-tagline").textContent = `"${profile.tagline}"`;
+  document.getElementById("r-description").textContent = profile.description;
 
-  // bars mulai width:0, dianimasikan setelah render
-  document.getElementById("r-bars").innerHTML = (data.strengths||[]).map(s => `
-    <div class="bar-item">
-      <div class="bar-label"><span>${s.label}</span><span class="bar-pct">${s.pct}%</span></div>
-      <div class="bar-track"><div class="bar-fill" data-pct="${s.pct}"></div></div>
-    </div>
-  `).join("");
+  // Urgency note
+  document.getElementById("r-urgency").textContent = profile.urgencyNote;
 
-  document.getElementById("r-countries").innerHTML = (data.countries||[]).map(c => `
-    <div class="country-card">
-      <div class="country-flag">${c.flag}</div>
-      <div>
-        <div class="country-name">${c.name}</div>
-        <div class="country-why">${c.why}</div>
+  // Countries
+  document.getElementById("r-countries").innerHTML = countries.map(c => {
+    const level = c.difficulty.toLowerCase().includes("low") ? "low"
+               : c.difficulty.toLowerCase().includes("high") ? "high"
+               : "medium";
+    return `
+      <div class="country-card">
+        <div class="country-header">
+          <div class="country-flag">${c.flag}</div>
+          <div class="country-name">${c.name}</div>
+          <div class="diff-badge" data-level="${level}">${c.difficulty}</div>
+        </div>
+        <div class="country-reason">${c.reason}</div>
       </div>
-    </div>
-  `).join("");
+    `;
+  }).join("");
 
-  document.getElementById("r-majors").innerHTML = (data.majors||[]).map(m => `<div class="major-tag">${m}</div>`).join("");
-  document.getElementById("r-insight").textContent = data.insight || "";
+  // Fear response
+  document.getElementById("r-fear-label").textContent = fearResponse.label;
+  document.getElementById("r-fear").textContent = fearResponse.text;
 
-  const countryNames = (data.countries||[]).map(c=>c.name).join(", ");
-  const waMsg = encodeURIComponent(`Halo Nabila! Saya baru selesai tes minat bakat di beewithnabila.id 🐝\n\nNama: ${userName||"—"}\nProfil: ${data.personality_type}\nNegara Rekomendasi: ${countryNames}\nJurusan: ${(data.majors||[]).slice(0,2).join(", ")}\n\nSaya ingin konsultasi lebih lanjut terkait pemilihan major/negara/universitas dan proses pendaftaran. Bisa dibantu?`);
-  document.getElementById("wa-btn").href = `https://wa.me/6281282152861?text=${waMsg}`;
+  // Preview box
+  const previewItems = [
+    `<strong>Profile:</strong> ${profile.emoji} ${profile.type}`,
+    `<strong>Status:</strong> ${LABEL_MAPS.stage[rawData.stage]}`,
+    `<strong>Bahasa Inggris:</strong> ${LABEL_MAPS.english[rawData.english]}`,
+    `<strong>Budget:</strong> ${LABEL_MAPS.budget[rawData.budget]}`,
+    `<strong>Dukungan orang tua:</strong> ${LABEL_MAPS.parentSupport[rawData.parentSupport]}`,
+    `<strong>Tujuan karir:</strong> ${LABEL_MAPS.career[rawData.career]}`,
+    `<strong>Gaya hidup:</strong> ${LABEL_MAPS.lifestyle[rawData.lifestyle]}`,
+    `<strong>Kekhawatiran utama:</strong> ${LABEL_MAPS.fear[rawData.fear]}`,
+    `<strong>Rekomendasi negara:</strong> ${countries.map(c=>c.flag+' '+c.name).join(', ')}`
+  ];
+  document.getElementById("r-preview").innerHTML = previewItems.map(i => `<li>${i}</li>`).join("");
+
+  // WhatsApp button — build pre-filled message with ALL quiz data
+  const waMsg = buildWAMsg(data);
+  const waUrl = `https://wa.me/6281282152861?text=${encodeURIComponent(waMsg)}`;
+  document.getElementById("wa-btn").href = waUrl;
 
   show("screen-result");
 
-  // ── GTM: track selesai tes + hasil ──
-  gtmEvent('quiz_complete', {
-    personality_type: data.personality_type || '',
-    top_country: (data.countries||[])[0]?.name || '',
-    recommended_countries: (data.countries||[]).map(c=>c.name).join(', '),
-    user_name: userName || 'anonymous'
+  // ── GTM: track quiz completion with full profile data ──
+  const quizDuration = quizStartTime ? Math.round((Date.now() - quizStartTime) / 1000) : null;
+  gtmEvent('quiz_completed', {
+    profile_type: profile.type,
+    profile_emoji: profile.emoji,
+    top_country: countries[0]?.name || '',
+    recommended_countries: countries.map(c => c.name).join(', '),
+    user_stage: rawData.stage,
+    user_budget_level: rawData.budget,
+    user_english_level: rawData.english,
+    user_parent_support: rawData.parentSupport,
+    user_career_goal: rawData.career,
+    user_fear: rawData.fear,
+    user_readiness: rawData.readiness,
+    user_urgency: rawData.urgency,
+    quiz_duration_seconds: quizDuration,
+    utm_source: getUTM('utm_source'),
+    utm_medium: getUTM('utm_medium'),
+    utm_campaign: getUTM('utm_campaign')
   });
 
-  // ── GTM: track klik WA dari halaman hasil ──
-  setTimeout(() => {
-    const waBtn = document.getElementById('wa-btn');
-    if (waBtn) {
-      waBtn.addEventListener('click', () => {
-        gtmEvent('click_whatsapp', {
-          button_location: 'quiz_result',
-          personality_type: data.personality_type || '',
-          top_country: (data.countries||[])[0]?.name || ''
-        });
-      }, { once: true });
-    }
-  }, 100);
+  // ── GTM: track klik WA dari halaman hasil (conversion utama) ──
+  const waBtn = document.getElementById('wa-btn');
+  if (waBtn) {
+    // Remove any previous listener to avoid duplicates on restart
+    waBtn.replaceWith(waBtn.cloneNode(true));
+    const freshBtn = document.getElementById('wa-btn');
+    freshBtn.href = waUrl;
+    freshBtn.addEventListener('click', () => {
+      gtmEvent('quiz_wa_clicked', {
+        profile_type: profile.type,
+        top_country: countries[0]?.name || '',
+        recommended_countries: countries.map(c => c.name).join(', '),
+        user_stage: rawData.stage,
+        user_fear: rawData.fear,
+        button_location: 'quiz_result',
+        utm_source: getUTM('utm_source'),
+        utm_medium: getUTM('utm_medium'),
+        utm_campaign: getUTM('utm_campaign')
+      });
+      // Also push the universal conversion event (for ads retargeting)
+      gtmEvent('whatsapp_cta_clicked', {
+        page: 'quiz_result',
+        location: 'result_primary_cta',
+        profile_type: profile.type
+      });
+    });
+  }
 
   // scroll ke atas
   window.scrollTo(0, 0);
 
-  // animasi bar: tunggu 2 frame agar DOM terpaint dulu
-  requestAnimationFrame(() => requestAnimationFrame(() => {
-    document.querySelectorAll(".bar-fill").forEach(el => {
-      el.style.width = (el.dataset.pct || 0) + "%";
-    });
-  }));
-
   // scroll-reveal: stagger tiap section saat masuk viewport
   const sections = document.querySelectorAll("#screen-result .result-section");
   sections.forEach((el, i) => {
-    el.style.transitionDelay = (i * 0.1) + "s";
+    el.style.transitionDelay = (i * 0.08) + "s";
   });
 
   const io = new IntersectionObserver(entries => {
@@ -1687,21 +1679,93 @@ function renderResult(data) {
   sections.forEach(el => io.observe(el));
 }
 
-// ── GTM EVENT TRACKING ──
-function gtmEvent(eventName, params) {
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ event: eventName, ...params });
+// ═══════════════ WHATSAPP MESSAGE BUILDER ═══════════════
+// Build pesan WA pre-filled dengan SEMUA data hasil quiz.
+// User tinggal tekan Send — Nabila langsung punya full context.
+function buildWAMsg(data) {
+  const { profile, countries, rawData } = data;
+
+  // Urgency note (condensed for WA)
+  const urgencyNote = profile.urgencyNote;
+
+  // UTM source (if available)
+  const utmSource = getUTM('utm_source');
+  const utmCampaign = getUTM('utm_campaign');
+  const sourceLine = utmSource
+    ? `\n• Sumber: ${utmSource}${utmCampaign ? ' / ' + utmCampaign : ''}`
+    : '';
+
+  const msg = `Halo Nabila! 🐝 Aku baru selesai quiz di beewithnabila.id.
+
+📊 HASIL QUIZ KU
+Profile: ${profile.emoji} ${profile.type}
+"${profile.tagline}"
+
+🎯 Rekomendasi negara buat aku:
+${countries.map((c, i) => `${i+1}. ${c.flag} ${c.name} — ${c.reason}`).join('\n')}
+
+📋 Detail situasiku:
+• Status: ${LABEL_MAPS.stage[rawData.stage]}
+• Bahasa Inggris: ${LABEL_MAPS.english[rawData.english]}
+• Budget: ${LABEL_MAPS.budget[rawData.budget]}
+• Dukungan orang tua: ${LABEL_MAPS.parentSupport[rawData.parentSupport]}
+• Tujuan karir: ${LABEL_MAPS.career[rawData.career]}
+• Gaya hidup: ${LABEL_MAPS.lifestyle[rawData.lifestyle]}
+• Kekhawatiran utama: ${LABEL_MAPS.fear[rawData.fear]}${sourceLine}
+
+💡 Catatan dari hasil quiz:
+${urgencyNote}
+
+Boleh minta konsultasi gratis-nya? 🙏`;
+
+  return msg;
 }
 
-// Track: klik tombol Tes Minat di navbar / tombol back ke beranda
+// ═══════════════ UTM TRACKING (sessionStorage) ═══════════════
+// Simpan UTM saat pertama kali landing, lalu append ke pesan WA nanti
+function captureUTM() {
+  try {
+    const url = new URL(window.location.href);
+    const params = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+    params.forEach(p => {
+      const val = url.searchParams.get(p);
+      if (val) sessionStorage.setItem('bwn_' + p, val);
+    });
+  } catch (e) { /* noop */ }
+}
+
+function getUTM(key) {
+  try {
+    return sessionStorage.getItem('bwn_' + key) || '';
+  } catch (e) {
+    return '';
+  }
+}
+
+// ═══════════════ GTM EVENT TRACKING ═══════════════
+function gtmEvent(eventName, params) {
+  window.dataLayer = window.dataLayer || [];
+  // Strip empty values to keep dataLayer clean
+  const clean = {};
+  Object.entries(params || {}).forEach(([k,v]) => {
+    if (v !== '' && v !== null && v !== undefined) clean[k] = v;
+  });
+  window.dataLayer.push({ event: eventName, ...clean });
+}
+
+// Track klik tombol back ke beranda
 document.querySelectorAll('a[href="/"]').forEach(el => {
   el.addEventListener('click', () => {
-    gtmEvent('navigate_back_home', { from_page: 'study_abroad_test' });
+    gtmEvent('navigate_back_home', { from_page: 'study_abroad_quiz' });
   });
 });
 
-// init
+// ═══════════════ INIT ═══════════════
+captureUTM();
 show("screen-landing");
+
+// Expose for debugging (optional — bisa di-remove di production)
+window.__bwn = { calculateResult, buildWAMsg, getUTM, answers: () => answers };
 </script>
 </body>
 </html>
