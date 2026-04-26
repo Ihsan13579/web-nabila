@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quiz Study Abroad — beewithnabila.id</title>
-<meta name="description" content="8 pertanyaan, 3 menit. Dapatkan rekomendasi negara & universitas yang realistis buat situasi kamu — langsung dari Nabila.">
+<meta name="description" content="9 pertanyaan, 3 menit. Dapatkan rekomendasi negara, jurusan & universitas yang realistis buat situasi kamu — langsung dari Nabila.">
 
 <!-- Open Graph -->
 <meta property="og:title" content="Quiz Study Abroad — beewithnabila.id">
-<meta property="og:description" content="Negara mana yang paling cocok buat kamu? 8 pertanyaan, 3 menit, 100% gratis.">
+<meta property="og:description" content="Negara mana yang paling cocok buat kamu? 9 pertanyaan + rekomendasi jurusan. 100% gratis.">
 <meta property="og:type" content="website">
 
 <!-- Google Tag Manager -->
@@ -114,9 +114,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin-bottom: 24px;
   }
 
-  .eyebrow::before {
-    content: ''; width: 32px; height: 1px; background: var(--rust);
-  }
+  .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--rust); }
 
   h1 {
     font-family: 'Playfair Display', serif;
@@ -126,17 +124,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin-bottom: 24px;
   }
 
-  h1 em {
-    font-style: italic;
-    color: var(--gold);
-  }
+  h1 em { font-style: italic; color: var(--gold); }
 
   .landing-desc {
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 16px; line-height: 1.7;
     color: var(--text-muted);
-    max-width: 500px;
-    margin-bottom: 32px;
+    max-width: 500px; margin-bottom: 32px;
   }
 
   .landing-features {
@@ -150,8 +143,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border: 1px solid var(--warm);
     border-radius: 100px;
     padding: 8px 16px;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 13px; font-weight: 500;
     color: var(--ink);
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   }
@@ -160,23 +152,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   .btn-start {
     display: inline-flex; align-items: center; gap: 12px;
-    background: var(--ink);
-    color: var(--cream);
+    background: var(--ink); color: var(--cream);
     font-family: 'DM Sans', sans-serif;
     font-size: 16px; font-weight: 600;
-    padding: 18px 36px;
-    border-radius: 100px;
-    border: none;
-    cursor: pointer;
+    padding: 18px 36px; border-radius: 100px;
+    border: none; cursor: pointer;
     transition: all 0.25s;
-    letter-spacing: 0.01em;
     box-shadow: 0 4px 20px rgba(15,14,12,0.25);
     align-self: flex-start;
   }
 
   .btn-start:hover {
-    background: var(--gold);
-    color: var(--ink);
+    background: var(--gold); color: var(--ink);
     transform: translateY(-2px);
     box-shadow: 0 8px 28px rgba(201,168,76,0.4);
   }
@@ -186,41 +173,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: rgba(255,255,255,0.15);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 14px;
-    transition: transform 0.25s;
+    font-size: 14px; transition: transform 0.25s;
   }
 
   .btn-start:hover .arrow { transform: translateX(4px); background: rgba(15,14,12,0.15); }
 
-  .btn-hint {
-    font-size: 12px; color: var(--text-muted);
-    margin-top: 14px;
-    font-family: 'DM Sans', monospace;
-  }
+  .btn-hint { font-size: 12px; color: var(--text-muted); margin-top: 14px; }
 
   /* floating cards */
-  .landing-visual {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    position: relative;
-  }
+  .landing-visual { display: flex; flex-direction: column; gap: 14px; position: relative; }
 
   @media (max-width: 899px) {
     .landing-visual {
-      flex-direction: row;
-      overflow-x: auto;
-      gap: 12px;
-      padding-bottom: 8px;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
+      flex-direction: row; overflow-x: auto; gap: 12px; padding-bottom: 8px;
+      scrollbar-width: none; -ms-overflow-style: none;
     }
     .landing-visual::-webkit-scrollbar { display: none; }
   }
 
   .floating-card {
-    background: white;
-    border-radius: 20px;
+    background: white; border-radius: 20px;
     padding: 18px 22px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.08);
     border: 1px solid var(--warm);
@@ -239,82 +211,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .floating-card:nth-child(3) { animation-delay: 2s; }
   }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
   .fc-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
   .fc-value { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; }
   .fc-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 
   .landing-badge {
-    background: var(--gold);
-    color: var(--ink);
-    border-radius: 16px;
-    padding: 14px 18px;
-    font-size: 13px; font-weight: 600;
-    text-align: center;
+    background: var(--gold); color: var(--ink);
+    border-radius: 16px; padding: 14px 18px;
+    font-size: 13px; font-weight: 600; text-align: center;
     box-shadow: 0 8px 24px rgba(201,168,76,0.4);
-    animation: float 3s ease-in-out infinite;
-    animation-delay: 1.5s;
+    animation: float 3s ease-in-out infinite; animation-delay: 1.5s;
     flex-shrink: 0;
   }
 
-  @media (min-width: 900px) {
-    .landing-badge {
-      position: absolute;
-      bottom: -16px; right: 16px;
-      width: 120px;
-    }
-  }
-
-  @media (max-width: 899px) {
-    .landing-badge { width: 120px; }
-  }
+  @media (min-width: 900px) { .landing-badge { position: absolute; bottom: -16px; right: 16px; width: 120px; } }
+  @media (max-width: 899px) { .landing-badge { width: 120px; } }
 
   .landing-badge .num { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; display: block; }
 
   .free-badge {
     display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(196, 92, 46, 0.1);
-    color: var(--rust);
+    background: rgba(196, 92, 46, 0.1); color: var(--rust);
     border: 1px solid rgba(196, 92, 46, 0.2);
-    border-radius: 100px;
-    padding: 6px 14px;
-    font-size: 12px; font-weight: 600;
-    letter-spacing: 0.05em;
-    margin-bottom: 20px;
-    align-self: flex-start;
+    border-radius: 100px; padding: 6px 14px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.05em;
+    margin-bottom: 20px; align-self: flex-start;
   }
 
   /* ── QUIZ ── */
-  #screen-quiz {
-    display: none;
-    min-height: 100vh;
-    position: relative;
-  }
+  #screen-quiz { display: none; min-height: 100vh; position: relative; }
 
   .quiz-header {
     position: sticky; top: 0; z-index: 10;
-    background: rgba(247,243,236,0.9);
-    backdrop-filter: blur(12px);
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--warm);
+    background: rgba(247,243,236,0.9); backdrop-filter: blur(12px);
+    padding: 20px 24px; border-bottom: 1px solid var(--warm);
   }
 
-  .quiz-header-inner {
-    max-width: 720px; margin: 0 auto;
-    display: flex; align-items: center; gap: 16px;
-  }
+  .quiz-header-inner { max-width: 720px; margin: 0 auto; display: flex; align-items: center; gap: 16px; }
 
-  .progress-wrap {
-    flex: 1;
-    height: 6px;
-    background: var(--warm);
-    border-radius: 100px;
-    overflow: hidden;
-  }
+  .progress-wrap { flex: 1; height: 6px; background: var(--warm); border-radius: 100px; overflow: hidden; }
 
   .progress-bar {
     height: 100%;
@@ -323,95 +260,50 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
-  .progress-label {
-    font-size: 13px; font-weight: 600;
-    color: var(--text-muted);
-    white-space: nowrap;
-    min-width: 50px;
-    text-align: right;
-  }
+  .progress-label { font-size: 13px; font-weight: 600; color: var(--text-muted); white-space: nowrap; min-width: 50px; text-align: right; }
 
-  .quiz-body {
-    max-width: 720px; margin: 0 auto;
-    padding: 48px 24px 140px;
-  }
+  .quiz-body { max-width: 720px; margin: 0 auto; padding: 48px 24px 140px; }
 
   .question-wrap {
     opacity: 0; transform: translateX(30px);
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-
-  .question-wrap.active {
-    opacity: 1; transform: translateX(0);
-  }
+  .question-wrap.active { opacity: 1; transform: translateX(0); }
 
   .q-category {
     font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 10px;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
     display: flex; align-items: center; gap: 10px;
   }
+  .q-category::before { content: ''; width: 20px; height: 1.5px; background: var(--gold); flex-shrink: 0; }
 
-  .q-category::before {
-    content: ''; width: 20px; height: 1.5px; background: var(--gold); flex-shrink: 0;
-  }
-
-  .q-number {
-    font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--text-muted);
-    margin-bottom: 12px;
-  }
+  .q-number { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
 
   .q-text {
     font-family: 'Playfair Display', serif;
     font-size: clamp(24px, 4vw, 36px);
-    line-height: 1.25;
-    margin-bottom: 12px;
-    word-break: break-word;
+    line-height: 1.25; margin-bottom: 12px; word-break: break-word;
   }
 
-  .q-sub {
-    font-size: 14px; color: var(--text-muted);
-    margin-bottom: 36px;
-    line-height: 1.6;
-    font-style: italic;
-  }
+  .q-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 36px; line-height: 1.6; font-style: italic; }
 
-  .options-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+  .options-grid { display: flex; flex-direction: column; gap: 12px; }
 
   .option-card {
-    background: white;
-    border: 2px solid var(--warm);
-    border-radius: var(--radius);
-    padding: 18px 20px;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    position: relative;
-    overflow: hidden;
+    background: white; border: 2px solid var(--warm);
+    border-radius: var(--radius); padding: 18px 20px;
+    cursor: pointer; transition: all 0.2s;
+    text-align: left; display: flex; align-items: center; gap: 14px;
+    position: relative; overflow: hidden;
   }
 
   .option-card::before {
-    content: '';
-    position: absolute; inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: linear-gradient(135deg, var(--gold-light), transparent);
-    opacity: 0;
-    transition: opacity 0.2s;
+    opacity: 0; transition: opacity 0.2s;
   }
 
-  .option-card:hover {
-    border-color: var(--gold);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(201,168,76,0.2);
-  }
-
+  .option-card:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.2); }
   .option-card:hover::before { opacity: 0.25; }
 
   .option-card.selected {
@@ -419,194 +311,129 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02));
     box-shadow: 0 4px 20px rgba(201,168,76,0.25);
   }
-
   .option-card.selected::before { opacity: 0.4; }
 
   .option-letter {
-    min-width: 32px; height: 32px;
-    border-radius: 10px;
-    background: var(--warm);
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 800; font-size: 13px;
-    color: var(--text-muted);
-    font-family: 'DM Sans', sans-serif;
-    letter-spacing: 0;
-    flex-shrink: 0;
-    position: relative; z-index: 1;
-    transition: all 0.2s;
+    min-width: 32px; height: 32px; border-radius: 10px;
+    background: var(--warm); display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 13px; color: var(--text-muted);
+    flex-shrink: 0; position: relative; z-index: 1; transition: all 0.2s;
   }
+  .option-card.selected .option-letter { background: var(--gold); color: var(--ink); }
 
-  .option-card.selected .option-letter {
-    background: var(--gold); color: var(--ink);
-  }
-
-  .option-text {
-    font-size: 15px; line-height: 1.45; font-weight: 500;
-    color: var(--ink);
-    position: relative; z-index: 1;
-    flex: 1;
-  }
+  .option-text { font-size: 15px; line-height: 1.45; font-weight: 500; color: var(--ink); position: relative; z-index: 1; flex: 1; }
 
   .option-check {
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    background: var(--gold);
-    display: none;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--gold); display: none;
     align-items: center; justify-content: center;
-    color: white; font-size: 12px; font-weight: 700;
-    z-index: 2;
-    flex-shrink: 0;
+    color: white; font-size: 12px; font-weight: 700; z-index: 2; flex-shrink: 0;
   }
-
   .option-card.selected .option-check { display: flex; }
+
+  /* Form inputs (for nama, sekolah, domisili after Q9) */
+  .form-wrap { display: flex; flex-direction: column; gap: 16px; }
+
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+
+  .form-label { font-size: 13px; font-weight: 600; color: var(--ink); }
+
+  .form-input {
+    font-family: 'DM Sans', sans-serif; font-size: 16px;
+    padding: 14px 18px; border: 2px solid var(--warm);
+    border-radius: var(--radius); background: white;
+    color: var(--ink); outline: none; transition: border-color 0.2s; width: 100%;
+  }
+  .form-input:focus { border-color: var(--gold); }
+  .form-input::placeholder { color: #c5b89a; }
+
+  .form-submit {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--ink); color: var(--cream);
+    font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600;
+    padding: 16px 32px; border-radius: 100px; border: none;
+    cursor: pointer; transition: all 0.25s; margin-top: 8px;
+    box-shadow: 0 4px 16px rgba(15,14,12,0.2);
+  }
+  .form-submit:hover { background: var(--gold); color: var(--ink); transform: translateY(-2px); }
+  .form-submit:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+
+  .form-note { font-size: 12px; color: var(--text-muted); font-style: italic; margin-top: 4px; }
 
   /* bottom nav */
   .quiz-nav {
     position: fixed; bottom: 0; left: 0; right: 0;
-    background: rgba(247,243,236,0.95);
-    backdrop-filter: blur(12px);
-    border-top: 1px solid var(--warm);
-    padding: 16px 24px;
-    z-index: 10;
+    background: rgba(247,243,236,0.95); backdrop-filter: blur(12px);
+    border-top: 1px solid var(--warm); padding: 16px 24px; z-index: 10;
   }
-
-  .quiz-nav-inner {
-    max-width: 720px; margin: 0 auto;
-    display: flex; justify-content: space-between; align-items: center;
-  }
+  .quiz-nav-inner { max-width: 720px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
 
   .btn-back {
-    background: none; border: 2px solid var(--warm);
-    border-radius: 100px;
-    padding: 12px 24px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px; font-weight: 500;
-    cursor: pointer; color: var(--text-muted);
-    transition: all 0.2s;
+    background: none; border: 2px solid var(--warm); border-radius: 100px;
+    padding: 12px 24px; font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500; cursor: pointer;
+    color: var(--text-muted); transition: all 0.2s;
   }
-
   .btn-back:hover { border-color: var(--ink); color: var(--ink); }
   .btn-back:disabled { opacity: 0.3; cursor: not-allowed; }
 
-  .nav-hint {
-    font-size: 12px; color: var(--text-muted);
-    font-style: italic;
-  }
+  .nav-hint { font-size: 12px; color: var(--text-muted); font-style: italic; }
 
   /* ── LOADING ── */
   #screen-loading {
-    display: none;
-    min-height: 100vh;
+    display: none; min-height: 100vh;
     align-items: center; justify-content: center;
-    flex-direction: column;
-    gap: 24px;
-    text-align: center;
-    padding: 40px;
-    background: var(--cream);
+    flex-direction: column; gap: 24px; text-align: center;
+    padding: 40px; background: var(--cream);
   }
 
   .loading-orb {
-    width: 80px; height: 80px;
-    border-radius: 50%;
+    width: 80px; height: 80px; border-radius: 50%;
     background: linear-gradient(135deg, var(--gold), var(--rust));
-    animation: pulse-orb 1.5s ease-in-out infinite;
-    position: relative;
+    animation: pulse-orb 1.5s ease-in-out infinite; position: relative;
   }
 
   .loading-orb::after {
-    content: '';
-    position: absolute; inset: -8px;
-    border-radius: 50%;
-    border: 2px solid var(--gold);
-    opacity: 0.4;
+    content: ''; position: absolute; inset: -8px; border-radius: 50%;
+    border: 2px solid var(--gold); opacity: 0.4;
     animation: pulse-ring 1.5s ease-in-out infinite;
   }
 
-  @keyframes pulse-orb {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-  }
+  @keyframes pulse-orb { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+  @keyframes pulse-ring { 0%, 100% { transform: scale(1); opacity: 0.4; } 50% { transform: scale(1.3); opacity: 0; } }
 
-  @keyframes pulse-ring {
-    0%, 100% { transform: scale(1); opacity: 0.4; }
-    50% { transform: scale(1.3); opacity: 0; }
-  }
+  .loading-text { font-family: 'Playfair Display', serif; font-size: 24px; }
 
-  .loading-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-  }
-
-  .loading-steps {
-    list-style: none;
-    display: flex; flex-direction: column; gap: 8px;
-    font-size: 14px; color: var(--text-muted);
-    text-align: left;
-  }
-
-  .loading-step {
-    display: flex; align-items: center; gap: 10px;
-    opacity: 0.3;
-    transition: opacity 0.5s;
-  }
-
+  .loading-steps { list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: var(--text-muted); text-align: left; }
+  .loading-step { display: flex; align-items: center; gap: 10px; opacity: 0.3; transition: opacity 0.5s; }
   .loading-step.done { opacity: 1; color: var(--sage); }
   .loading-step.active { opacity: 0.8; }
 
   /* ══════════════════════════════════════════════
-     RESULT — mobile-first, 1 kolom
+     RESULT
   ══════════════════════════════════════════════ */
+  #screen-result, #screen-result * { box-sizing: border-box; max-width: 100%; }
+  #screen-result { display: none; background: var(--cream); width: 100%; overflow-x: hidden; }
 
-  #screen-result,
-  #screen-result * {
-    box-sizing: border-box;
-    max-width: 100%;
-  }
-
-  #screen-result {
-    display: none;
-    background: var(--cream);
-    width: 100%;
-    overflow-x: hidden;
-  }
-
-  /* Header card: ink background, elegant */
-  .result-header-wrap {
-    background: var(--cream);
-    padding: 0 16px 0;
-  }
+  .result-header-wrap { background: var(--cream); padding: 0 16px 0; }
 
   .result-header-card {
-    background: var(--ink);
-    color: var(--cream);
-    border-radius: 24px;
-    padding: 40px 28px 44px;
-    margin: 24px auto 0;
-    max-width: 680px;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
+    background: var(--ink); color: var(--cream);
+    border-radius: 24px; padding: 40px 28px 44px;
+    margin: 24px auto 0; max-width: 680px; width: 100%;
+    position: relative; overflow: hidden; text-align: center;
   }
 
   .result-header-card::before {
-    content: '';
-    position: absolute;
-    top: -80px; right: -60px;
-    width: 280px; height: 280px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(201,168,76,0.25) 0%, transparent 65%);
-    pointer-events: none;
+    content: ''; position: absolute; top: -80px; right: -60px;
+    width: 280px; height: 280px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.25) 0%, transparent 65%); pointer-events: none;
   }
 
   .result-header-card::after {
-    content: '';
-    position: absolute;
-    bottom: -60px; left: -40px;
-    width: 200px; height: 200px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(196,92,46,0.15) 0%, transparent 65%);
-    pointer-events: none;
+    content: ''; position: absolute; bottom: -60px; left: -40px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,92,46,0.15) 0%, transparent 65%); pointer-events: none;
   }
 
   .rhc-inner { position: relative; z-index: 1; }
@@ -614,265 +441,145 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .result-greeting {
     font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
     text-transform: uppercase; color: rgba(201,168,76,0.9);
-    margin-bottom: 20px;
-    display: flex; align-items: center; gap: 10px;
-    justify-content: center;
+    margin-bottom: 20px; display: flex; align-items: center; gap: 10px; justify-content: center;
   }
+  .result-greeting::before, .result-greeting::after { content: ''; width: 20px; height: 1.5px; background: var(--gold); flex-shrink: 0; }
 
-  .result-greeting::before,
-  .result-greeting::after {
-    content: ''; width: 20px; height: 1.5px; background: var(--gold); flex-shrink: 0;
-  }
-
-  .result-emoji {
-    font-size: 56px;
-    line-height: 1;
-    margin-bottom: 16px;
-  }
+  .result-emoji { font-size: 56px; line-height: 1; margin-bottom: 16px; }
 
   .result-type {
     display: inline-flex; align-items: center;
     background: var(--gold); color: var(--ink);
     font-size: 10px; font-weight: 800; letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 5px 14px; border-radius: 100px;
-    margin-bottom: 16px;
-    word-break: keep-all;
-    white-space: normal;
-    line-height: 1.4;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 100px;
+    margin-bottom: 16px; line-height: 1.4;
   }
 
   .result-tagline {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(22px, 5vw, 34px);
-    line-height: 1.25;
-    color: var(--cream);
-    margin-bottom: 18px;
-    word-break: break-word;
-    overflow-wrap: anywhere;
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: clamp(22px, 5vw, 34px); line-height: 1.25;
+    color: var(--cream); margin-bottom: 18px;
   }
 
   .result-description {
     font-size: 14.5px; line-height: 1.75;
     color: rgba(247,243,236,0.75);
-    word-break: break-word;
-    max-width: 540px;
-    margin: 0 auto;
+    max-width: 540px; margin: 0 auto;
   }
 
-  /* BODY */
-  .result-body {
-    max-width: 680px; margin: 0 auto;
-    padding: 32px 16px 80px;
-    width: 100%;
-  }
+  .result-body { max-width: 680px; margin: 0 auto; padding: 32px 16px 80px; width: 100%; }
 
   .result-section {
-    margin-bottom: 32px;
-    opacity: 0;
-    transform: translateY(18px);
+    margin-bottom: 32px; opacity: 0; transform: translateY(18px);
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
-
-  .result-section.rs-visible {
-    opacity: 1; transform: translateY(0);
-  }
+  .result-section.rs-visible { opacity: 1; transform: translateY(0); }
 
   .section-label {
     font-size: 10px; font-weight: 800; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 14px;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
     display: flex; align-items: center; gap: 10px;
   }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--warm), transparent); }
 
-  .section-label::after {
-    content: ''; flex: 1; height: 1px;
-    background: linear-gradient(90deg, var(--warm), transparent);
-  }
-
-  /* Urgency box */
   .urgency-box {
     background: white; border-radius: 14px;
     padding: 16px 18px; border: 1px solid var(--warm);
     border-left: 3px solid var(--rust);
     display: flex; gap: 12px; align-items: flex-start;
   }
-
   .urgency-icon { font-size: 22px; flex-shrink: 0; line-height: 1; margin-top: 2px; }
   .urgency-text { font-size: 14px; color: var(--ink); line-height: 1.65; flex: 1; }
 
-  /* Country cards */
-  .country-list {
-    display: flex; flex-direction: column; gap: 10px;
-  }
+  .country-list { display: flex; flex-direction: column; gap: 10px; }
 
   .country-card {
     background: white; border-radius: 16px;
     padding: 16px 18px; border: 1px solid var(--warm);
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
   }
+  .country-card:hover { border-color: var(--gold); box-shadow: 0 6px 20px rgba(201,168,76,0.15); transform: translateY(-2px); }
 
-  .country-card:hover {
-    border-color: var(--gold);
-    box-shadow: 0 6px 20px rgba(201,168,76,0.15);
-    transform: translateY(-2px);
-  }
-
-  .country-header {
-    display: flex; align-items: center; gap: 12px;
-    margin-bottom: 8px;
-  }
-
+  .country-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
   .country-flag { font-size: 28px; flex-shrink: 0; line-height: 1; }
-  .country-name {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700; font-size: 19px;
-    color: var(--ink);
-    flex: 1;
-    word-break: break-word;
-  }
+  .country-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 19px; color: var(--ink); flex: 1; }
 
   .diff-badge {
-    font-size: 10px; font-weight: 800;
-    padding: 4px 10px; border-radius: 100px;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    white-space: nowrap; flex-shrink: 0;
-    font-family: 'DM Sans', sans-serif;
+    font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 100px;
+    letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; flex-shrink: 0;
   }
-
   .diff-badge[data-level="low"] { background: #e6f4ea; color: #1e7b3a; }
   .diff-badge[data-level="medium"] { background: #fdf3d8; color: #8a6410; }
   .diff-badge[data-level="high"] { background: #fce8e6; color: #a6331c; }
 
-  .country-reason {
-    font-size: 13.5px; color: var(--text-muted);
-    line-height: 1.6;
-    word-break: break-word;
-  }
+  .country-reason { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
 
-  /* Fear response box */
+  /* Major tags */
+  .major-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .major-tag {
+    background: white; border: 1.5px solid var(--warm);
+    border-radius: 100px; padding: 7px 16px;
+    font-size: 13px; font-weight: 500; color: var(--ink);
+    transition: all 0.2s;
+  }
+  .major-tag:hover { border-color: var(--gold); background: rgba(201,168,76,0.06); }
+
   .fear-box {
     background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(196,92,46,0.04));
-    border: 1px solid rgba(201,168,76,0.25);
-    border-radius: 16px;
-    padding: 20px 22px;
+    border: 1px solid rgba(201,168,76,0.25); border-radius: 16px; padding: 20px 22px;
   }
+  .fear-box-label { font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); margin-bottom: 10px; }
+  .fear-box-text { font-size: 14.5px; line-height: 1.75; color: var(--ink); }
 
-  .fear-box-label {
-    font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--rust);
-    margin-bottom: 10px;
-  }
-
-  .fear-box-text {
-    font-size: 14.5px; line-height: 1.75; color: var(--ink);
-    word-break: break-word;
-  }
-
-  /* Preview box: what will be sent to WhatsApp */
   .preview-box {
-    background: white; border: 1px dashed var(--warm);
-    border-radius: 14px;
-    padding: 18px 20px;
+    background: white; border: 1px dashed var(--warm); border-radius: 14px; padding: 18px 20px;
   }
-
   .preview-box-label {
     font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--text-muted);
-    margin-bottom: 12px;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;
     display: flex; align-items: center; gap: 8px;
   }
-
-  .preview-list {
-    list-style: none;
-    display: flex; flex-direction: column; gap: 6px;
-  }
-
+  .preview-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
   .preview-list li {
-    font-size: 13px; line-height: 1.5;
-    color: var(--ink);
+    font-size: 13px; line-height: 1.5; color: var(--ink);
     padding-left: 18px; position: relative;
-    word-break: break-word;
   }
+  .preview-list li::before { content: '•'; position: absolute; left: 6px; top: 0; color: var(--gold); font-weight: 700; }
+  .preview-list li strong { font-weight: 600; color: var(--text-muted); font-size: 12.5px; }
 
-  .preview-list li::before {
-    content: '•';
-    position: absolute; left: 6px; top: 0;
-    color: var(--gold); font-weight: 700;
-  }
-
-  .preview-list li strong {
-    font-weight: 600; color: var(--text-muted);
-    font-size: 12.5px;
-  }
-
-  /* CTA box */
   .cta-box {
     background: var(--ink); color: var(--cream);
     border-radius: 20px; padding: 32px 24px;
     text-align: center; position: relative; overflow: hidden;
   }
-
   .cta-box::before {
-    content: '';
-    position: absolute; top: -50%; right: -15%;
+    content: ''; position: absolute; top: -50%; right: -15%;
     width: 300px; height: 300px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(201,168,76,0.22) 0%, transparent 65%);
-    pointer-events: none;
+    background: radial-gradient(circle, rgba(201,168,76,0.22) 0%, transparent 65%); pointer-events: none;
   }
-
   .cta-box-content { position: relative; z-index: 1; }
 
   .cta-badge {
     display: inline-block; background: var(--gold); color: var(--ink);
     font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
-    text-transform: uppercase; padding: 5px 14px; border-radius: 100px;
-    margin-bottom: 16px;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 100px; margin-bottom: 16px;
   }
+  .cta-title { font-family: 'Playfair Display', serif; font-size: clamp(22px, 5vw, 32px); line-height: 1.2; margin-bottom: 12px; }
+  .cta-desc { font-size: 14px; line-height: 1.75; color: rgba(247,243,236,0.7); max-width: 440px; margin: 0 auto 24px; }
 
-  .cta-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(22px, 5vw, 32px);
-    line-height: 1.2; margin-bottom: 12px;
-  }
-
-  .cta-desc {
-    font-size: 14px; line-height: 1.75;
-    color: rgba(247,243,236,0.7);
-    max-width: 440px; margin: 0 auto 24px;
-  }
-
-  .cta-buttons {
-    display: flex; flex-direction: column; gap: 10px;
-    align-items: center;
-  }
-
-  @media (min-width: 480px) {
-    .cta-buttons { flex-direction: row; justify-content: center; }
-  }
+  .cta-buttons { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+  @media (min-width: 480px) { .cta-buttons { flex-direction: row; justify-content: center; } }
 
   .btn-wa {
-    background: #25D366; color: white;
-    border: none; border-radius: 100px;
+    background: #25D366; color: white; border: none; border-radius: 100px;
     padding: 16px 32px; width: 100%; max-width: 320px;
     font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
     cursor: pointer; transition: all 0.22s;
     display: flex; align-items: center; justify-content: center; gap: 10px;
-    text-decoration: none;
-    box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+    text-decoration: none; box-shadow: 0 6px 20px rgba(37,211,102,0.35);
   }
-
-  @media (min-width: 480px) {
-    .btn-wa { width: auto; max-width: none; }
-  }
-
-  .btn-wa:hover {
-    background: #1ebe5a;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(37,211,102,0.5);
-  }
-
+  @media (min-width: 480px) { .btn-wa { width: auto; max-width: none; } }
+  .btn-wa:hover { background: #1ebe5a; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37,211,102,0.5); }
   .btn-wa svg { flex-shrink: 0; }
 
   .btn-cta-secondary {
@@ -880,36 +587,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border: 1.5px solid rgba(255,255,255,0.22); border-radius: 100px;
     padding: 15px 28px; width: 100%; max-width: 320px;
     font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
-    cursor: pointer; transition: all 0.22s; text-decoration: none;
-    text-align: center;
+    cursor: pointer; transition: all 0.22s; text-decoration: none; text-align: center;
   }
+  @media (min-width: 480px) { .btn-cta-secondary { width: auto; max-width: none; } }
+  .btn-cta-secondary:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.4); }
 
-  @media (min-width: 480px) {
-    .btn-cta-secondary { width: auto; max-width: none; }
-  }
+  .cta-reassurance { font-size: 12px; color: rgba(247,243,236,0.55); margin-top: 18px; }
 
-  .btn-cta-secondary:hover {
-    background: rgba(255,255,255,0.14);
-    border-color: rgba(255,255,255,0.4);
-  }
-
-  .cta-reassurance {
-    font-size: 12px; color: rgba(247,243,236,0.55);
-    margin-top: 18px;
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  /* Utilities */
   .hidden { display: none !important; }
-
-  .fade-in {
-    animation: fadeIn 0.5s ease forwards;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  .fade-in { animation: fadeIn 0.5s ease forwards; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
@@ -933,23 +620,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="landing-hero">
       <div class="landing-text">
-        <div class="free-badge">✨ 100% Gratis · Gak Perlu Isi Form</div>
-
+        <div class="free-badge">✨ 100% Gratis · 3 Menit · Langsung ke WA</div>
         <div class="eyebrow">Quiz Study Abroad Profiler</div>
-
         <h1>Negara mana yang<br><em>paling cocok</em> buat kamu?</h1>
-
         <p class="landing-desc">
-          Bukan quiz asal-asalan. 8 pertanyaan ini dirancang untuk ngertiin situasi kamu yang sebenarnya — bukan cuma "negara favorit kamu apa." Hasilnya langsung bisa kamu bawa ke Nabila via WhatsApp.
+          Bukan quiz asal-asalan. 9 pertanyaan ini dirancang untuk ngertiin situasi kamu yang sebenarnya — dan kasih rekomendasi negara + jurusan yang spesifik. Hasilnya langsung bisa kamu bawa ke Nabila via WhatsApp.
         </p>
-
         <div class="landing-features">
           <div class="feature-chip"><span>🎯</span> Profil Personal</div>
           <div class="feature-chip"><span>🌏</span> 3 Negara Rekomendasi</div>
-          <div class="feature-chip"><span>💬</span> Langsung ke WA Nabila</div>
-          <div class="feature-chip"><span>⚡</span> Gak Ada Form</div>
+          <div class="feature-chip"><span>📚</span> Rekomendasi Jurusan</div>
+          <div class="feature-chip"><span>💬</span> Langsung ke WA</div>
         </div>
-
         <button class="btn-start" onclick="startQuiz()">
           Mulai Quiz Sekarang
           <div class="arrow">→</div>
@@ -957,7 +639,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="btn-hint">💬 Jawab sejujurnya. Nabila gak bakal judge kamu.</div>
       </div>
 
-      <!-- floating cards -->
       <div class="landing-visual">
         <div class="floating-card">
           <div class="fc-label">Profil Kamu</div>
@@ -966,7 +647,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="floating-card">
           <div class="fc-label">Rekomendasi Negara</div>
-          <div class="fc-value">🇩🇪 Jerman · 🇹🇼 Taiwan</div>
+          <div class="fc-value">🇦🇺 Aussie · 🇲🇾 Malaysia</div>
           <div class="fc-sub">Disesuaikan sama situasi kamu</div>
         </div>
         <div class="floating-card">
@@ -979,9 +660,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Waktu pengerjaan
         </div>
       </div>
-    </div><!-- end landing-hero -->
-  </div><!-- end landing-inner -->
-</div><!-- end screen-landing -->
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════ QUIZ ═══════════════ -->
 <div id="screen-quiz">
@@ -990,20 +671,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="progress-wrap">
         <div class="progress-bar" id="progress-bar" style="width:0%"></div>
       </div>
-      <div class="progress-label" id="progress-label">0 / 8</div>
+      <div class="progress-label" id="progress-label">0 / 9</div>
     </div>
   </div>
-
   <div class="quiz-body">
-    <div class="question-wrap" id="question-wrap">
-      <!-- injected by JS -->
-    </div>
+    <div class="question-wrap" id="question-wrap"></div>
   </div>
-
   <div class="quiz-nav">
     <div class="quiz-nav-inner">
       <button class="btn-back" id="btn-back" onclick="prevQuestion()">← Kembali</button>
-      <div class="nav-hint">Pilih jawaban untuk lanjut →</div>
+      <div class="nav-hint" id="nav-hint">Pilih jawaban untuk lanjut →</div>
     </div>
   </div>
 </div>
@@ -1016,18 +693,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li class="loading-step" id="ls-1">🧠 Membaca situasi akademik & kesiapan</li>
     <li class="loading-step" id="ls-2">💰 Matching budget & kemampuan bahasa</li>
     <li class="loading-step" id="ls-3">🌍 Mencari negara yang paling worth it</li>
-    <li class="loading-step" id="ls-4">🎯 Menyusun rekomendasi personal</li>
+    <li class="loading-step" id="ls-4">📚 Menyusun rekomendasi jurusan</li>
     <li class="loading-step" id="ls-5">✨ Menyiapkan pesan buat Nabila</li>
   </ul>
 </div>
 
 <!-- ═══════════════ RESULT ═══════════════ -->
 <div id="screen-result">
-
   <div class="result-header-wrap">
     <div class="result-header-card">
       <div class="rhc-inner">
-        <div class="result-greeting">Hasil Quiz Kamu</div>
+        <div class="result-greeting" id="r-greeting">Hasil Quiz Kamu</div>
         <div class="result-emoji" id="r-emoji">🎯</div>
         <div class="result-type" id="r-type">Loading…</div>
         <h2 class="result-tagline" id="r-tagline">…</h2>
@@ -1037,7 +713,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="result-body">
-
     <div class="result-section">
       <div class="section-label">Langkah Selanjutnya Buat Kamu</div>
       <div class="urgency-box">
@@ -1049,6 +724,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="result-section">
       <div class="section-label">Negara yang Paling Worth It Buat Kamu</div>
       <div class="country-list" id="r-countries"></div>
+    </div>
+
+    <div class="result-section">
+      <div class="section-label">Pilihan Jurusan yang Cocok</div>
+      <div class="major-list" id="r-majors"></div>
     </div>
 
     <div class="result-section">
@@ -1081,28 +761,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </svg>
             Chat Nabila di WhatsApp
           </a>
-          <button class="btn-cta-secondary" onclick="restartQuiz()">
-            Ulangi Quiz
-          </button>
+          <button class="btn-cta-secondary" onclick="restartQuiz()">Ulangi Quiz</button>
         </div>
         <div class="cta-reassurance">Nabila balas dalam 24 jam · Gak ada spam · Gratis</div>
       </div>
     </div>
-
   </div>
 </div>
 
 <script>
 // ═══════════════ CONFIG ═══════════════
-// GANTI DENGAN NOMOR WA BUSINESS NABILA (format internasional tanpa +, tanpa 0)
-// Contoh: "6281282152861" untuk nomor +62 812-8215-2861
 const WA_NUMBER = "6281282152861";
 
-// ═══════════════ QUESTIONS (8 pertanyaan dari beewithnabila-quiz.jsx) ═══════════════
+// Total steps in quiz flow: 9 questions + 1 form = 10 steps (progress bar counts 10)
+const TOTAL_STEPS = 10;
+
+// ═══════════════ QUESTIONS (9 pertanyaan) ═══════════════
 const QUESTIONS = [
   {
-    id: 1,
-    category: "Mindset Check",
+    id: 1, category: "Mindset Check",
     question: "Jujur dulu — seberapa serius kamu soal kuliah di luar negeri?",
     subtitle: "Gak ada jawaban salah. Ini bukan ujian.",
     options: [
@@ -1113,8 +790,7 @@ const QUESTIONS = [
     ]
   },
   {
-    id: 2,
-    category: "Situasi Akademik",
+    id: 2, category: "Situasi Akademik",
     question: "Gimana kondisi akademik kamu sekarang?",
     subtitle: "Ini bukan untuk menilai kamu — tapi untuk nyari universitas yang realistis.",
     options: [
@@ -1125,8 +801,7 @@ const QUESTIONS = [
     ]
   },
   {
-    id: 3,
-    category: "Bahasa",
+    id: 3, category: "Bahasa",
     question: "Kemampuan bahasa Inggris kamu sekarang gimana?",
     subtitle: "Be honest — ini nentuin banyak pilihan.",
     options: [
@@ -1137,8 +812,7 @@ const QUESTIONS = [
     ]
   },
   {
-    id: 4,
-    category: "Budget & Finansial",
+    id: 4, category: "Budget & Finansial",
     question: "Kalau soal biaya, situasi keluarga kamu lebih ke mana?",
     subtitle: "Ini nentuin apakah kita cari beasiswa, negara yang affordable, atau keduanya.",
     options: [
@@ -1149,8 +823,7 @@ const QUESTIONS = [
     ]
   },
   {
-    id: 5,
-    category: "Orang Tua",
+    id: 5, category: "Orang Tua",
     question: "Orang tua kamu tau kamu pengen kuliah di luar negeri?",
     subtitle: "Ini lebih penting dari yang kamu kira.",
     options: [
@@ -1161,32 +834,29 @@ const QUESTIONS = [
     ]
   },
   {
-    id: 6,
-    category: "Tujuan Karir",
+    id: 6, category: "Tujuan Karir",
     question: "Setelah lulus, kamu maunya gimana?",
     subtitle: "Ini nentuin jurusan dan negara yang paling makes sense.",
     options: [
-      { id: "a", text: "Balik ke Indonesia dan kerja atau buka usaha di sini", value: { career: "indonesia", region: ["europe","sea"] } },
-      { id: "b", text: "Kerja dulu di luar negeri beberapa tahun, baru balik", value: { career: "work-abroad", region: ["uk","australia","europe"] } },
-      { id: "c", text: "Explore dulu, belum pasti mau balik atau gak", value: { career: "explore", region: ["europe","sea","uk"] } },
-      { id: "d", text: "Pengen tinggal dan settle di luar negeri", value: { career: "migrate", region: ["australia","canada","europe"] } }
+      { id: "a", text: "Balik ke Indonesia dan kerja atau buka usaha di sini", value: { career: "indonesia" } },
+      { id: "b", text: "Kerja dulu di luar negeri beberapa tahun, baru balik", value: { career: "work-abroad" } },
+      { id: "c", text: "Explore dulu, belum pasti mau balik atau gak", value: { career: "explore" } },
+      { id: "d", text: "Pengen tinggal dan settle di luar negeri", value: { career: "migrate" } }
     ]
   },
   {
-    id: 7,
-    category: "Gaya Hidup",
+    id: 7, category: "Gaya Hidup",
     question: "Lingkungan kuliah seperti apa yang bakal bikin kamu berkembang?",
     subtitle: "Jangan jawab yang 'kelihatan bagus' — jawab yang jujur.",
     options: [
-      { id: "a", text: "Kota besar, ramai, banyak komunitas Indonesia", value: { lifestyle: "urban", indonesian_community: true } },
-      { id: "b", text: "Kota sedang, balance antara studi dan explore", value: { lifestyle: "balanced", indonesian_community: false } },
-      { id: "c", text: "Gak masalah kotanya — yang penting kampusnya bagus", value: { lifestyle: "flexible", indonesian_community: false } },
-      { id: "d", text: "Suasana yang tenang, fokus studi, gak terlalu ramai", value: { lifestyle: "quiet", indonesian_community: false } }
+      { id: "a", text: "Kota besar, ramai, banyak komunitas Indonesia", value: { lifestyle: "urban" } },
+      { id: "b", text: "Kota sedang, balance antara studi dan explore", value: { lifestyle: "balanced" } },
+      { id: "c", text: "Gak masalah kotanya — yang penting kampusnya bagus", value: { lifestyle: "flexible" } },
+      { id: "d", text: "Suasana yang tenang, fokus studi, gak terlalu ramai", value: { lifestyle: "quiet" } }
     ]
   },
   {
-    id: 8,
-    category: "Kekhawatiran Terbesar",
+    id: 8, category: "Kekhawatiran Terbesar",
     question: "Apa yang paling bikin kamu khawatir soal kuliah di luar negeri?",
     subtitle: "Satu yang paling dominan di kepala kamu.",
     options: [
@@ -1195,97 +865,70 @@ const QUESTIONS = [
       { id: "c", text: "Sendirian — jauh dari keluarga dan lingkungan yang dikenal", value: { fear: "loneliness" } },
       { id: "d", text: "Kemampuan — takut gak cukup pintar atau qualified", value: { fear: "capability" } }
     ]
+  },
+  {
+    id: 9, category: "Bidang Studi",
+    question: "Bidang studi mana yang paling menarik buat kamu?",
+    subtitle: "Ini langsung nentuin rekomendasi jurusan di hasil quiz.",
+    options: [
+      { id: "a", text: "Kesehatan & Kedokteran — medis, farmasi, psikologi, kesehatan masyarakat", value: { studyField: "health" } },
+      { id: "b", text: "Teknik & Teknologi — engineering, IT, data science, arsitektur", value: { studyField: "engineering" } },
+      { id: "c", text: "Bisnis & Ekonomi — manajemen, marketing, finance, akuntansi", value: { studyField: "business" } },
+      { id: "d", text: "Sosial & Humaniora — hukum, komunikasi, pendidikan, hubungan internasional", value: { studyField: "social" } }
+    ]
   }
 ];
 
-// ═══════════════ LABEL MAPS (untuk WA message & preview) ═══════════════
+// ═══════════════ MAJOR RECOMMENDATIONS (per bidang studi) ═══════════════
+const MAJOR_DB = {
+  health:      ["Kedokteran Umum", "Farmasi", "Keperawatan", "Public Health", "Psikologi Klinis", "Biomedical Science", "Fisioterapi"],
+  engineering: ["Computer Science", "Data Science & AI", "Electrical Engineering", "Software Engineering", "Civil Engineering", "Arsitektur", "Mechanical Engineering"],
+  business:    ["International Business", "Finance & Investment", "Marketing & Digital Marketing", "Akuntansi", "Entrepreneurship", "Supply Chain Management", "Economics"],
+  social:      ["Hubungan Internasional", "Hukum / Law", "Komunikasi & Media", "Psikologi", "Pendidikan", "Sosiologi", "Public Policy"]
+};
+
+// ═══════════════ LABEL MAPS ═══════════════
 const LABEL_MAPS = {
   stage: {
     early:    "SMA kelas 10–11 (early bird)",
     applying: "SMA kelas 12 / baru lulus",
     transfer: "Sudah kuliah di Indonesia (transfer/S2)"
   },
-  english: {
-    1: "Masih belajar",
-    2: "Bisa baca & nulis, speaking kagok",
-    3: "Lumayan lancar, belum IELTS/TOEFL",
-    4: "Punya IELTS/TOEFL atau yakin bisa dapet"
-  },
-  budget: {
-    1: "Butuh beasiswa penuh",
-    2: "Perlu beasiswa partial",
-    3: "Ada budget, cari cost-efficient",
-    4: "Budget bukan masalah utama"
-  },
-  parentSupport: {
-    1: "Belum tau / belum berani bilang",
-    2: "Tau tapi belum yakin",
-    3: "Mulai terbuka, masih khawatir finansial",
-    4: "Tau dan support penuh"
-  },
-  career: {
-    "indonesia":   "Balik ke Indonesia setelah lulus",
-    "work-abroad": "Kerja dulu di LN, lalu balik",
-    "explore":     "Explore dulu, belum pasti",
-    "migrate":     "Pengen settle di luar negeri"
-  },
-  lifestyle: {
-    urban:    "Kota besar + komunitas Indonesia",
-    balanced: "Kota sedang, balance studi & explore",
-    flexible: "Fleksibel, yang penting kampus bagus",
-    quiet:    "Suasana tenang, fokus studi"
-  },
-  fear: {
-    cost:        "Biaya / finansial",
-    visa:        "Visa rejection",
-    loneliness:  "Sendirian / jauh dari keluarga",
-    capability:  "Kemampuan diri / kualifikasi"
-  },
-  readiness: {
-    1: "Masih di tahap dreaming",
-    2: "Serius tapi bingung mulai",
-    3: "Udah riset, butuh guidance"
-  },
-  urgency: {
-    1: "Belum urgent",
-    2: "Mulai serius",
-    3: "Mau segera action",
-    4: "Deadline dekat, butuh bantuan SEKARANG"
-  }
+  english: { 1: "Masih belajar", 2: "Bisa baca & nulis, speaking kagok", 3: "Lumayan lancar, belum IELTS/TOEFL", 4: "Punya IELTS/TOEFL atau yakin bisa dapet" },
+  budget: { 1: "Butuh beasiswa penuh", 2: "Perlu beasiswa partial", 3: "Ada budget, cari cost-efficient", 4: "Budget bukan masalah utama" },
+  parentSupport: { 1: "Belum tau / belum berani bilang", 2: "Tau tapi belum yakin", 3: "Mulai terbuka, masih khawatir finansial", 4: "Tau dan support penuh" },
+  career: { "indonesia": "Balik ke Indonesia setelah lulus", "work-abroad": "Kerja dulu di LN, lalu balik", "explore": "Explore dulu, belum pasti", "migrate": "Pengen settle di luar negeri" },
+  lifestyle: { urban: "Kota besar + komunitas Indonesia", balanced: "Kota sedang, balance studi & explore", flexible: "Fleksibel, yang penting kampus bagus", quiet: "Suasana tenang, fokus studi" },
+  fear: { cost: "Biaya / finansial", visa: "Visa rejection", loneliness: "Sendirian / jauh dari keluarga", capability: "Kemampuan diri / kualifikasi" },
+  studyField: { health: "Kesehatan & Kedokteran", engineering: "Teknik & Teknologi", business: "Bisnis & Ekonomi", social: "Sosial & Humaniora" }
 };
 
 // ═══════════════ STATE ═══════════════
 let currentQ = 0;
-let answers = {};        // { 0: {...value}, 1: {...value}, ... }
+let answers = {};
+let userData = { name: "", school: "", city: "" };
 let currentResult = null;
 let quizStartTime = null;
+let showingForm = false;
 
 // ═══════════════ NAVIGATION ═══════════════
 function show(id) {
   ["screen-landing","screen-quiz","screen-loading","screen-result"].forEach(s => {
-    const el = document.getElementById(s);
-    el.style.display = "none";
+    document.getElementById(s).style.display = "none";
   });
   const target = document.getElementById(id);
-  if (id === "screen-loading") {
-    target.style.display = "flex";
-  } else {
-    target.style.display = "block";
-  }
+  target.style.display = id === "screen-loading" ? "flex" : "block";
   window.scrollTo(0,0);
 }
 
 function startQuiz() {
-  currentQ = 0;
-  answers = {};
+  currentQ = 0; answers = {}; showingForm = false;
+  userData = { name: "", school: "", city: "" };
   quizStartTime = Date.now();
-  // ── GTM: track quiz started ──
   gtmEvent('quiz_started', {
     quiz_name: 'study_abroad_profiler',
     button_location: 'quiz_landing',
-    utm_source: getUTM('utm_source'),
-    utm_medium: getUTM('utm_medium'),
-    utm_campaign: getUTM('utm_campaign')
+    utm_source: getUTM('utm_source'), utm_medium: getUTM('utm_medium'), utm_campaign: getUTM('utm_campaign')
   });
   show("screen-quiz");
   renderQuestion();
@@ -1297,19 +940,22 @@ function restartQuiz() {
 }
 
 function updateProgress() {
-  const pct = Math.round((currentQ / QUESTIONS.length) * 100);
+  // Steps: Q1-Q9 = steps 0-8, form = step 9
+  const step = showingForm ? QUESTIONS.length : currentQ;
+  const pct = Math.round((step / TOTAL_STEPS) * 100);
   document.getElementById("progress-bar").style.width = pct + "%";
-  document.getElementById("progress-label").textContent = currentQ + " / " + QUESTIONS.length;
+  document.getElementById("progress-label").textContent = step + " / " + TOTAL_STEPS;
 }
 
 function renderQuestion() {
+  showingForm = false;
   const q = QUESTIONS[currentQ];
   updateProgress();
 
-  // toggle back button
   const backBtn = document.getElementById("btn-back");
   backBtn.disabled = currentQ === 0;
   backBtn.style.opacity = currentQ === 0 ? "0.3" : "1";
+  document.getElementById("nav-hint").textContent = "Pilih jawaban untuk lanjut →";
 
   const wrap = document.getElementById("question-wrap");
   wrap.classList.remove("active");
@@ -1322,67 +968,111 @@ function renderQuestion() {
       <div class="q-sub">${q.subtitle}</div>
       <div class="options-grid">
     `;
-
     q.options.forEach((opt) => {
-      // Check if this option was previously selected
       const storedVal = answers[currentQ];
       const isSelected = storedVal && JSON.stringify(storedVal) === JSON.stringify(opt.value);
-      const selectedClass = isSelected ? "selected" : "";
       html += `
-        <div class="option-card ${selectedClass}" data-qidx="${currentQ}" data-optid="${opt.id}" onclick="selectOption(${currentQ}, '${opt.id}', this)">
+        <div class="option-card ${isSelected ? "selected" : ""}" onclick="selectOption(${currentQ}, '${opt.id}', this)">
           <div class="option-letter">${opt.id.toUpperCase()}</div>
           <div class="option-text">${opt.text}</div>
           <div class="option-check">✓</div>
         </div>
       `;
     });
-
     html += `</div>`;
     wrap.innerHTML = html;
     wrap.classList.add("active");
   }, 50);
 }
 
-function selectOption(qIdx, optId, el) {
-  // Prevent double-select during transition
-  if (el.classList.contains("selected-done")) return;
+function renderForm() {
+  showingForm = true;
+  updateProgress();
 
-  // Find option value
+  const backBtn = document.getElementById("btn-back");
+  backBtn.disabled = false;
+  backBtn.style.opacity = "1";
+  document.getElementById("nav-hint").textContent = "Isi data lalu klik Lihat Hasil";
+
+  const wrap = document.getElementById("question-wrap");
+  wrap.classList.remove("active");
+
+  setTimeout(() => {
+    wrap.innerHTML = `
+      <div class="q-category">Satu Langkah Lagi</div>
+      <div class="q-text">Kenalan dulu yuk!</div>
+      <div class="q-sub">Biar Nabila tau siapa kamu dan bisa follow up dengan lebih personal.</div>
+      <div class="form-wrap">
+        <div class="form-field">
+          <label class="form-label">Nama kamu *</label>
+          <input class="form-input" id="f-name" type="text" placeholder="Ketik nama kamu…" value="${userData.name}" oninput="userData.name=this.value;checkFormReady()">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Sekolah / Universitas asal *</label>
+          <input class="form-input" id="f-school" type="text" placeholder="Contoh: SMAN 1 Medan, Universitas X…" value="${userData.school}" oninput="userData.school=this.value;checkFormReady()">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Domisili / Kota *</label>
+          <input class="form-input" id="f-city" type="text" placeholder="Contoh: Medan, Surabaya, Jakarta…" value="${userData.city}" oninput="userData.city=this.value;checkFormReady()">
+        </div>
+        <button class="form-submit" id="f-submit" onclick="submitForm()" disabled>
+          Lihat Hasil Quiz →
+        </button>
+        <div class="form-note">Data ini hanya dikirim ke Nabila via WhatsApp. Tidak ada akun, tidak ada spam.</div>
+      </div>
+    `;
+    wrap.classList.add("active");
+    setTimeout(() => document.getElementById("f-name")?.focus(), 100);
+    checkFormReady();
+  }, 50);
+}
+
+function checkFormReady() {
+  const btn = document.getElementById("f-submit");
+  if (!btn) return;
+  const ready = userData.name.trim().length >= 2 && userData.school.trim().length >= 2 && userData.city.trim().length >= 2;
+  btn.disabled = !ready;
+}
+
+function submitForm() {
+  if (userData.name.trim().length < 2 || userData.school.trim().length < 2 || userData.city.trim().length < 2) return;
+  generateResult();
+}
+
+function selectOption(qIdx, optId, el) {
+  if (el.classList.contains("selected-done")) return;
   const q = QUESTIONS[qIdx];
   const opt = q.options.find(o => o.id === optId);
   if (!opt) return;
 
-  // Deselect all siblings
   el.closest(".options-grid").querySelectorAll(".option-card").forEach(c => c.classList.remove("selected"));
   el.classList.add("selected");
-
-  // Store answer
   answers[qIdx] = opt.value;
 
-  // ── GTM: track each answer ──
   gtmEvent('quiz_question_answered', {
-    question_number: qIdx + 1,
-    question_category: q.category,
-    answer_id: optId,
-    answer_text: opt.text
+    question_number: qIdx + 1, question_category: q.category,
+    answer_id: optId, answer_text: opt.text
   });
 
-  // Mark as done so double-click does nothing
   el.classList.add("selected-done");
 
-  // Auto-advance after a short delay
   setTimeout(() => {
     if (currentQ < QUESTIONS.length - 1) {
       currentQ++;
       renderQuestion();
     } else {
-      generateResult();
+      // After Q9, show form
+      renderForm();
     }
   }, 420);
 }
 
 function prevQuestion() {
-  if (currentQ > 0) {
+  if (showingForm) {
+    // Go back from form to last question
+    showingForm = false;
+    renderQuestion();
+  } else if (currentQ > 0) {
     currentQ--;
     renderQuestion();
   } else {
@@ -1390,9 +1080,9 @@ function prevQuestion() {
   }
 }
 
-// Keyboard support for desktop: 1-4 selects options
+// Keyboard support
 document.addEventListener('keydown', (e) => {
-  if (document.getElementById('screen-quiz').style.display === 'block') {
+  if (document.getElementById('screen-quiz').style.display === 'block' && !showingForm) {
     const idx = ['1','2','3','4'].indexOf(e.key);
     if (idx >= 0) {
       const cards = document.querySelectorAll('#question-wrap .option-card');
@@ -1403,9 +1093,11 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// ═══════════════ SCORING ENGINE (from beewithnabila-quiz.jsx) ═══════════════
+// ═══════════════ SCORING ENGINE ═══════════════
+// Negara HANYA: Australia, UK, US, Canada, China, Malaysia, Singapore, New Zealand
+// Tier: Affordable (China, Malaysia) | Medium (Singapore, NZ, Canada) | Premium (UK, US, Australia)
+
 function calculateResult() {
-  // Flatten all answer values into single object
   const vals = Object.values(answers).reduce((acc, v) => ({ ...acc, ...v }), {});
 
   const readiness = vals.readiness || 1;
@@ -1417,120 +1109,103 @@ function calculateResult() {
   const career = vals.career || "explore";
   const fear = vals.fear || "cost";
   const lifestyle = vals.lifestyle || "balanced";
+  const studyField = vals.studyField || "business";
 
   let profile, countries;
 
-  // Fear response
   const fearResponses = {
-    cost: {
-      label: "Soal biaya",
-      text: "Soal biaya — ini yang paling sering bikin orang mundur sebelum coba. Tapi ada lebih banyak opsi affordable yang gak banyak dibahas orang, termasuk universitas yang tuition-nya hampir 0 atau beasiswa yang timeline-nya lebih pendek dari yang kamu kira."
-    },
-    visa: {
-      label: "Soal visa",
-      text: "Visa rejection itu nyata, tapi bisa di-minimize dengan persiapan yang bener. Mayoritas penolakan terjadi karena kesalahan dokumen yang sebenarnya bisa dihindari — bukan karena profil kamu kurang."
-    },
-    loneliness: {
-      label: "Soal sendirian",
-      text: "Rasa ini valid banget. Tapi komunitas Indonesia di luar negeri jauh lebih besar dari yang kamu bayangkan — dan ini justru yang bikin banyak orang grow paling cepat karena dipaksa keluar dari zona nyaman sambil tetap punya support system."
-    },
-    capability: {
-      label: "Soal kemampuan",
-      text: "Ini imposter syndrome berbicara. Universitas luar negeri menerima ribuan mahasiswa internasional tiap tahun — termasuk dari Indonesia dengan background biasa. Yang membedakan yang diterima dan yang enggak bukan kepintaran, tapi strategi aplikasi."
-    }
+    cost: { label: "Soal biaya", text: "Soal biaya — ini yang paling sering bikin orang mundur sebelum coba. Tapi ada lebih banyak opsi affordable yang gak banyak dibahas orang. China dan Malaysia punya universitas berkualitas dengan biaya yang jauh lebih rendah dari yang kamu bayangkan." },
+    visa: { label: "Soal visa", text: "Visa rejection itu nyata, tapi bisa di-minimize dengan persiapan yang bener. Mayoritas penolakan terjadi karena kesalahan dokumen yang sebenarnya bisa dihindari — bukan karena profil kamu kurang." },
+    loneliness: { label: "Soal sendirian", text: "Rasa ini valid banget. Tapi komunitas Indonesia di luar negeri jauh lebih besar dari yang kamu bayangkan — terutama di Australia, Malaysia, dan Singapore. Ini justru yang bikin banyak orang grow paling cepat." },
+    capability: { label: "Soal kemampuan", text: "Ini imposter syndrome berbicara. Universitas luar negeri menerima ribuan mahasiswa internasional tiap tahun — termasuk dari Indonesia dengan background biasa. Yang membedakan bukan kepintaran, tapi strategi aplikasi." }
   };
-
   const fearResponse = fearResponses[fear];
 
-  // ── PROFILE DETERMINATION (logic from JSX) ──
-  // Priority 1: Scholarship Hunter (budget ≤ 1 OR needs scholarship)
-  if (budget <= 1 || scholarship) {
+  // Majors from studyField
+  const majors = MAJOR_DB[studyField] || MAJOR_DB["business"];
+
+  // ── PROFILE DETERMINATION ──
+  // Priority 1: Scholarship Hunter — budget ketat
+  if (budget <= 1 || (budget === 2 && scholarship)) {
     profile = {
-      type: "The Scholarship Hunter",
-      emoji: "🎯",
+      type: "The Scholarship Hunter", emoji: "🎯",
       tagline: "Kamu butuh jalan yang smart, bukan yang mahal.",
-      description: "Finansial adalah constraint utama kamu — dan itu bukan penghalang, itu filter. Kita harus cari universitas yang punya scholarship program kuat untuk mahasiswa internasional, atau negara dengan biaya hidup + tuition yang realistis tanpa harus fully funded.",
+      description: "Finansial adalah constraint utama kamu — dan itu bukan penghalang, itu filter. Ada banyak negara dengan beasiswa kuat dan biaya hidup rendah yang realistis untuk WNI.",
       urgencyNote: readiness >= 3
         ? "Kamu udah di titik yang serius — ini saatnya mulai konkret. Deadline banyak scholarship punya timeline 6–12 bulan sebelum intake."
         : "Kamu masih punya waktu untuk persiapan yang solid. Jangan buru-buru — fokus dulu ke riset scholarship yang realistis."
     };
-    countries = budget <= 1
-      ? [
-          { name: "Jerman",   flag: "🇩🇪", reason: "Tuition hampir 0 di universitas negeri, bahkan untuk mahasiswa internasional. Butuh persiapan bahasa tapi worth it.", difficulty: "Medium" },
-          { name: "Taiwan",   flag: "🇹🇼", reason: "Beasiswa MOE Taiwan salah satu yang paling accessible untuk WNI. Biaya hidup rendah, kualitas pendidikan solid.", difficulty: "Medium" },
-          { name: "Belanda",  flag: "🇳🇱", reason: "Banyak program English-taught dengan scholarship khusus dari kampus (Holland Scholarship, Orange Tulip, dll).", difficulty: "Medium-High" }
-        ]
-      : [
-          { name: "Malaysia", flag: "🇲🇾", reason: "Biaya paling terjangkau dengan universitas yang diakui internasional. Transisi paling smooth dari Indonesia.", difficulty: "Low" },
-          { name: "Jerman",   flag: "🇩🇪", reason: "Tuition rendah, kualitas pendidikan top. Cocok kalau kamu ada sedikit tabungan buat biaya hidup.", difficulty: "Medium" },
-          { name: "Hungaria", flag: "🇭🇺", reason: "Biaya hidup rendah, gateway ke Eropa. Program Stipendium Hungaricum untuk WNI.", difficulty: "Low-Medium" }
-        ];
+    // Budget ketat → affordable countries: China, Malaysia, + Indonesia (lokal tapi international univ)
+    countries = [
+      { name: "China",     flag: "🇨🇳", reason: "Banyak beasiswa pemerintah (CSC) dan kampus, biaya hidup rendah, program English-taught makin banyak.", difficulty: "Affordable" },
+      { name: "Malaysia",  flag: "🇲🇾", reason: "Biaya paling terjangkau, universitas diakui internasional, budaya familiar, transisi smooth dari Indonesia.", difficulty: "Affordable" },
+      { name: "New Zealand", flag: "🇳🇿", reason: "Beasiswa tersedia untuk WNI, lingkungan aman, dan biaya lebih rendah dari Australia.", difficulty: "Medium" }
+    ];
   }
-  // Priority 2: Qualified Explorer (budget ≥ 3 AND english ≥ 3)
+  // Priority 2: Qualified Explorer — budget oke + English bagus
   else if (budget >= 3 && english >= 3) {
     profile = {
-      type: "The Qualified Explorer",
-      emoji: "🌍",
+      type: "The Qualified Explorer", emoji: "🌍",
       tagline: "Kamu punya modal — sekarang tinggal arahkan ke yang tepat.",
       description: "Kamu berada di posisi yang kuat. Budget ada, bahasa oke, tinggal nentuin mau yang paling prestige, paling career-focused, atau yang paling fit sama kepribadian kamu.",
       urgencyNote: stage === "applying"
         ? "Timing kamu pas — kalau mulai sekarang, bisa kejar intake tahun ini. Deadline aplikasi biasanya 6–9 bulan sebelum intake."
-        : "Ada waktu untuk persiapan yang lebih matang. Manfaatkan itu untuk riset universitas yang benar-benar fit — bukan cuma yang terkenal."
+        : "Ada waktu untuk persiapan yang lebih matang. Manfaatkan itu untuk riset universitas yang benar-benar fit."
     };
-    countries = career === "migrate"
-      ? [
-          { name: "Australia", flag: "🇦🇺", reason: "Post-study work visa paling accessible, komunitas Indonesia besar. Pathway ke PR jelas.", difficulty: "Medium" },
-          { name: "Kanada",    flag: "🇨🇦", reason: "Pathway ke PR salah satu yang paling jelas untuk international graduate. Quality of life tinggi.", difficulty: "Medium-High" },
-          { name: "UK",        flag: "🇬🇧", reason: "Graduate Route visa 2 tahun setelah lulus. Brand recognition universitas kuat global.", difficulty: "High" }
-        ]
-      : [
-          { name: "UK",        flag: "🇬🇧", reason: "Durasi studi lebih pendek (3 tahun S1), brand recognition kuat. Cocok kalau target universitas top-tier.", difficulty: "High" },
-          { name: "Belanda",   flag: "🇳🇱", reason: "English-taught programs terbanyak di Eropa, biaya lebih masuk akal dari UK. Quality of teaching tinggi.", difficulty: "Medium-High" },
-          { name: "Australia", flag: "🇦🇺", reason: "Kualitas pendidikan tinggi, komunitas Indonesia terbesar di LN. Timezone dekat Indonesia.", difficulty: "Medium" }
-        ];
+    // High budget → premium countries, adjusted by career goal
+    if (career === "migrate") {
+      countries = [
+        { name: "Australia", flag: "🇦🇺", reason: "Post-study work visa paling accessible, komunitas Indonesia besar, pathway ke PR jelas.", difficulty: "Premium" },
+        { name: "Canada",    flag: "🇨🇦", reason: "Pathway ke PR salah satu yang paling jelas untuk international graduate. Quality of life tinggi.", difficulty: "Medium" },
+        { name: "UK",        flag: "🇬🇧", reason: "Graduate Route visa 2 tahun setelah lulus. Brand recognition universitas kuat global.", difficulty: "Premium" }
+      ];
+    } else {
+      countries = [
+        { name: "UK",        flag: "🇬🇧", reason: "Durasi studi lebih pendek (3 tahun S1), brand recognition kuat. Cocok kalau target top-tier.", difficulty: "Premium" },
+        { name: "Australia", flag: "🇦🇺", reason: "Kualitas pendidikan tinggi, komunitas Indonesia terbesar di LN, timezone dekat.", difficulty: "Premium" },
+        { name: "US",        flag: "🇺🇸", reason: "Universitas terbaik dunia, ekosistem riset & startup tak tertandingi. Peluang karir luas.", difficulty: "Premium" }
+      ];
+    }
   }
-  // Priority 3: Early Bird (SMA kelas 10-11)
+  // Priority 3: Early Bird — masih kelas 10-11
   else if (stage === "early") {
     profile = {
-      type: "The Early Bird",
-      emoji: "⏰",
+      type: "The Early Bird", emoji: "⏰",
       tagline: "Kamu mulai lebih awal dari 90% orang — itu keuntungan besar.",
-      description: "Masih kelas 10–11 artinya kamu punya waktu yang kebanyakan orang gak punya. Ini bukan saatnya buru-buru milih universitas — ini saatnya bangun fondasi yang kuat supaya pilihan kamu nanti jauh lebih banyak.",
-      urgencyNote: "Fokus sekarang: tingkatkan bahasa Inggris (target IELTS 6.5+ atau TOEFL 80+), mulai riset negara, dan mulai bicara ke orang tua. Universitas bisa dipilih nanti — tapi foundation gak bisa di-build terburu-buru."
+      description: "Masih kelas 10–11 artinya kamu punya waktu yang kebanyakan orang gak punya. Ini saatnya bangun fondasi yang kuat supaya pilihan kamu nanti jauh lebih banyak.",
+      urgencyNote: "Fokus sekarang: tingkatkan bahasa Inggris (target IELTS 6.5+ atau TOEFL 80+), mulai riset negara, dan mulai bicara ke orang tua. Universitas bisa dipilih nanti."
     };
+    // Early bird → mix affordable + medium (biar ada aspirasi)
     countries = [
-      { name: "Belanda",       flag: "🇳🇱", reason: "Banyak program S1 dalam bahasa Inggris, proses aplikasi relatif straightforward untuk WNI.", difficulty: "Medium" },
-      { name: "Australia",     flag: "🇦🇺", reason: "Sistem pendidikan mirip Indonesia, komunitas besar, dan pathway post-study jelas.", difficulty: "Medium" },
-      { name: "Korea Selatan", flag: "🇰🇷", reason: "Biaya relatif terjangkau, banyak beasiswa pemerintah untuk WNI (KGSP, GKS).", difficulty: "Medium" }
+      { name: "Singapore", flag: "🇸🇬", reason: "Hub Asia Tenggara, universitas top dunia (NUS, NTU), dekat Indonesia, cocok untuk mulai riset.", difficulty: "Medium" },
+      { name: "Australia",   flag: "🇦🇺", reason: "Sistem pendidikan mirip Indonesia, komunitas besar, dan pathway post-study jelas.", difficulty: "Premium" },
+      { name: "Malaysia",    flag: "🇲🇾", reason: "Opsi affordable kalau mau mulai dari yang realistis, universitas bagus, budaya familiar.", difficulty: "Affordable" }
     ];
   }
-  // Priority 4: Realistic Dreamer (default)
+  // Priority 4: Realistic Dreamer — serius tapi ada gaps
   else {
     profile = {
-      type: "The Realistic Dreamer",
-      emoji: "💭",
+      type: "The Realistic Dreamer", emoji: "💭",
       tagline: "Mimpinya nyata — sekarang kita buat plannya nyata juga.",
       description: "Kamu serius tapi masih ada beberapa hal yang perlu dikuatkan — dan itu normal. Yang penting bukan mulai dari sempurna, tapi mulai dari yang realistis dan build dari sana.",
       urgencyNote: parentSupport <= 2
         ? "Satu hal yang perlu diselesaikan dulu: bicara ke orang tua. Tanpa itu, semua persiapan lain akan lebih sulit. Nabila bisa bantu kamu menyusun pendekatan yang masuk akal buat mereka."
-        : "Kamu udah punya support yang cukup — sekarang tinggal eksekusi step by step. Mulai dari yang paling realistis dulu, jangan langsung ke universitas top-10."
+        : "Kamu udah punya support yang cukup — sekarang tinggal eksekusi step by step. Mulai dari yang paling realistis dulu."
     };
+    // Realistic → affordable + medium range
     countries = [
-      { name: "Malaysia", flag: "🇲🇾", reason: "Transisi paling smooth dari Indonesia, biaya paling terjangkau. Cocok untuk memulai tanpa pressure tinggi.", difficulty: "Low" },
-      { name: "Taiwan",   flag: "🇹🇼", reason: "Beasiswa available, biaya hidup rendah, kualitas pendidikan solid. Program bahasa Inggris cukup banyak.", difficulty: "Medium" },
-      { name: "Jerman",   flag: "🇩🇪", reason: "Tuition gratis di universitas negeri — butuh persiapan bahasa tapi worth it long-term.", difficulty: "Medium" }
+      { name: "Malaysia",   flag: "🇲🇾", reason: "Transisi paling smooth dari Indonesia, biaya paling terjangkau. Cocok untuk memulai tanpa pressure.", difficulty: "Affordable" },
+      { name: "China",      flag: "🇨🇳", reason: "Beasiswa available (CSC dll), biaya hidup rendah, kualitas pendidikan makin diakui global.", difficulty: "Affordable" },
+      { name: "Canada",     flag: "🇨🇦", reason: "Ramah imigran, kualitas hidup tinggi, pathway ke PR jelas kalau mau lanjut kerja.", difficulty: "Medium" }
     ];
   }
 
   return {
-    profile,
-    countries,
-    fearResponse,
+    profile, countries, fearResponse, majors,
     rawData: {
       readiness, budget, english, parentSupport, stage,
-      scholarship, career, fear, lifestyle,
-      urgency: vals.urgency || 1,
-      indonesian_community: vals.indonesian_community || false
+      scholarship, career, fear, lifestyle, studyField,
+      urgency: vals.urgency || 1
     }
   };
 }
@@ -1546,32 +1221,29 @@ function generateResult() {
 }
 
 function animateLoadingSteps() {
-  const steps = [1,2,3,4,5];
-  steps.forEach((n,i) => {
+  [1,2,3,4,5].forEach((n,i) => {
     setTimeout(() => {
-      if (i > 0) document.getElementById("ls-"+steps[i-1])?.classList.replace("active","done");
+      if (i > 0) document.getElementById("ls-"+(n-1))?.classList.replace("active","done");
       document.getElementById("ls-"+n)?.classList.add("active");
     }, i * 850);
   });
 }
 
 function renderResult(data) {
-  const { profile, countries, fearResponse, rawData } = data;
+  const { profile, countries, fearResponse, majors, rawData } = data;
 
-  // Header card
+  // Personalized greeting
+  document.getElementById("r-greeting").textContent = `Hasil Quiz untuk ${userData.name || 'Kamu'}`;
   document.getElementById("r-emoji").textContent = profile.emoji;
   document.getElementById("r-type").textContent = profile.type;
   document.getElementById("r-tagline").textContent = `"${profile.tagline}"`;
   document.getElementById("r-description").textContent = profile.description;
 
-  // Urgency note
   document.getElementById("r-urgency").textContent = profile.urgencyNote;
 
   // Countries
   document.getElementById("r-countries").innerHTML = countries.map(c => {
-    const level = c.difficulty.toLowerCase().includes("low") ? "low"
-               : c.difficulty.toLowerCase().includes("high") ? "high"
-               : "medium";
+    const level = c.difficulty === "Affordable" ? "low" : c.difficulty === "Premium" ? "high" : "medium";
     return `
       <div class="country-card">
         <div class="country-header">
@@ -1584,118 +1256,90 @@ function renderResult(data) {
     `;
   }).join("");
 
-  // Fear response
+  // Majors
+  document.getElementById("r-majors").innerHTML = majors.map(m => `<div class="major-tag">${m}</div>`).join("");
+
+  // Fear
   document.getElementById("r-fear-label").textContent = fearResponse.label;
   document.getElementById("r-fear").textContent = fearResponse.text;
 
   // Preview box
   const previewItems = [
+    `<strong>Nama:</strong> ${userData.name}`,
+    `<strong>Sekolah:</strong> ${userData.school}`,
+    `<strong>Domisili:</strong> ${userData.city}`,
     `<strong>Profile:</strong> ${profile.emoji} ${profile.type}`,
     `<strong>Status:</strong> ${LABEL_MAPS.stage[rawData.stage]}`,
     `<strong>Bahasa Inggris:</strong> ${LABEL_MAPS.english[rawData.english]}`,
     `<strong>Budget:</strong> ${LABEL_MAPS.budget[rawData.budget]}`,
-    `<strong>Dukungan orang tua:</strong> ${LABEL_MAPS.parentSupport[rawData.parentSupport]}`,
-    `<strong>Tujuan karir:</strong> ${LABEL_MAPS.career[rawData.career]}`,
-    `<strong>Gaya hidup:</strong> ${LABEL_MAPS.lifestyle[rawData.lifestyle]}`,
-    `<strong>Kekhawatiran utama:</strong> ${LABEL_MAPS.fear[rawData.fear]}`,
-    `<strong>Rekomendasi negara:</strong> ${countries.map(c=>c.flag+' '+c.name).join(', ')}`
+    `<strong>Bidang studi:</strong> ${LABEL_MAPS.studyField[rawData.studyField]}`,
+    `<strong>Rekomendasi negara:</strong> ${countries.map(c=>c.flag+' '+c.name).join(', ')}`,
+    `<strong>Rekomendasi jurusan:</strong> ${majors.slice(0,3).join(', ')}`
   ];
   document.getElementById("r-preview").innerHTML = previewItems.map(i => `<li>${i}</li>`).join("");
 
-  // WhatsApp button — build pre-filled message with ALL quiz data
+  // WA
   const waMsg = buildWAMsg(data);
-  const waUrl = `https://wa.me/6281282152861?text=${encodeURIComponent(waMsg)}`;
+  const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waMsg)}`;
   document.getElementById("wa-btn").href = waUrl;
 
   show("screen-result");
 
-  // ── GTM: track quiz completion with full profile data ──
+  // GTM
   const quizDuration = quizStartTime ? Math.round((Date.now() - quizStartTime) / 1000) : null;
   gtmEvent('quiz_completed', {
-    profile_type: profile.type,
-    profile_emoji: profile.emoji,
-    top_country: countries[0]?.name || '',
+    profile_type: profile.type, top_country: countries[0]?.name || '',
     recommended_countries: countries.map(c => c.name).join(', '),
-    user_stage: rawData.stage,
-    user_budget_level: rawData.budget,
-    user_english_level: rawData.english,
-    user_parent_support: rawData.parentSupport,
-    user_career_goal: rawData.career,
-    user_fear: rawData.fear,
-    user_readiness: rawData.readiness,
-    user_urgency: rawData.urgency,
-    quiz_duration_seconds: quizDuration,
-    utm_source: getUTM('utm_source'),
-    utm_medium: getUTM('utm_medium'),
-    utm_campaign: getUTM('utm_campaign')
+    user_stage: rawData.stage, user_budget_level: rawData.budget,
+    user_english_level: rawData.english, user_career_goal: rawData.career,
+    user_fear: rawData.fear, user_study_field: rawData.studyField,
+    user_city: userData.city, quiz_duration_seconds: quizDuration,
+    utm_source: getUTM('utm_source'), utm_medium: getUTM('utm_medium'), utm_campaign: getUTM('utm_campaign')
   });
 
-  // ── GTM: track klik WA dari halaman hasil (conversion utama) ──
+  // WA click tracking
   const waBtn = document.getElementById('wa-btn');
   if (waBtn) {
-    // Remove any previous listener to avoid duplicates on restart
     waBtn.replaceWith(waBtn.cloneNode(true));
     const freshBtn = document.getElementById('wa-btn');
     freshBtn.href = waUrl;
     freshBtn.addEventListener('click', () => {
       gtmEvent('quiz_wa_clicked', {
-        profile_type: profile.type,
-        top_country: countries[0]?.name || '',
+        profile_type: profile.type, top_country: countries[0]?.name || '',
         recommended_countries: countries.map(c => c.name).join(', '),
-        user_stage: rawData.stage,
-        user_fear: rawData.fear,
+        user_stage: rawData.stage, user_fear: rawData.fear,
+        user_study_field: rawData.studyField, user_city: userData.city,
         button_location: 'quiz_result',
-        utm_source: getUTM('utm_source'),
-        utm_medium: getUTM('utm_medium'),
-        utm_campaign: getUTM('utm_campaign')
+        utm_source: getUTM('utm_source'), utm_medium: getUTM('utm_medium'), utm_campaign: getUTM('utm_campaign')
       });
-      // Also push the universal conversion event (for ads retargeting)
-      gtmEvent('whatsapp_cta_clicked', {
-        page: 'quiz_result',
-        location: 'result_primary_cta',
-        profile_type: profile.type
-      });
+      gtmEvent('whatsapp_cta_clicked', { page: 'quiz_result', location: 'result_primary_cta', profile_type: profile.type });
     });
   }
 
-  // scroll ke atas
   window.scrollTo(0, 0);
 
-  // scroll-reveal: stagger tiap section saat masuk viewport
+  // Scroll reveal
   const sections = document.querySelectorAll("#screen-result .result-section");
-  sections.forEach((el, i) => {
-    el.style.transitionDelay = (i * 0.08) + "s";
-  });
-
+  sections.forEach((el, i) => { el.style.transitionDelay = (i * 0.08) + "s"; });
   const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add("rs-visible");
-        io.unobserve(e.target);
-      }
-    });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("rs-visible"); io.unobserve(e.target); } });
   }, { threshold: 0.08 });
-
   sections.forEach(el => io.observe(el));
 }
 
-// ═══════════════ WHATSAPP MESSAGE BUILDER ═══════════════
-// Build pesan WA pre-filled dengan SEMUA data hasil quiz.
-// User tinggal tekan Send — Nabila langsung punya full context.
+// ═══════════════ WA MESSAGE BUILDER ═══════════════
 function buildWAMsg(data) {
-  const { profile, countries, rawData } = data;
-
-  // Urgency note (condensed for WA)
-  const urgencyNote = profile.urgencyNote;
-
-  // UTM source (if available)
+  const { profile, countries, majors, rawData } = data;
   const utmSource = getUTM('utm_source');
   const utmCampaign = getUTM('utm_campaign');
-  const sourceLine = utmSource
-    ? `\n• Sumber: ${utmSource}${utmCampaign ? ' / ' + utmCampaign : ''}`
-    : '';
+  const sourceLine = utmSource ? `\n• Sumber: ${utmSource}${utmCampaign ? ' / ' + utmCampaign : ''}` : '';
 
-  const msg = `Halo Nabila! 🐝 Aku baru selesai quiz di beewithnabila.id.
+  return `Halo Nabila! 🐝 Aku baru selesai quiz di beewithnabila.id.
+
+👤 DATA DIRI
+Nama: ${userData.name}
+Sekolah: ${userData.school}
+Domisili: ${userData.city}
 
 📊 HASIL QUIZ KU
 Profile: ${profile.emoji} ${profile.type}
@@ -1704,6 +1348,9 @@ Profile: ${profile.emoji} ${profile.type}
 🎯 Rekomendasi negara buat aku:
 ${countries.map((c, i) => `${i+1}. ${c.flag} ${c.name} — ${c.reason}`).join('\n')}
 
+📚 Rekomendasi jurusan:
+${majors.slice(0, 5).map((m, i) => `${i+1}. ${m}`).join('\n')}
+
 📋 Detail situasiku:
 • Status: ${LABEL_MAPS.stage[rawData.stage]}
 • Bahasa Inggris: ${LABEL_MAPS.english[rawData.english]}
@@ -1711,41 +1358,33 @@ ${countries.map((c, i) => `${i+1}. ${c.flag} ${c.name} — ${c.reason}`).join('\
 • Dukungan orang tua: ${LABEL_MAPS.parentSupport[rawData.parentSupport]}
 • Tujuan karir: ${LABEL_MAPS.career[rawData.career]}
 • Gaya hidup: ${LABEL_MAPS.lifestyle[rawData.lifestyle]}
+• Bidang studi: ${LABEL_MAPS.studyField[rawData.studyField]}
 • Kekhawatiran utama: ${LABEL_MAPS.fear[rawData.fear]}${sourceLine}
 
 💡 Catatan dari hasil quiz:
-${urgencyNote}
+${profile.urgencyNote}
 
 Boleh minta konsultasi gratis-nya? 🙏`;
-
-  return msg;
 }
 
-// ═══════════════ UTM TRACKING (sessionStorage) ═══════════════
-// Simpan UTM saat pertama kali landing, lalu append ke pesan WA nanti
+// ═══════════════ UTM ═══════════════
 function captureUTM() {
   try {
     const url = new URL(window.location.href);
-    const params = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
-    params.forEach(p => {
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(p => {
       const val = url.searchParams.get(p);
       if (val) sessionStorage.setItem('bwn_' + p, val);
     });
-  } catch (e) { /* noop */ }
+  } catch (e) {}
 }
 
 function getUTM(key) {
-  try {
-    return sessionStorage.getItem('bwn_' + key) || '';
-  } catch (e) {
-    return '';
-  }
+  try { return sessionStorage.getItem('bwn_' + key) || ''; } catch (e) { return ''; }
 }
 
-// ═══════════════ GTM EVENT TRACKING ═══════════════
+// ═══════════════ GTM ═══════════════
 function gtmEvent(eventName, params) {
   window.dataLayer = window.dataLayer || [];
-  // Strip empty values to keep dataLayer clean
   const clean = {};
   Object.entries(params || {}).forEach(([k,v]) => {
     if (v !== '' && v !== null && v !== undefined) clean[k] = v;
@@ -1753,19 +1392,14 @@ function gtmEvent(eventName, params) {
   window.dataLayer.push({ event: eventName, ...clean });
 }
 
-// Track klik tombol back ke beranda
 document.querySelectorAll('a[href="/"]').forEach(el => {
-  el.addEventListener('click', () => {
-    gtmEvent('navigate_back_home', { from_page: 'study_abroad_quiz' });
-  });
+  el.addEventListener('click', () => { gtmEvent('navigate_back_home', { from_page: 'study_abroad_quiz' }); });
 });
 
 // ═══════════════ INIT ═══════════════
 captureUTM();
 show("screen-landing");
-
-// Expose for debugging (optional — bisa di-remove di production)
-window.__bwn = { calculateResult, buildWAMsg, getUTM, answers: () => answers };
+window.__bwn = { calculateResult, buildWAMsg, getUTM, answers: () => answers, userData: () => userData };
 </script>
 </body>
 </html>
