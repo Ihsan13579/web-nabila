@@ -1328,43 +1328,55 @@ function renderResult(data) {
 }
 
 // ═══════════════ WA MESSAGE BUILDER ═══════════════
+// NOTE: Emoji flags (🇦🇺 etc) break in wa.me URL encoding on many devices.
+// We use plain text country names + text labels instead.
+// Section headers use simple markers that are safe across all devices.
+
+// Strip emoji from a string (used for country flags in WA message)
+function stripEmoji(str) {
+  return str.replace(/[\u{1F1E0}-\u{1F1FF}]/gu, '').trim();
+}
+
 function buildWAMsg(data) {
   const { profile, countries, majors, rawData } = data;
   const utmSource = getUTM('utm_source');
   const utmCampaign = getUTM('utm_campaign');
-  const sourceLine = utmSource ? `\n• Sumber: ${utmSource}${utmCampaign ? ' / ' + utmCampaign : ''}` : '';
+  const sourceLine = utmSource ? `\n- Sumber: ${utmSource}${utmCampaign ? ' / ' + utmCampaign : ''}` : '';
 
-  return `Halo Nabila! 🐝 Aku baru selesai quiz di beewithnabila.id.
+  // Use profile type text only (no emoji) to avoid encoding issues
+  const profileLabel = `[${profile.type}]`;
 
-👤 DATA DIRI
+  return `Halo Nabila! Aku baru selesai quiz di beewithnabila.id.
+
+=== DATA DIRI ===
 Nama: ${userData.name}
 Sekolah: ${userData.school}
 Domisili: ${userData.city}
 
-📊 HASIL QUIZ KU
-Profile: ${profile.emoji} ${profile.type}
+=== HASIL QUIZ ===
+Profile: ${profileLabel}
 "${profile.tagline}"
 
-🎯 Rekomendasi negara buat aku:
-${countries.map((c, i) => `${i+1}. ${c.flag} ${c.name} — ${c.reason}`).join('\n')}
+=== Rekomendasi negara ===
+${countries.map((c, i) => `${i+1}. ${c.name} (${c.difficulty}) - ${c.reason}`).join('\n')}
 
-📚 Rekomendasi jurusan:
+=== Rekomendasi jurusan ===
 ${majors.slice(0, 5).map((m, i) => `${i+1}. ${m}`).join('\n')}
 
-📋 Detail situasiku:
-• Status: ${LABEL_MAPS.stage[rawData.stage]}
-• Bahasa Inggris: ${LABEL_MAPS.english[rawData.english]}
-• Budget: ${LABEL_MAPS.budget[rawData.budget]}
-• Dukungan orang tua: ${LABEL_MAPS.parentSupport[rawData.parentSupport]}
-• Tujuan karir: ${LABEL_MAPS.career[rawData.career]}
-• Gaya hidup: ${LABEL_MAPS.lifestyle[rawData.lifestyle]}
-• Bidang studi: ${LABEL_MAPS.studyField[rawData.studyField]}
-• Kekhawatiran utama: ${LABEL_MAPS.fear[rawData.fear]}${sourceLine}
+=== Detail situasiku ===
+- Status: ${LABEL_MAPS.stage[rawData.stage]}
+- Bahasa Inggris: ${LABEL_MAPS.english[rawData.english]}
+- Budget: ${LABEL_MAPS.budget[rawData.budget]}
+- Dukungan orang tua: ${LABEL_MAPS.parentSupport[rawData.parentSupport]}
+- Tujuan karir: ${LABEL_MAPS.career[rawData.career]}
+- Gaya hidup: ${LABEL_MAPS.lifestyle[rawData.lifestyle]}
+- Bidang studi: ${LABEL_MAPS.studyField[rawData.studyField]}
+- Kekhawatiran utama: ${LABEL_MAPS.fear[rawData.fear]}${sourceLine}
 
-💡 Catatan dari hasil quiz:
+=== Catatan dari hasil quiz ===
 ${profile.urgencyNote}
 
-Boleh minta konsultasi gratis-nya? 🙏`;
+Boleh minta konsultasi gratis-nya?`;
 }
 
 // ═══════════════ UTM ═══════════════
