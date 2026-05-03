@@ -1385,7 +1385,7 @@ Boleh minta konsultasi gratis-nya?`;
 // ═══════════════ N8N WEBHOOK ═══════════════
 // Kirim semua data hasil quiz ke n8n webhook saat result page tampil.
 // Format payload mirip WA message — Nabila bisa lihat di spreadsheet/Notion via n8n.
-const N8N_WEBHOOK_URL = "https://n8n.mamawatts.web.id/webhook-test/study-abroad-test-result";
+const N8N_WEBHOOK_URL = "https://n8n.mamawatts.web.id/webhook/study-abroad-test-result";
 
 function sendToWebhook(data, quizDuration) {
   const { profile, countries, majors, rawData } = data;
